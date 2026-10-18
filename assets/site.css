@@ -418,6 +418,8 @@ a.home-model-chip:focus-visible{outline:2px solid #215e52;outline-offset:3px}
 .doc-content .task-list{grid-template-columns:1fr}
 .doc-task-suite{margin-top:28px}
 .doc-task-suite>h3{font-size:17px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.doc-content #training-tasks a{color:inherit;text-decoration:none}
+.doc-content #training-tasks .text-link:hover{color:var(--blue)}
 .training-demo-placeholder{aspect-ratio:1;display:grid;place-items:center;padding:24px;text-align:center;border:1px dashed #cbd3db;border-radius:12px;background:var(--wash);color:var(--muted)}
 .training-gallery-placeholder{margin-top:28px;overflow:hidden}
 .training-gallery-rows{display:grid;gap:10px;overflow:hidden;mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent)}
