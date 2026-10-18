@@ -54,7 +54,7 @@ Open `scripts/taxonomy-test.html` for chart interaction checks, including exact 
 - `model.html?id=MODEL_ID`: model profile and perturbation/task results.
 - `perturbation.html?id=S01`, `task.html?id=libero_goal-3`: perturbation and task result galleries, with eight task slots per perturbation. Their parent directory is Document.
 - `findings.html`: analysis sections reserved for future content.
-- `docs.html`: grouped document directory, task design index, training dataset, protocol, aggregation, sources and coverage. `#training-data` describes the paper's 32 training tasks, 1,313 shifted instances, 39,390 demonstrations and benchmark-wide review; `#training-split` lists all train/evaluation task IDs. `#training-release` separately documents the current HDF5 release's storage counts, camera/action schema and provenance, with `#training-download` linking to Train and Eval for their respective uses. Paper collection claims and downloadable-release statistics/provenance remain explicitly distinguished.
+- `docs.html`: grouped document directory, task design index, protocol, aggregation, sources and coverage.
 - `docs.html?task=libero_10-8`: a centered nominal demonstration, official instruction, task design, exact success predicates and supported perturbations.
 - `docs.html?perturbation=D06`: a centered, horizontally mirrored version of the Home demonstration aligned with the paper mechanism figure, design facts without a Setting row, and eight non-interactive task-number circles grouped by suite. Green indicates supported combinations; gray dashed circles indicate unsupported combinations from the same task-support manifest. Static mechanism headings read “Initialization and validity”.
 

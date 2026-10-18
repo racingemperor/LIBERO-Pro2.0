@@ -413,7 +413,6 @@ a.home-model-chip:focus-visible{outline:2px solid #215e52;outline-offset:3px}
 .doc-content .design-facts{font-size:16px}
 .doc-content .design-facts dt{font-weight:600;color:#111827}
 .doc-content .reading table{font-size:16px;line-height:1.6}
-.doc-content #training-data pre{max-width:100%;overflow:auto;padding:20px;background:#f5f7fa;border-radius:8px;font-size:14px;line-height:1.65}
 .doc-content .base-task p{font-size:14px;line-height:1.6}
 .doc-content .section:first-of-type{padding-top:24px}
 .doc-content .task-list{grid-template-columns:1fr}
