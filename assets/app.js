@@ -19,7 +19,7 @@ const mean = values => { const valid = values.filter(Number.isFinite); return va
 const modeLabel = mode => mode === 'overall' ? 'Overall' : mode === 'dynamic' ? 'Dynamic' : 'Static';
 const typeClass = type => type === 'World Action Models' ? 'wam' : type === 'Robustness-oriented' ? 'robust' : 'vla';
 const typeLabel = type => type === 'World Action Models' ? 'World Action' : type === 'Robustness-oriented' ? 'Robustness' : 'VLA';
-let catalogue, results, tasks, assets, news, leaderboardNews, designs, people, publication, upcomingModels, modelProfiles;
+let catalogue, results, tasks, assets, news, leaderboardNews, designs, people, publication, upcomingModels, modelProfiles, trainingData;
 let capabilities;
 let modelRollouts={models:{}};
 const baseRollout={id:'BASE',mode:'base',category:'all',name:'Base tasks'};
@@ -239,14 +239,25 @@ function findingsPage() {
     <section class="section" id="failure-analysis">${sectionHead('Failure analysis')}<div class="empty-section">Examples coming soon.</div></section>`,[['static-dynamic','Static & dynamic'],['domain-analysis','Domain analysis'],['failure-analysis','Failure analysis']]);
 }
 
-function documentTaskList({compact=false}={}) {
-  return `<div class="task-list">${tasks.map(t=>`<a class="base-task" href="${url('docs',{task:t.id})}"><span class="task-index">${esc(t.suiteName)}${compact?' ':'<br>'}${t.taskId}</span><div><h3>${esc(compact?designs.tasks[t.id].title:t.instruction)}</h3>${compact?'':`<p>${esc(designs.tasks[t.id].focus)}</p>`}</div><span class="arrow" aria-hidden="true">↗</span></a>`).join('')}</div>`;
+const documentSuites=['Spatial','Object','Goal','Long'];
+const suiteLabel=suite=>`LIBERO-${suite==='Long'?'10':suite}`;
+const number=value=>value.toLocaleString('en-US');
+const trainingFocus={Spatial:'Spatial relationship grounding',Object:'Object identity grounding',Goal:'Goal-conditioned manipulation',Long:'Sequential manipulation and multi-object goals'};
+
+function documentTaskList({compact=false,training=false,entries=tasks}={}) {
+  const key=training?'training':'task';
+  return `<div class="task-list">${entries.map(t=>`<a class="base-task" href="${url('docs',{[key]:t.id})}"><span class="task-index">${esc(t.suiteName)}${compact?' ':'<br>'}${t.taskId}</span><div><h3>${esc(compact?designs.tasks[t.id].title:t.instruction)}</h3>${compact?'':`<p>${esc(training?trainingFocus[t.suiteName]:designs.tasks[t.id].focus)}</p>`}</div><span class="arrow" aria-hidden="true">↗</span></a>`).join('')}</div>`;
+}
+
+function documentTaskGroups(entries,training=false) {
+  return documentSuites.map(suite=>`<div class="doc-task-suite"><h3>${suiteLabel(suite)}</h3>${documentTaskList({entries:entries.filter(t=>t.suiteName===suite),training})}</div>`).join('');
 }
 
 function documentLayout(content) {
-  const taskId=params.get('task'),perturbationId=params.get('perturbation');
+  const taskId=params.get('task'),trainingId=params.get('training'),perturbationId=params.get('perturbation');
   const navLink=(href,label,active=false)=>`<a href="${href}" ${active?'aria-current="page"':''}>${label}</a>`;
-  const directory=`<nav aria-label="Document directory"><div class="doc-nav-group"><h2>${navLink('docs.html','Overview',!taskId&&!perturbationId)}</h2></div><div class="doc-nav-group"><h2>Evaluation tasks</h2>${['Spatial','Object','Goal','Long'].map(suite=>`<details ${tasks.find(t=>t.id===taskId)?.suiteName===suite?'open':''}><summary>LIBERO-${suite==='Long'?'10':suite}</summary>${tasks.filter(t=>t.suiteName===suite).map(t=>navLink(url('docs',{task:t.id}),`<small>${t.taskId}</small> ${esc(t.instruction)}`,t.id===taskId)).join('')}</details>`).join('')}</div><div class="doc-nav-group"><h2>Perturbation design</h2>${catalogue.categories.map(c=>`<details data-domain="${c.id}" ${catalogue.perturbations.find(p=>p.id===perturbationId)?.category===c.id?'open':''}><summary>${c.name}</summary>${['static','dynamic'].map(mode=>`<p class="doc-nav-mode">${modeLabel(mode)}</p>${directionsFor(mode,c.id).map(p=>navLink(url('docs',{perturbation:p.id}),`<small>${p.id}</small> ${esc(p.name)}`,p.id===perturbationId)).join('')}`).join('')}</details>`).join('')}</div></nav>`;
+  const taskGroup=(label,entries,key,selected,anchor)=>`<div class="doc-nav-group" data-task-split="${key}"><h2>${navLink(`docs.html#${anchor}`,label)}</h2>${documentSuites.map(suite=>`<details ${entries.find(t=>t.id===selected)?.suiteName===suite?'open':''}><summary>${suiteLabel(suite)}</summary>${entries.filter(t=>t.suiteName===suite).map(t=>navLink(url('docs',{[key]:t.id}),`<small>${t.taskId}</small> ${esc(t.instruction)}`,t.id===selected)).join('')}</details>`).join('')}</div>`;
+  const directory=`<nav aria-label="Document directory"><div class="doc-nav-group"><h2>${navLink('docs.html','Overview',!taskId&&!trainingId&&!perturbationId)}</h2></div>${taskGroup('Evaluation tasks',tasks,'task',taskId,'task-designs')}${taskGroup('Training tasks',trainingData.tasks,'training',trainingId,'training-tasks')}<div class="doc-nav-group"><h2>Perturbation design</h2>${catalogue.categories.map(c=>`<details data-domain="${c.id}" ${catalogue.perturbations.find(p=>p.id===perturbationId)?.category===c.id?'open':''}><summary>${c.name}</summary>${['static','dynamic'].map(mode=>`<p class="doc-nav-mode">${modeLabel(mode)}</p>${directionsFor(mode,c.id).map(p=>navLink(url('docs',{perturbation:p.id}),`<small>${p.id}</small> ${esc(p.name)}`,p.id===perturbationId)).join('')}`).join('')}</details>`).join('')}</div></nav>`;
   return `<div class="docs-layout"><aside class="docs-sidebar"><details class="doc-directory" open><summary class="doc-directory-toggle">Document directory</summary>${directory}</details></aside><main id="content" class="doc-content">${content}</main></div>`;
 }
 
@@ -300,27 +311,36 @@ function documentPagination(items,currentId,key) {
   return `<nav class="doc-pagination" aria-label="Adjacent documents">${link(items[index-1],'Previous')}${link(items[index+1],'Next')}</nav>`;
 }
 
-function taskPerturbationChips(t) {
-  const excluded=designs.tasks[t.id].excluded;
+function taskPerturbationChips(t,{training=false}={}) {
+  const excluded=training?catalogue.perturbations.filter(p=>!t.variations.includes(p.id)).map(p=>p.id):designs.tasks[t.id].excluded;
+  const unavailable=training?'not included in the training release':'not supported for this task';
   return ['static','dynamic'].map(mode=>{
     const entries=directionsFor(mode);
     const supported=entries.filter(p=>!excluded.includes(p.id)).length;
     const chip=p=>excluded.includes(p.id)
-      ?`<span class="doc-perturbation-chip is-unavailable" aria-disabled="true" title="${p.id}: not supported for this task">${p.id}<span class="sr-only"> — not supported for this task</span></span>`
+      ?`<span class="doc-perturbation-chip is-unavailable" aria-disabled="true" title="${p.id}: ${unavailable}">${p.id}<span class="sr-only"> — ${unavailable}</span></span>`
       :`<a class="doc-perturbation-chip" href="${url('docs',{perturbation:p.id})}" aria-label="${esc(p.id+': '+p.name)}" title="${esc(p.name)}">${p.id}</a>`;
-    return `<div class="doc-perturbation-group"><div class="doc-perturbation-heading"><h3 id="task-${mode}-heading">${modeLabel(mode)}</h3><span class="count-label">${supported} / ${entries.length} supported</span></div><ul class="doc-perturbation-chips" aria-labelledby="task-${mode}-heading">${entries.map(p=>`<li>${chip(p)}</li>`).join('')}</ul></div>`;
+    return `<div class="doc-perturbation-group"><div class="doc-perturbation-heading"><h3 id="task-${mode}-heading">${modeLabel(mode)}</h3><span class="count-label">${supported} / ${entries.length} ${training?'in training release':'supported'}</span></div><ul class="doc-perturbation-chips" aria-labelledby="task-${mode}-heading">${entries.map(p=>`<li>${chip(p)}</li>`).join('')}</ul></div>`;
   }).join('');
 }
 
-function taskDocument(t) {
-  const design=designs.tasks[t.id];
+function trainingPreview({single=false}={}) {
+  if(single)return '<div class="task-demo training-demo-placeholder" role="img" aria-label="Space reserved for a high-resolution training task demonstration"><span>High-resolution demonstration coming soon.</span></div>';
+  return `<div class="training-gallery-placeholder" role="img" aria-label="Three rows reserved for high-resolution training rollouts"><div class="training-gallery-rows" aria-hidden="true">${[0,1,2].map(row=>`<div class="training-gallery-row" data-direction="${row===1?'left':'right'}">${'<span></span>'.repeat(9)}</div>`).join('')}</div><p>High-resolution rollouts coming soon.</p></div>`;
+}
+
+function taskDocument(t,{training=false}={}) {
+  const design=training?{focus:trainingFocus[t.suiteName],predicates:t.predicates}:designs.tasks[t.id];
+  const title=training?'Training tasks':'Evaluation tasks',key=training?'training':'task';
+  const facts=[['Instruction',esc(t.instruction)],...(!training?[['Description',documentEmphasis(design.description,documentKeyPhrases[t.id])]]:[]),['Task suite',`${suiteLabel(t.suiteName)} · task ${t.taskId} (zero-based)`],['Design focus',esc(design.focus)]];
+  if(training)facts.push(['Training coverage',`<strong>${number(t.variations.length*trainingData.summary.demonstrationsPerInstance)} stored demonstrations</strong> across ${t.variations.length} task–variation instances, including the unperturbed base task.`]);
   document.title=`${t.instruction} · Document · LIBERO-Pro`;
-  return documentLayout(`${head(esc(t.instruction),'',breadcrumb([['Document','docs.html'],['Evaluation tasks','docs.html#task-designs'],[`LIBERO-${t.suiteName} · ${t.taskId}`]]))}
-    <figure class="task-demo" id="examples"><video data-task-demo src="assets/rollouts/base/${esc(t.id)}.mp4" poster="assets/rollouts/base/${esc(t.id)}.webp" width="640" height="640" controls muted loop playsinline preload="metadata" aria-label="Successful X-VLA demonstration of an unperturbed LIBERO task: ${esc(t.instruction)}"></video></figure>
-    <section class="section" id="design">${sectionHead('Task design')}${designFacts([['Instruction',esc(t.instruction)],['Description',documentEmphasis(design.description,documentKeyPhrases[t.id])],['Task suite',`LIBERO-${esc(t.suiteName==='Long'?'10':t.suiteName)} · task ${t.taskId} (zero-based)`],['Design focus',esc(design.focus)]])}</section>
+  return documentLayout(`${head(esc(t.instruction),'',breadcrumb([['Document','docs.html'],[title,`docs.html#${training?'training-tasks':'task-designs'}`],[`${suiteLabel(t.suiteName)} · ${t.taskId}`]]))}
+    ${training?trainingPreview({single:true}):`<figure class="task-demo" id="examples"><video data-task-demo src="assets/rollouts/base/${esc(t.id)}.mp4" poster="assets/rollouts/base/${esc(t.id)}.webp" width="640" height="640" controls muted loop playsinline preload="metadata" aria-label="Successful X-VLA demonstration of an unperturbed LIBERO task: ${esc(t.instruction)}"></video></figure>`}
+    <section class="section" id="design">${sectionHead('Task design')}${designFacts(facts)}</section>
     <section class="section reading" id="success">${sectionHead('Success conditions')}<pre class="goal-predicates" tabindex="0" aria-label="BASE goal predicates"><code>${design.predicates.map(esc).join('\n')}</code></pre></section>
-    <section class="section" id="perturbations">${sectionHead('Perturbation design')}${taskPerturbationChips(t)}</section>
-    ${documentPagination(tasks.map(task=>({id:task.id,title:task.instruction})),t.id,'task')}`);
+    <section class="section" id="perturbations">${sectionHead('Perturbation design')}${taskPerturbationChips(t,{training})}</section>
+    ${documentPagination((training?trainingData.tasks:tasks).map(task=>({id:task.id,title:task.instruction})),t.id,key)}`);
 }
 
 let releaseDocumentDemo=()=>{};
@@ -367,16 +387,22 @@ function perturbationDocument(p) {
   document.title=`${p.id} ${p.name} · Document · LIBERO-Pro`;
   const exclusions=tasks.filter(t=>designs.tasks[t.id].excluded.includes(p.id));
   const clip=perturbationClip(p.id);
+  const trainingInstances=trainingData.tasks.filter(t=>t.variations.includes(p.id)).length;
   return documentLayout(`${head(esc(p.name),'',breadcrumb([['Document','docs.html'],[p.id]]))}
     <figure class="task-demo" id="examples"><video data-perturbation-demo src="${esc(clip.src)}" poster="${esc(clip.poster)}" width="256" height="256" controls muted loop playsinline preload="metadata" aria-label="${esc(p.id+': '+p.name)} perturbation demonstration"></video></figure>
     <figure class="mechanism-image"><img src="${p.image}" width="1760" height="510" loading="lazy" alt="${esc(p.name)} mechanism illustration"><figcaption>${p.id} · Illustration from the paper. Model-specific rollouts are shown separately.</figcaption></figure>
     <section class="section" id="design">${sectionHead('Perturbation design')}${designFacts([['Public ID',`<code>${p.id}</code>`],['Category',categoryFor(p.category).name],['Intervention',documentEmphasis(p.description,documentKeyPhrases[p.id])],[p.mode==='static'?'Validity constraint':'Trigger & lifetime',documentEmphasis(p.constraint,documentKeyPhrases[p.id])],['Task goal','Preserve the <strong>original goal and success predicate</strong>.'],['Scope','Single <strong>non-physical perturbation</strong>; mass, friction, inertia, stiffness and damping are not varied.']])}</section>
     <section class="section reading" id="mechanism">${sectionHead(p.mode==='static'?'Initialization and validity':'Runtime behavior')}<p>${p.mode==='static'?'Apply the configured change <strong>at reset</strong>. Modified scene geometry or fault settings <strong>persist for the episode</strong>; changing the initial state does not prevent the robot and objects from moving normally.':'Trigger the intervention at the <strong>task phase</strong> defined by the case. Its <strong>onset, duration and release</strong> follow the case configuration. Restoring a sensor or control channel <strong>does not roll back</strong> the complete scene.'}</p><p>Changes must leave a <strong>reachable, collision-free configuration</strong> and a feasible route to task completion. The magnitude, direction, affected objects and event settings are <strong>selected per task</strong>.</p>${exclusions.length?`<p><strong>Not applicable:</strong> ${exclusions.map(t=>`LIBERO-${t.suiteName} task <code>${t.taskId}</code>`).join(', ')}. These combinations are <strong>not treated as failures</strong>.</p>`:''}</section>
     <section class="section" id="evaluation-tasks">${sectionHead('Evaluation tasks')}${perturbationTaskChips(p)}</section>
+    <section class="section reading" id="training-tasks">${sectionHead('Supported training tasks')}<p>For <code>${p.id}</code>, the training release contains <strong>${number(trainingInstances*trainingData.summary.demonstrationsPerInstance)} stored demonstrations</strong> across <strong>${trainingInstances} task–variation instances</strong> from the four LIBERO suites. A <strong>privileged-state oracle</strong> collects demonstrations under this ${p.mode==='static'?'static shift':'runtime intervention'}.</p><p>Release checks cover <strong>HDF5 readability, observation and action shapes, success attributes</strong>, and 30 stored demonstrations per instance. <a class="text-link" href="${trainingData.source.dataset}/blob/${trainingData.source.revision}/docs/data_format.md" target="_blank" rel="noopener">Training data details ↗</a></p>${trainingPreview()}</section>
     ${documentPagination(catalogue.perturbations,p.id,'perturbation')}`);
 }
 
 function docsPage() {
+  if(params.has('training')){
+    const task=trainingData.tasks.find(t=>t.id===params.get('training'));
+    return task?taskDocument(task,{training:true}):notFound('Training task document','docs.html#training-tasks');
+  }
   if(params.has('task')){
     const task=tasks.find(t=>t.id===params.get('task'));
     return task?taskDocument(task):notFound('Task document','docs.html#task-designs');
@@ -386,7 +412,8 @@ function docsPage() {
     return perturbation?perturbationDocument(perturbation):notFound('Perturbation document','docs.html');
   }
   return documentLayout(`${head('Document','Task designs, perturbation mechanisms and evaluation definitions.')}
-    <section class="section" id="task-designs">${sectionHead('Evaluation task designs')}<p><strong>Eight base tasks</strong> are selected from four LIBERO suites. Each document gives the original instruction, task setup, success condition and supported perturbations. Task IDs are <strong>zero-based</strong>.</p>${documentTaskList()}</section>
+    <section class="section" id="task-designs">${sectionHead('Evaluation task designs')}<p><strong>Eight base tasks</strong> are selected from four LIBERO suites. Each document gives the original instruction, task setup, success condition and supported perturbations. Task IDs are <strong>zero-based</strong>.</p>${documentTaskGroups(tasks)}</section>
+    <section class="section reading" id="training-tasks">${sectionHead('Training task designs')}<p><strong>32 base tasks</strong>, eight per LIBERO suite, are separate from the eight held-out evaluation tasks. The training release contains <strong>${number(trainingData.summary.demonstrations)} stored demonstrations</strong> across <strong>${number(trainingData.summary.instances)} task–variation instances</strong>, including unperturbed base tasks. Task IDs are <strong>zero-based</strong>.</p><p>The source audit reports <strong>${number(trainingData.summary.uniqueSourceTrajectories)} unique source trajectories</strong>; stored counts include declared replicated trajectories. <a class="text-link" href="${trainingData.source.dataset}" target="_blank" rel="noopener">Explore the training dataset ↗</a></p>${documentTaskGroups(trainingData.tasks,true)}</section>
     <section class="section reading" id="protocol">${sectionHead('Evaluation protocol')}<p>LIBERO-Pro evaluates robot-policy robustness while preserving the <strong>original task goal and feasibility</strong>. The held-out evaluation split contains <strong>eight tasks</strong>: two each from LIBERO-Spatial, LIBERO-Object, LIBERO-Goal and LIBERO-10.</p><p><strong>Static shifts</strong> are introduced at reset. <strong>Dynamic interventions</strong> are triggered during execution at task-relevant phases. Each case applies <strong>one perturbation</strong>. RQ experiments and combined perturbation suites are excluded from this website’s leaderboard.</p></section>
     <section class="section reading" id="scoring">${sectionHead('Success-rate calculation')}<p>For results with trial counts, task success rate is <code>successes ÷ episodes</code>. Task counts are <strong>pooled within each suite × perturbation pair</strong>. The displayed average is the <strong>arithmetic mean</strong> of available suite × perturbation rates in the selected setting. Domain scores apply the same calculation to that domain.</p><p>The current taxonomy includes <code>S22</code>: there are <strong>87 applicable static suite cells</strong> and <strong>80 dynamic suite cells</strong> per model. <code>S04</code> is not applicable to LIBERO-Spatial. Missing and inapplicable observations are <strong>not converted to zero</strong>. The earlier website excluded <code>S22</code>; its static and overall averages therefore differ.</p><p><code>Base</code> is the average of available nominal suite rates. <code>Δ = Average − Base</code>, in <strong>percentage points</strong>; a negative value indicates lower success under perturbation. Static and dynamic summary scores reproduce the release paper at its reported precision. Detailed suite and task rates retain the evaluation records. Overall combines available suite × perturbation rates across both settings; it is an additional website view. The website does not introduce a separate capability score.</p></section>
     <section class="section reading" id="taxonomy">${sectionHead('Paper taxonomy')}<p>Select any ID to read its intervention design, constraints and task coverage. All <strong>six domains</strong> and all <strong>42 perturbations</strong> remain available in the document directory.</p><div class="table-scroll" tabindex="0" role="region" aria-label="Paper taxonomy, horizontally scrollable"><table><thead><tr><th>Domain</th><th>Static</th><th>Dynamic</th></tr></thead><tbody>${catalogue.categories.map(c=>`<tr id="domain-${c.id}"><th scope="row">${c.name}</th>${['static','dynamic'].map(mode=>`<td>${c[mode].map(id=>`<a href="${url('docs',{perturbation:id})}">${id}</a>`).join(', ')}</td>`).join('')}</tr>`).join('')}</tbody></table></div><p>The website uses <strong>paper IDs</strong>. Paper <code>D19</code> maps to internal <code>D20</code> (robot joint displacement); paper <code>D20</code> maps to internal <code>D21</code> (instruction restatement). Internal <code>D19</code> is <strong>excluded</strong> from the published 42-type catalogue. Static <code>S06</code> belongs to Environment.</p></section>
@@ -564,6 +591,7 @@ async function preparePage(route) {
   const template=loadTemplate(route);
   if(['report','community'].includes(route.page))return template;
   [catalogue,results,{tasks},assets,designs,people,publication]=await Promise.all(['catalogue','results','tasks','model-assets','task-designs','people','publication'].map(loadData));
+  if(route.page==='docs')trainingData=await loadData('training-tasks');
   if(route.page==='index')[upcomingModels,news]=await Promise.all(['upcoming-models','news'].map(loadData));
   if(['model','perturbation','task'].includes(route.page))modelRollouts=await loadData('model-rollouts');
   if(route.page==='leaderboard')[modelProfiles,leaderboardNews]=await Promise.all(['model-profiles','leaderboard-news'].map(loadData));

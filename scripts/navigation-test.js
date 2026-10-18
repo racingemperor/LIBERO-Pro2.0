@@ -501,6 +501,38 @@ const tests = [
     assert(win().location.pathname.endsWith('/perturbation.html'), 'Task switch opened the model profile');
     assert(query('#model-select').value === 'openvla-oft-m', 'Selected model was lost');
   }],
+  ['Training documents keep splits separate, preserve navigation and reserve media without loading videos', async () => {
+    await load('docs.html');
+    const training=await (await fetch('../data/training-tasks.json')).json();
+    const headings=[...doc().querySelectorAll('.doc-nav-group h2')].map(el=>el.textContent.trim());
+    assert(headings.join(',')==='Overview,Evaluation tasks,Training tasks,Perturbation design','Document directory order is incorrect');
+    assert(doc().querySelectorAll('[data-task-split="task"] details a').length===8,'Held-out task directory changed');
+    assert(doc().querySelectorAll('[data-task-split="training"] details').length===4&&doc().querySelectorAll('[data-task-split="training"] details a').length===32,'Training needs four suites with eight tasks each');
+    assert(doc().querySelectorAll('#training-tasks .doc-task-suite').length===4&&doc().querySelectorAll('#training-tasks .base-task').length===32,'Training index is incomplete');
+    const sidebar=query('.docs-sidebar');
+    for(const task of training.tasks){
+      await change(()=>click(`.docs-sidebar a[href="docs.html?training=${task.id}"]`),()=>query('h1')?.textContent===task.instruction);
+      assert(query('.docs-sidebar')===sidebar,'Training selection replaced the directory');
+      assert(query('.docs-sidebar a[aria-current="page"]').href.endsWith(`training=${task.id}`),'Wrong active training document');
+      assert(query('.training-demo-placeholder')&&!query('#content video'),'Training tasks must reserve space without loading media');
+      assert(doc().querySelectorAll('#perturbations a.doc-perturbation-chip').length===task.variations.length-1,'Training variant coverage is incorrect');
+      assert(query('.goal-predicates').textContent===task.predicates.join('\n'),'Training success predicates were changed');
+    }
+    for(const id of ['S04','D19','D20']){
+      await change(()=>click(`.docs-sidebar a[href="docs.html?perturbation=${id}"]`),()=>query('#training-tasks')?.textContent.includes(id));
+      const count=training.tasks.filter(t=>t.variations.includes(id)).length;
+      assert(query('#training-tasks').textContent.includes(`${count*30} stored demonstrations`),'Perturbation training count is incorrect');
+      assert(query('#training-tasks').previousElementSibling.id==='evaluation-tasks','Training section must follow evaluation support');
+      assert(doc().querySelectorAll('.training-gallery-row').length===3&&!query('#training-tasks video, #training-tasks img, #training-tasks source'),'Training gallery must contain three empty rows without media');
+      assert(doc().documentElement.scrollWidth<=win().innerWidth,'Training view overflows the viewport');
+    }
+    await change(()=>click('.docs-sidebar a[href="docs.html?task=libero_spatial-0"]'),()=>!!query('[data-task-demo]'));
+    assert(!query('.training-demo-placeholder'),'Evaluation demonstration was replaced');
+    await change(()=>click('.docs-sidebar a[href="docs.html#training-tasks"]'),()=>!!query('#training-tasks .base-task'));
+    await navigate(()=>click('.site-header a[href="leaderboard.html"]'),()=>!!query('#rankings'));
+    await navigate(()=>win().history.back(),()=>!!query('#training-tasks .base-task'),{push:false});
+    assert(win().location.hash==='#training-tasks','Back lost the training index anchor');
+  }],
   ['Document directory, adjacent documents and Overview update without history noise', async () => {
     await load('docs.html?perturbation=S01');
     const sidebar = query('.docs-sidebar');

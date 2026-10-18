@@ -1,0 +1,307 @@
+{
+  "source": {
+    "dataset": "https://huggingface.co/datasets/zhouxueyang/LIBERO-Pro2.0-Train",
+    "revision": "67b414109131ce92c2c0fc7e0d8e1d79cdc553b2",
+    "statistics": "manifests/statistics.json",
+    "coverage": "manifests/files.jsonl",
+    "definitions": "docs/data_format.md",
+    "validation": "manifests/release_validation.json"
+  },
+  "summary": {
+    "tasks": 32,
+    "instances": 1349,
+    "demonstrations": 40470,
+    "uniqueSourceTrajectories": 37396,
+    "demonstrationsPerInstance": 30
+  },
+  "tasks": [
+    {
+      "id": "libero_spatial-1",
+      "suite": "libero_spatial",
+      "suiteName": "Spatial",
+      "taskId": 1,
+      "instruction": "Pick the akita black bowl next to the ramekin and place it on the plate",
+      "predicates": ["(On akita_black_bowl_1 plate_1)"],
+      "variations": ["BASE", "D01", "D02", "D03", "D04", "D05", "D06", "D07", "D08", "D09", "D10", "D11", "D12", "D13", "D14", "D15", "D16", "D17", "D18", "D19", "D20", "S01", "S02", "S03", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "S15", "S16", "S17", "S18", "S19", "S20", "S21", "S22"]
+    },
+    {
+      "id": "libero_spatial-2",
+      "suite": "libero_spatial",
+      "suiteName": "Spatial",
+      "taskId": 2,
+      "instruction": "Pick the akita black bowl from table center and place it on the plate",
+      "predicates": ["(On akita_black_bowl_1 plate_1)"],
+      "variations": ["BASE", "D01", "D02", "D03", "D04", "D05", "D06", "D07", "D08", "D09", "D10", "D11", "D12", "D13", "D14", "D15", "D16", "D17", "D18", "D19", "D20", "S01", "S02", "S03", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "S15", "S16", "S17", "S18", "S19", "S20", "S21", "S22"]
+    },
+    {
+      "id": "libero_spatial-3",
+      "suite": "libero_spatial",
+      "suiteName": "Spatial",
+      "taskId": 3,
+      "instruction": "Pick the akita black bowl on the cookies box and place it on the plate",
+      "predicates": ["(On akita_black_bowl_1 plate_1)"],
+      "variations": ["BASE", "D01", "D02", "D03", "D04", "D05", "D06", "D07", "D08", "D09", "D10", "D11", "D12", "D13", "D14", "D15", "D16", "D17", "D18", "D19", "D20", "S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "S15", "S16", "S17", "S18", "S19", "S20", "S21", "S22"]
+    },
+    {
+      "id": "libero_spatial-4",
+      "suite": "libero_spatial",
+      "suiteName": "Spatial",
+      "taskId": 4,
+      "instruction": "Pick the akita black bowl in the top layer of the wooden cabinet and place it on the plate",
+      "predicates": ["(On akita_black_bowl_1 plate_1)"],
+      "variations": ["BASE", "D01", "D02", "D03", "D04", "D05", "D06", "D07", "D08", "D09", "D10", "D11", "D12", "D13", "D14", "D15", "D16", "D17", "D18", "D19", "D20", "S01", "S02", "S03", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "S15", "S16", "S17", "S18", "S19", "S20", "S21", "S22"]
+    },
+    {
+      "id": "libero_spatial-5",
+      "suite": "libero_spatial",
+      "suiteName": "Spatial",
+      "taskId": 5,
+      "instruction": "Pick the akita black bowl on the ramekin and place it on the plate",
+      "predicates": ["(On akita_black_bowl_1 plate_1)"],
+      "variations": ["BASE", "D01", "D02", "D03", "D04", "D05", "D06", "D07", "D08", "D09", "D10", "D11", "D12", "D13", "D14", "D15", "D16", "D17", "D18", "D19", "D20", "S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "S15", "S16", "S17", "S18", "S19", "S20", "S21", "S22"]
+    },
+    {
+      "id": "libero_spatial-6",
+      "suite": "libero_spatial",
+      "suiteName": "Spatial",
+      "taskId": 6,
+      "instruction": "Pick the akita black bowl next to the cookies box and place it on the plate",
+      "predicates": ["(On akita_black_bowl_1 plate_1)"],
+      "variations": ["BASE", "D01", "D02", "D03", "D04", "D05", "D06", "D07", "D08", "D09", "D10", "D11", "D12", "D13", "D14", "D15", "D16", "D17", "D18", "D19", "D20", "S01", "S02", "S03", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "S15", "S16", "S17", "S18", "S19", "S20", "S21", "S22"]
+    },
+    {
+      "id": "libero_spatial-7",
+      "suite": "libero_spatial",
+      "suiteName": "Spatial",
+      "taskId": 7,
+      "instruction": "Pick the akita black bowl on the stove and place it on the plate",
+      "predicates": ["(On akita_black_bowl_1 plate_1)"],
+      "variations": ["BASE", "D01", "D02", "D03", "D04", "D05", "D06", "D07", "D08", "D09", "D10", "D11", "D12", "D13", "D14", "D15", "D16", "D17", "D18", "D19", "D20", "S01", "S02", "S03", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "S15", "S16", "S17", "S18", "S19", "S20", "S21", "S22"]
+    },
+    {
+      "id": "libero_spatial-9",
+      "suite": "libero_spatial",
+      "suiteName": "Spatial",
+      "taskId": 9,
+      "instruction": "Pick the akita black bowl on the wooden cabinet and place it on the plate",
+      "predicates": ["(On akita_black_bowl_1 plate_1)"],
+      "variations": ["BASE", "D01", "D02", "D03", "D04", "D05", "D06", "D07", "D08", "D09", "D10", "D11", "D12", "D13", "D14", "D15", "D16", "D17", "D18", "D19", "D20", "S01", "S02", "S03", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "S15", "S16", "S17", "S18", "S19", "S20", "S21", "S22"]
+    },
+    {
+      "id": "libero_object-0",
+      "suite": "libero_object",
+      "suiteName": "Object",
+      "taskId": 0,
+      "instruction": "Pick the alphabet soup and place it in the basket",
+      "predicates": ["(In alphabet_soup_1 basket_1_contain_region)"],
+      "variations": ["BASE", "D01", "D02", "D03", "D04", "D05", "D06", "D07", "D08", "D09", "D10", "D11", "D12", "D13", "D14", "D15", "D16", "D17", "D18", "D19", "D20", "S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "S15", "S16", "S17", "S18", "S19", "S20", "S21", "S22"]
+    },
+    {
+      "id": "libero_object-2",
+      "suite": "libero_object",
+      "suiteName": "Object",
+      "taskId": 2,
+      "instruction": "Pick the salad dressing and place it in the basket",
+      "predicates": ["(In salad_dressing_1 basket_1_contain_region)"],
+      "variations": ["BASE", "D01", "D02", "D03", "D04", "D05", "D06", "D07", "D08", "D09", "D10", "D11", "D12", "D13", "D14", "D15", "D16", "D17", "D18", "D19", "D20", "S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "S15", "S16", "S17", "S18", "S19", "S20", "S21", "S22"]
+    },
+    {
+      "id": "libero_object-3",
+      "suite": "libero_object",
+      "suiteName": "Object",
+      "taskId": 3,
+      "instruction": "Pick the bbq sauce and place it in the basket",
+      "predicates": ["(In bbq_sauce_1 basket_1_contain_region)"],
+      "variations": ["BASE", "D01", "D02", "D03", "D04", "D05", "D06", "D07", "D08", "D09", "D10", "D11", "D12", "D13", "D14", "D15", "D16", "D17", "D18", "D19", "D20", "S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "S15", "S16", "S17", "S18", "S19", "S20", "S21", "S22"]
+    },
+    {
+      "id": "libero_object-4",
+      "suite": "libero_object",
+      "suiteName": "Object",
+      "taskId": 4,
+      "instruction": "Pick the ketchup and place it in the basket",
+      "predicates": ["(In ketchup_1 basket_1_contain_region)"],
+      "variations": ["BASE", "D01", "D02", "D03", "D04", "D05", "D06", "D07", "D08", "D09", "D10", "D11", "D12", "D13", "D14", "D15", "D16", "D17", "D18", "D19", "D20", "S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "S15", "S16", "S17", "S18", "S19", "S20", "S21", "S22"]
+    },
+    {
+      "id": "libero_object-5",
+      "suite": "libero_object",
+      "suiteName": "Object",
+      "taskId": 5,
+      "instruction": "Pick the tomato sauce and place it in the basket",
+      "predicates": ["(In tomato_sauce_1 basket_1_contain_region)"],
+      "variations": ["BASE", "D01", "D02", "D03", "D04", "D05", "D06", "D07", "D08", "D09", "D10", "D11", "D12", "D13", "D14", "D15", "D16", "D17", "D18", "D19", "D20", "S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "S15", "S16", "S17", "S18", "S19", "S20", "S21", "S22"]
+    },
+    {
+      "id": "libero_object-6",
+      "suite": "libero_object",
+      "suiteName": "Object",
+      "taskId": 6,
+      "instruction": "Pick the butter and place it in the basket",
+      "predicates": ["(In butter_1 basket_1_contain_region)"],
+      "variations": ["BASE", "D01", "D02", "D03", "D04", "D05", "D06", "D07", "D08", "D09", "D10", "D11", "D12", "D13", "D14", "D15", "D16", "D17", "D18", "D19", "D20", "S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "S15", "S16", "S17", "S18", "S19", "S20", "S21", "S22"]
+    },
+    {
+      "id": "libero_object-7",
+      "suite": "libero_object",
+      "suiteName": "Object",
+      "taskId": 7,
+      "instruction": "Pick the milk and place it in the basket",
+      "predicates": ["(In milk_1 basket_1_contain_region)"],
+      "variations": ["BASE", "D01", "D02", "D03", "D04", "D05", "D06", "D07", "D08", "D09", "D10", "D11", "D12", "D13", "D14", "D15", "D16", "D17", "D18", "D19", "D20", "S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "S15", "S16", "S17", "S18", "S19", "S20", "S21", "S22"]
+    },
+    {
+      "id": "libero_object-9",
+      "suite": "libero_object",
+      "suiteName": "Object",
+      "taskId": 9,
+      "instruction": "Pick the orange juice and place it in the basket",
+      "predicates": ["(In orange_juice_1 basket_1_contain_region)"],
+      "variations": ["BASE", "D01", "D02", "D03", "D04", "D05", "D06", "D07", "D08", "D09", "D10", "D11", "D12", "D13", "D14", "D15", "D16", "D17", "D18", "D19", "D20", "S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "S15", "S16", "S17", "S18", "S19", "S20", "S21", "S22"]
+    },
+    {
+      "id": "libero_goal-0",
+      "suite": "libero_goal",
+      "suiteName": "Goal",
+      "taskId": 0,
+      "instruction": "Open the middle layer of the drawer",
+      "predicates": ["(Open wooden_cabinet_1_middle_region)"],
+      "variations": ["BASE", "D01", "D04", "D06", "D07", "D08", "D09", "D10", "D11", "D12", "D13", "D14", "D15", "D16", "D19", "D20", "S01", "S03", "S04", "S06", "S07", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "S15", "S16", "S17", "S18", "S19", "S20", "S21", "S22"]
+    },
+    {
+      "id": "libero_goal-1",
+      "suite": "libero_goal",
+      "suiteName": "Goal",
+      "taskId": 1,
+      "instruction": "Put the bowl on the stove",
+      "predicates": ["(On akita_black_bowl_1 flat_stove_1_cook_region)"],
+      "variations": ["BASE", "D01", "D02", "D03", "D04", "D05", "D06", "D07", "D08", "D09", "D10", "D11", "D12", "D13", "D14", "D15", "D16", "D17", "D18", "D19", "D20", "S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "S15", "S16", "S17", "S18", "S19", "S20", "S21", "S22"]
+    },
+    {
+      "id": "libero_goal-2",
+      "suite": "libero_goal",
+      "suiteName": "Goal",
+      "taskId": 2,
+      "instruction": "Put the wine bottle on the top of the drawer",
+      "predicates": ["(On wine_bottle_1 wooden_cabinet_1_top_side)"],
+      "variations": ["BASE", "D01", "D02", "D03", "D04", "D05", "D06", "D07", "D08", "D09", "D10", "D11", "D12", "D13", "D14", "D15", "D16", "D17", "D18", "D19", "D20", "S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "S15", "S16", "S17", "S18", "S19", "S20", "S21", "S22"]
+    },
+    {
+      "id": "libero_goal-4",
+      "suite": "libero_goal",
+      "suiteName": "Goal",
+      "taskId": 4,
+      "instruction": "Put the bowl on the top of the drawer",
+      "predicates": ["(On akita_black_bowl_1 wooden_cabinet_1_top_side)"],
+      "variations": ["BASE", "D01", "D02", "D03", "D04", "D05", "D06", "D07", "D08", "D09", "D10", "D11", "D12", "D13", "D14", "D15", "D16", "D17", "D18", "D19", "D20", "S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "S15", "S16", "S17", "S18", "S19", "S20", "S21", "S22"]
+    },
+    {
+      "id": "libero_goal-5",
+      "suite": "libero_goal",
+      "suiteName": "Goal",
+      "taskId": 5,
+      "instruction": "Push the plate to the front of the stove",
+      "predicates": ["(On plate_1 main_table_stove_front_region)"],
+      "variations": ["BASE", "D01", "D03", "D04", "D05", "D06", "D07", "D08", "D09", "D10", "D11", "D12", "D14", "D15", "D16", "D19", "D20", "S01", "S04", "S05", "S06", "S07", "S08", "S10", "S11", "S12", "S13", "S14", "S15", "S16", "S17", "S18", "S19", "S20", "S21", "S22"]
+    },
+    {
+      "id": "libero_goal-7",
+      "suite": "libero_goal",
+      "suiteName": "Goal",
+      "taskId": 7,
+      "instruction": "Turn on the stove",
+      "predicates": ["(Turnon flat_stove_1)"],
+      "variations": ["BASE", "D01", "D04", "D06", "D07", "D08", "D09", "D10", "D11", "D12", "D13", "D14", "D15", "D16", "D17", "D19", "D20", "S01", "S03", "S04", "S06", "S07", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "S15", "S16", "S17", "S18", "S19", "S20", "S21", "S22"]
+    },
+    {
+      "id": "libero_goal-8",
+      "suite": "libero_goal",
+      "suiteName": "Goal",
+      "taskId": 8,
+      "instruction": "Put the bowl on the plate",
+      "predicates": ["(On akita_black_bowl_1 plate_1)"],
+      "variations": ["BASE", "D01", "D02", "D03", "D04", "D05", "D06", "D07", "D08", "D09", "D10", "D11", "D12", "D13", "D14", "D15", "D16", "D17", "D18", "D19", "D20", "S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "S15", "S16", "S17", "S18", "S19", "S20", "S21", "S22"]
+    },
+    {
+      "id": "libero_goal-9",
+      "suite": "libero_goal",
+      "suiteName": "Goal",
+      "taskId": 9,
+      "instruction": "Put the wine bottle on the rack",
+      "predicates": ["(On wine_bottle_1 wine_rack_1_top_region)"],
+      "variations": ["BASE", "D01", "D02", "D04", "D05", "D06", "D07", "D08", "D09", "D10", "D11", "D12", "D13", "D14", "D15", "D16", "D17", "D18", "D19", "D20", "S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "S15", "S16", "S17", "S18", "S19", "S20", "S21", "S22"]
+    },
+    {
+      "id": "libero_10-0",
+      "suite": "libero_10",
+      "suiteName": "Long",
+      "taskId": 0,
+      "instruction": "put both the alphabet soup and the tomato sauce in the basket",
+      "predicates": ["(In alphabet_soup_1 basket_1_contain_region)", "(In tomato_sauce_1 basket_1_contain_region)"],
+      "variations": ["BASE", "D01", "D02", "D03", "D04", "D05", "D06", "D07", "D08", "D09", "D10", "D11", "D12", "D13", "D14", "D15", "D16", "D17", "D18", "D19", "D20", "S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "S15", "S16", "S17", "S18", "S19", "S20", "S21", "S22"]
+    },
+    {
+      "id": "libero_10-1",
+      "suite": "libero_10",
+      "suiteName": "Long",
+      "taskId": 1,
+      "instruction": "put both the cream cheese box and the butter in the basket",
+      "predicates": ["(In cream_cheese_1 basket_1_contain_region)", "(In butter_1 basket_1_contain_region)"],
+      "variations": ["BASE", "D01", "D02", "D03", "D04", "D05", "D06", "D07", "D08", "D09", "D10", "D11", "D12", "D13", "D14", "D15", "D16", "D17", "D18", "D19", "D20", "S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "S15", "S16", "S17", "S18", "S19", "S20", "S21", "S22"]
+    },
+    {
+      "id": "libero_10-2",
+      "suite": "libero_10",
+      "suiteName": "Long",
+      "taskId": 2,
+      "instruction": "turn on the stove and put the moka pot on it",
+      "predicates": ["(Turnon flat_stove_1)", "(On moka_pot_1 flat_stove_1_cook_region)"],
+      "variations": ["BASE", "D01", "D02", "D03", "D04", "D05", "D06", "D07", "D08", "D09", "D10", "D11", "D12", "D13", "D14", "D15", "D16", "D17", "D18", "D19", "D20", "S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "S15", "S16", "S17", "S18", "S19", "S20", "S21", "S22"]
+    },
+    {
+      "id": "libero_10-3",
+      "suite": "libero_10",
+      "suiteName": "Long",
+      "taskId": 3,
+      "instruction": "put the black bowl in the bottom drawer of the cabinet and close it",
+      "predicates": ["(Close white_cabinet_1_bottom_region)", "(In akita_black_bowl_1 white_cabinet_1_bottom_region)"],
+      "variations": ["BASE", "D01", "D02", "D03", "D04", "D05", "D06", "D07", "D08", "D09", "D10", "D11", "D12", "D13", "D14", "D15", "D16", "D17", "D18", "D19", "D20", "S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "S15", "S16", "S17", "S18", "S19", "S20", "S21", "S22"]
+    },
+    {
+      "id": "libero_10-4",
+      "suite": "libero_10",
+      "suiteName": "Long",
+      "taskId": 4,
+      "instruction": "put the white mug on the left plate and put the yellow and white mug on the right plate",
+      "predicates": ["(On porcelain_mug_1 plate_1)", "(On white_yellow_mug_1 plate_2)"],
+      "variations": ["BASE", "D01", "D02", "D03", "D04", "D05", "D06", "D07", "D08", "D09", "D10", "D11", "D12", "D13", "D14", "D15", "D16", "D17", "D18", "D19", "D20", "S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "S15", "S16", "S17", "S18", "S19", "S20", "S21", "S22"]
+    },
+    {
+      "id": "libero_10-6",
+      "suite": "libero_10",
+      "suiteName": "Long",
+      "taskId": 6,
+      "instruction": "put the white mug on the plate and put the chocolate pudding to the right of the plate",
+      "predicates": ["(On porcelain_mug_1 plate_1)", "(On chocolate_pudding_1 living_room_table_plate_right_region)"],
+      "variations": ["BASE", "D01", "D02", "D03", "D04", "D05", "D06", "D07", "D08", "D09", "D10", "D11", "D12", "D13", "D14", "D15", "D16", "D17", "D18", "D19", "D20", "S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "S15", "S16", "S17", "S18", "S19", "S20", "S21", "S22"]
+    },
+    {
+      "id": "libero_10-7",
+      "suite": "libero_10",
+      "suiteName": "Long",
+      "taskId": 7,
+      "instruction": "put both the alphabet soup and the cream cheese box in the basket",
+      "predicates": ["(In alphabet_soup_1 basket_1_contain_region)", "(In cream_cheese_1 basket_1_contain_region)"],
+      "variations": ["BASE", "D01", "D02", "D03", "D04", "D05", "D06", "D07", "D08", "D09", "D10", "D11", "D12", "D13", "D14", "D15", "D16", "D17", "D18", "D19", "D20", "S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "S15", "S16", "S17", "S18", "S19", "S20", "S21", "S22"]
+    },
+    {
+      "id": "libero_10-9",
+      "suite": "libero_10",
+      "suiteName": "Long",
+      "taskId": 9,
+      "instruction": "put the yellow and white mug in the microwave and close it",
+      "predicates": ["(In white_yellow_mug_1 microwave_1_heating_region)", "(Close microwave_1)"],
+      "variations": ["BASE", "D01", "D02", "D03", "D04", "D05", "D06", "D07", "D08", "D09", "D10", "D11", "D12", "D13", "D14", "D15", "D16", "D17", "D18", "D19", "D20", "S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12", "S13", "S14", "S15", "S16", "S17", "S18", "S19", "S20", "S21", "S22"]
+    }
+  ]
+}
