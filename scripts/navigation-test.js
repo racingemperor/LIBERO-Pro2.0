@@ -505,10 +505,26 @@ const tests = [
     await load('docs.html');
     const training=await (await fetch('../data/training-tasks.json')).json();
     const headings=[...doc().querySelectorAll('.doc-nav-group h2')].map(el=>el.textContent.trim());
-    assert(headings.join(',')==='Overview,Evaluation tasks,Training tasks,Perturbation design','Document directory order is incorrect');
+    assert(headings.join(',')==='Overview,Evaluation tasks,Training tasks,Perturbation design,Train datas','Document directory order is incorrect');
     assert(doc().querySelectorAll('[data-task-split="task"] details a').length===8,'Held-out task directory changed');
     assert(doc().querySelectorAll('[data-task-split="training"] details').length===4&&doc().querySelectorAll('[data-task-split="training"] details a').length===32,'Training needs four suites with eight tasks each');
     assert(doc().querySelectorAll('#training-tasks .doc-task-suite').length===4&&doc().querySelectorAll('#training-tasks .base-task').length===32,'Training index is incomplete');
+    for(const section of ['task-designs','training-tasks']){
+      const paragraph=query(`#${section}>p`),style=win().getComputedStyle(paragraph);
+      assert(Math.abs(paragraph.getBoundingClientRect().width-query(`#${section}`).getBoundingClientRect().width)<1,'Document paragraphs do not fill the reading panel');
+      assert(style.textAlign==='justify'&&style.textAlignLast==='start','Document paragraphs need justified lines and a natural final line');
+      for(const row of doc().querySelectorAll(`#${section} .base-task`)){
+        const index=row.querySelector('.task-index');
+        assert(!index.querySelector('br')&&/^(Spatial|Object|Goal|Long) \d+$/.test(index.textContent),'Task suite and ID must stay together');
+        assert(index.getBoundingClientRect().height<=parseFloat(win().getComputedStyle(index).lineHeight)+1,'Task suite and ID wrapped');
+        assert(win().getComputedStyle(row).alignItems==='baseline','Task label does not align with its instruction');
+      }
+    }
+    const designGroups=[...doc().querySelectorAll('[data-perturbation-section="perturbation"] details')];
+    const dataGroups=[...doc().querySelectorAll('[data-perturbation-section="train-data"] details')];
+    assert(designGroups.length===6&&dataGroups.length===6,'Both directories need six domains');
+    for(let i=0;i<designGroups.length;i++)assert(designGroups[i].textContent===dataGroups[i].textContent,'Training data groups differ from perturbation design');
+    assert(doc().querySelectorAll('#train-datas .doc-training-domain').length===6&&doc().querySelectorAll('#train-datas .doc-perturbation-index>a').length===42,'Training data overview is incomplete');
     const sidebar=query('.docs-sidebar');
     for(const task of training.tasks){
       await change(()=>click(`.docs-sidebar a[href="docs.html?training=${task.id}"]`),()=>query('h1')?.textContent===task.instruction);
@@ -519,13 +535,25 @@ const tests = [
       assert(query('.goal-predicates').textContent===task.predicates.join('\n'),'Training success predicates were changed');
     }
     for(const id of ['S04','D19','D20']){
-      await change(()=>click(`.docs-sidebar a[href="docs.html?perturbation=${id}"]`),()=>query('#training-tasks')?.textContent.includes(id));
+      await change(()=>click(`.docs-sidebar a[href="docs.html?perturbation=${id}"]`),()=>query('.docs-sidebar a[aria-current="page"]')?.href.endsWith(`perturbation=${id}`));
+      assert(!query('.training-gallery-placeholder')&&!query('#training-tasks')&&query('#evaluation-tasks')&&query('[data-perturbation-demo]'),'Training data must be separate from perturbation design');
+    }
+    const catalogue=await (await fetch('../data/catalogue.json')).json();
+    for(const {id} of catalogue.perturbations){
+      await change(()=>click(`.docs-sidebar a[href="docs.html?train-data=${id}"]`),()=>query('.docs-sidebar a[aria-current="page"]')?.href.endsWith(`train-data=${id}`));
       const count=training.tasks.filter(t=>t.variations.includes(id)).length;
-      assert(query('#training-tasks').textContent.includes(`${count*30} stored demonstrations`),'Perturbation training count is incorrect');
-      assert(query('#training-tasks').previousElementSibling.id==='evaluation-tasks','Training section must follow evaluation support');
-      assert(doc().querySelectorAll('.training-gallery-row').length===3&&!query('#training-tasks video, #training-tasks img, #training-tasks source'),'Training gallery must contain three empty rows without media');
+      assert(query('#training-data').textContent.includes(`${count*30} stored demonstrations`),'Perturbation training count is incorrect');
+      assert(query('.docs-sidebar')===sidebar,'Training data selection replaced the directory');
+      assert(doc().querySelectorAll('.training-gallery-row').length===3&&doc().querySelectorAll('.training-gallery-row>span').length===27&&!query('#content video, #content img, #content source'),'Training gallery must contain three empty rows without media');
+      assert([...doc().querySelectorAll('.doc-pagination a')].every(a=>new URL(a.href).searchParams.has('train-data')),'Adjacent training-data links left the training section');
+      assert([...doc().querySelectorAll('#training-data a')].every(a=>win().getComputedStyle(a).textDecorationLine==='none'),'Training data links regained underlines');
       assert(doc().documentElement.scrollWidth<=win().innerWidth,'Training view overflows the viewport');
     }
+    await change(()=>click('.doc-pagination a'),()=>query('.docs-sidebar a[aria-current="page"]')?.href.endsWith('train-data=D19'));
+    await change(()=>click('.docs-sidebar a[href="docs.html#train-datas"]'),()=>!!query('#train-datas'));
+    await navigate(()=>click('.site-header a[href="leaderboard.html"]'),()=>!!query('#rankings'));
+    await navigate(()=>win().history.back(),()=>!!query('#train-datas'),{push:false});
+    assert(win().location.hash==='#train-datas','Back lost the independent training-data index');
     await change(()=>click('.docs-sidebar a[href="docs.html?task=libero_spatial-0"]'),()=>!!query('[data-task-demo]'));
     assert(!query('.training-demo-placeholder'),'Evaluation demonstration was replaced');
     await change(()=>click('.docs-sidebar a[href="docs.html#training-tasks"]'),()=>!!query('#training-tasks .base-task'));
