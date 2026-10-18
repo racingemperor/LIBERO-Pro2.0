@@ -230,7 +230,8 @@ for(const file of publicFiles)assert(!JSON.stringify(read(file)).match(/(?:[CD]:
 assert(!/"(?:cases|successes|episodes|sourceRow|sourceColumn|seed|sourceSha256|outcome|archive)"\s*:/.test(JSON.stringify(read('results'))+JSON.stringify(read('home-rollouts'))),'Internal evaluation fields leaked');
 for(const file of ['assets/app.js',...['index','docs','leaderboard','report','community','eval','findings','model','perturbation','task'].map(p=>p+'.html')]){
   const content=fs.readFileSync(new URL('../'+file,import.meta.url),'utf8');
-  assert(!/href=["']data\/|\sdownload(?:[\s=>])/.test(content),`Data download link remains in ${file}`);
+  const downloadAttribute=[...content.matchAll(/<[a-z][^>]*>/gi)].some(([tag])=>/\sdownload(?:[\s=>])/i.test(tag.replace(/"[^"]*"|'[^']*'/g,'')));
+  assert(!/href=["']data\//.test(content)&&!downloadAttribute,`Local data link or HTML download attribute remains in ${file}`);
 }
 const officialRepository='https://github.com/LIBERO-Pro-Team/LIBERO-Pro2.0';
 for(const page of ['index','docs','leaderboard','model','perturbation','task','findings','report','community']){
