@@ -11,10 +11,11 @@ export function trainingGallery(perturbation,clips,{escape,instruction}) {
   const rows=Array.from({length:5},(_,row)=>{
     const entries=clips.filter((_,index)=>index%5===row);
     const card=(clip,duplicate)=>`<figure class="gallery-item"><video class="gallery-video" data-src="${escape(clip.src)}" poster="${escape(clip.poster)}" width="256" height="256" controls muted loop playsinline preload="none" ${duplicate?'tabindex="-1"':''} aria-label="${escape(perturbation+': '+instruction(clip.task))}"></video></figure>`;
-    // Distribute tasks across five rows. Copies only extend the seamless loop;
-    // each distinct task is exposed once to assistive technology.
-    const groups=[false,true,true].map(copy=>{
-      const duplicate=copy;
+    // Eight cards cover the site's maximum content width, including on resize.
+    // Each distinct task is exposed once to assistive technology.
+    const copies=Math.max(3,Math.ceil(8/entries.length)+1);
+    const groups=Array.from({length:copies},(_,copy)=>{
+      const duplicate=copy>0;
       return `<div class="gallery-group" ${duplicate?'aria-hidden="true"':''}>${entries.map(clip=>card(clip,duplicate)).join('')}</div>`;
     }).join('');
     return `<div class="gallery-viewport" data-training-row data-direction="${row%2?'left':'right'}" tabindex="0" role="region" aria-label="Training demonstrations, row ${row+1}, scroll to explore"><div class="gallery-track">${groups}</div></div>`;

@@ -207,11 +207,6 @@
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S01/libero_goal-4.webp"
       },
       {
-        "task": "libero_10-3",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S01/libero_10-3.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S01/libero_10-3.webp"
-      },
-      {
         "task": "libero_spatial-5",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S01/libero_spatial-5.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S01/libero_spatial-5.webp"
@@ -220,11 +215,6 @@
         "task": "libero_object-5",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S01/libero_object-5.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S01/libero_object-5.webp"
-      },
-      {
-        "task": "libero_goal-5",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S01/libero_goal-5.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S01/libero_goal-5.webp"
       },
       {
         "task": "libero_10-4",
@@ -267,11 +257,6 @@
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S01/libero_goal-8.webp"
       },
       {
-        "task": "libero_10-7",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S01/libero_10-7.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S01/libero_10-7.webp"
-      },
-      {
         "task": "libero_spatial-9",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S01/libero_spatial-9.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S01/libero_spatial-9.webp"
@@ -285,11 +270,6 @@
         "task": "libero_goal-9",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S01/libero_goal-9.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S01/libero_goal-9.webp"
-      },
-      {
-        "task": "libero_10-9",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S01/libero_10-9.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S01/libero_10-9.webp"
       }
     ],
     "S02": [
@@ -364,11 +344,6 @@
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S02/libero_goal-4.webp"
       },
       {
-        "task": "libero_10-3",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S02/libero_10-3.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S02/libero_10-3.webp"
-      },
-      {
         "task": "libero_spatial-5",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S02/libero_spatial-5.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S02/libero_spatial-5.webp"
@@ -414,11 +389,6 @@
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S02/libero_goal-8.webp"
       },
       {
-        "task": "libero_10-7",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S02/libero_10-7.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S02/libero_10-7.webp"
-      },
-      {
         "task": "libero_spatial-9",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S02/libero_spatial-9.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S02/libero_spatial-9.webp"
@@ -432,11 +402,6 @@
         "task": "libero_goal-9",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S02/libero_goal-9.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S02/libero_goal-9.webp"
-      },
-      {
-        "task": "libero_10-9",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S02/libero_10-9.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S02/libero_10-9.webp"
       }
     ],
     "S03": [
@@ -516,11 +481,6 @@
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S03/libero_goal-4.webp"
       },
       {
-        "task": "libero_10-3",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S03/libero_10-3.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S03/libero_10-3.webp"
-      },
-      {
         "task": "libero_spatial-5",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S03/libero_spatial-5.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S03/libero_spatial-5.webp"
@@ -571,11 +531,6 @@
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S03/libero_goal-8.webp"
       },
       {
-        "task": "libero_10-7",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S03/libero_10-7.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S03/libero_10-7.webp"
-      },
-      {
         "task": "libero_spatial-9",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S03/libero_spatial-9.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S03/libero_spatial-9.webp"
@@ -589,11 +544,6 @@
         "task": "libero_goal-9",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S03/libero_goal-9.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S03/libero_goal-9.webp"
-      },
-      {
-        "task": "libero_10-9",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S03/libero_10-9.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S03/libero_10-9.webp"
       }
     ],
     "S04": [
@@ -658,11 +608,6 @@
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S04/libero_goal-4.webp"
       },
       {
-        "task": "libero_10-3",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S04/libero_10-3.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S04/libero_10-3.webp"
-      },
-      {
         "task": "libero_spatial-5",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S04/libero_spatial-5.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S04/libero_spatial-5.webp"
@@ -708,11 +653,6 @@
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S04/libero_goal-8.webp"
       },
       {
-        "task": "libero_10-7",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S04/libero_10-7.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S04/libero_10-7.webp"
-      },
-      {
         "task": "libero_object-9",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S04/libero_object-9.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S04/libero_object-9.webp"
@@ -721,11 +661,6 @@
         "task": "libero_goal-9",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S04/libero_goal-9.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S04/libero_goal-9.webp"
-      },
-      {
-        "task": "libero_10-9",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S04/libero_10-9.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S04/libero_10-9.webp"
       }
     ],
     "S05": [
@@ -765,11 +700,6 @@
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S05/libero_10-1.webp"
       },
       {
-        "task": "libero_spatial-3",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S05/libero_spatial-3.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S05/libero_spatial-3.webp"
-      },
-      {
         "task": "libero_object-3",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S05/libero_object-3.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S05/libero_object-3.webp"
@@ -785,11 +715,6 @@
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S05/libero_10-2.webp"
       },
       {
-        "task": "libero_spatial-4",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S05/libero_spatial-4.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S05/libero_spatial-4.webp"
-      },
-      {
         "task": "libero_object-4",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S05/libero_object-4.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S05/libero_object-4.webp"
@@ -798,11 +723,6 @@
         "task": "libero_goal-4",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S05/libero_goal-4.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S05/libero_goal-4.webp"
-      },
-      {
-        "task": "libero_10-3",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S05/libero_10-3.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S05/libero_10-3.webp"
       },
       {
         "task": "libero_spatial-5",
@@ -815,16 +735,6 @@
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S05/libero_object-5.webp"
       },
       {
-        "task": "libero_goal-5",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S05/libero_goal-5.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S05/libero_goal-5.webp"
-      },
-      {
-        "task": "libero_10-4",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S05/libero_10-4.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S05/libero_10-4.webp"
-      },
-      {
         "task": "libero_spatial-6",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S05/libero_spatial-6.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S05/libero_spatial-6.webp"
@@ -833,11 +743,6 @@
         "task": "libero_object-6",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S05/libero_object-6.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S05/libero_object-6.webp"
-      },
-      {
-        "task": "libero_10-6",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S05/libero_10-6.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S05/libero_10-6.webp"
       },
       {
         "task": "libero_spatial-7",
@@ -860,11 +765,6 @@
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S05/libero_10-7.webp"
       },
       {
-        "task": "libero_spatial-9",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S05/libero_spatial-9.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S05/libero_spatial-9.webp"
-      },
-      {
         "task": "libero_object-9",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S05/libero_object-9.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S05/libero_object-9.webp"
@@ -873,11 +773,6 @@
         "task": "libero_goal-9",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S05/libero_goal-9.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S05/libero_goal-9.webp"
-      },
-      {
-        "task": "libero_10-9",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S05/libero_10-9.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S05/libero_10-9.webp"
       }
     ],
     "S06": [
@@ -907,19 +802,9 @@
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S06/libero_spatial-2.webp"
       },
       {
-        "task": "libero_object-2",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S06/libero_object-2.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S06/libero_object-2.webp"
-      },
-      {
         "task": "libero_goal-1",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S06/libero_goal-1.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S06/libero_goal-1.webp"
-      },
-      {
-        "task": "libero_10-1",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S06/libero_10-1.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S06/libero_10-1.webp"
       },
       {
         "task": "libero_spatial-3",
@@ -937,29 +822,14 @@
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S06/libero_goal-2.webp"
       },
       {
-        "task": "libero_10-2",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S06/libero_10-2.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S06/libero_10-2.webp"
-      },
-      {
         "task": "libero_spatial-4",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S06/libero_spatial-4.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S06/libero_spatial-4.webp"
       },
       {
-        "task": "libero_object-4",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S06/libero_object-4.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S06/libero_object-4.webp"
-      },
-      {
         "task": "libero_goal-4",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S06/libero_goal-4.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S06/libero_goal-4.webp"
-      },
-      {
-        "task": "libero_10-3",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S06/libero_10-3.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S06/libero_10-3.webp"
       },
       {
         "task": "libero_spatial-5",
@@ -985,11 +855,6 @@
         "task": "libero_spatial-6",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S06/libero_spatial-6.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S06/libero_spatial-6.webp"
-      },
-      {
-        "task": "libero_object-6",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S06/libero_object-6.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S06/libero_object-6.webp"
       },
       {
         "task": "libero_goal-7",
@@ -1025,21 +890,6 @@
         "task": "libero_spatial-9",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S06/libero_spatial-9.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S06/libero_spatial-9.webp"
-      },
-      {
-        "task": "libero_object-9",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S06/libero_object-9.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S06/libero_object-9.webp"
-      },
-      {
-        "task": "libero_goal-9",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S06/libero_goal-9.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S06/libero_goal-9.webp"
-      },
-      {
-        "task": "libero_10-9",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S06/libero_10-9.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S06/libero_10-9.webp"
       }
     ],
     "S07": [
@@ -1117,11 +967,6 @@
         "task": "libero_goal-4",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S07/libero_goal-4.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S07/libero_goal-4.webp"
-      },
-      {
-        "task": "libero_10-3",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S07/libero_10-3.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S07/libero_10-3.webp"
       },
       {
         "task": "libero_spatial-5",
@@ -1443,11 +1288,6 @@
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S09/libero_goal-4.webp"
       },
       {
-        "task": "libero_10-3",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S09/libero_10-3.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S09/libero_10-3.webp"
-      },
-      {
         "task": "libero_spatial-5",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S09/libero_spatial-5.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S09/libero_spatial-5.webp"
@@ -1516,11 +1356,6 @@
         "task": "libero_goal-9",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S09/libero_goal-9.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S09/libero_goal-9.webp"
-      },
-      {
-        "task": "libero_10-9",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S09/libero_10-9.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S09/libero_10-9.webp"
       }
     ],
     "S10": [
@@ -1598,11 +1433,6 @@
         "task": "libero_goal-4",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S10/libero_goal-4.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S10/libero_goal-4.webp"
-      },
-      {
-        "task": "libero_10-3",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S10/libero_10-3.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S10/libero_10-3.webp"
       },
       {
         "task": "libero_spatial-5",
@@ -1922,11 +1752,6 @@
         "task": "libero_goal-4",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S12/libero_goal-4.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S12/libero_goal-4.webp"
-      },
-      {
-        "task": "libero_10-3",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S12/libero_10-3.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S12/libero_10-3.webp"
       },
       {
         "task": "libero_spatial-5",
@@ -3240,11 +3065,6 @@
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S20/libero_goal-5.webp"
       },
       {
-        "task": "libero_10-4",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S20/libero_10-4.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S20/libero_10-4.webp"
-      },
-      {
         "task": "libero_spatial-6",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S20/libero_spatial-6.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/S20/libero_spatial-6.webp"
@@ -3641,11 +3461,6 @@
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D01/libero_object-0.webp"
       },
       {
-        "task": "libero_goal-0",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D01/libero_goal-0.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D01/libero_goal-0.webp"
-      },
-      {
         "task": "libero_10-0",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D01/libero_10-0.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D01/libero_10-0.webp"
@@ -3706,11 +3521,6 @@
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D01/libero_goal-4.webp"
       },
       {
-        "task": "libero_10-3",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D01/libero_10-3.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D01/libero_10-3.webp"
-      },
-      {
         "task": "libero_spatial-5",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D01/libero_spatial-5.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D01/libero_spatial-5.webp"
@@ -3721,29 +3531,9 @@
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D01/libero_object-5.webp"
       },
       {
-        "task": "libero_goal-5",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D01/libero_goal-5.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D01/libero_goal-5.webp"
-      },
-      {
         "task": "libero_10-4",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D01/libero_10-4.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D01/libero_10-4.webp"
-      },
-      {
-        "task": "libero_spatial-6",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D01/libero_spatial-6.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D01/libero_spatial-6.webp"
-      },
-      {
-        "task": "libero_object-6",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D01/libero_object-6.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D01/libero_object-6.webp"
-      },
-      {
-        "task": "libero_goal-7",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D01/libero_goal-7.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D01/libero_goal-7.webp"
       },
       {
         "task": "libero_10-6",
@@ -3766,16 +3556,6 @@
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D01/libero_goal-8.webp"
       },
       {
-        "task": "libero_10-7",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D01/libero_10-7.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D01/libero_10-7.webp"
-      },
-      {
-        "task": "libero_spatial-9",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D01/libero_spatial-9.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D01/libero_spatial-9.webp"
-      },
-      {
         "task": "libero_object-9",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D01/libero_object-9.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D01/libero_object-9.webp"
@@ -3784,11 +3564,6 @@
         "task": "libero_goal-9",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D01/libero_goal-9.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D01/libero_goal-9.webp"
-      },
-      {
-        "task": "libero_10-9",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D01/libero_10-9.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D01/libero_10-9.webp"
       }
     ],
     "D02": [
@@ -3940,29 +3715,9 @@
     ],
     "D03": [
       {
-        "task": "libero_spatial-1",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_spatial-1.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_spatial-1.webp"
-      },
-      {
         "task": "libero_object-0",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_object-0.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_object-0.webp"
-      },
-      {
-        "task": "libero_10-0",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_10-0.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_10-0.webp"
-      },
-      {
-        "task": "libero_spatial-2",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_spatial-2.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_spatial-2.webp"
-      },
-      {
-        "task": "libero_object-2",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_object-2.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_object-2.webp"
       },
       {
         "task": "libero_goal-1",
@@ -3975,16 +3730,6 @@
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_10-1.webp"
       },
       {
-        "task": "libero_spatial-3",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_spatial-3.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_spatial-3.webp"
-      },
-      {
-        "task": "libero_object-3",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_object-3.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_object-3.webp"
-      },
-      {
         "task": "libero_goal-2",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_goal-2.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_goal-2.webp"
@@ -3995,34 +3740,14 @@
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_10-2.webp"
       },
       {
-        "task": "libero_spatial-4",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_spatial-4.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_spatial-4.webp"
-      },
-      {
-        "task": "libero_object-4",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_object-4.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_object-4.webp"
-      },
-      {
         "task": "libero_goal-4",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_goal-4.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_goal-4.webp"
       },
       {
-        "task": "libero_10-3",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_10-3.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_10-3.webp"
-      },
-      {
         "task": "libero_spatial-5",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_spatial-5.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_spatial-5.webp"
-      },
-      {
-        "task": "libero_object-5",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_object-5.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_object-5.webp"
       },
       {
         "task": "libero_goal-5",
@@ -4040,24 +3765,9 @@
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_spatial-6.webp"
       },
       {
-        "task": "libero_object-6",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_object-6.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_object-6.webp"
-      },
-      {
-        "task": "libero_10-6",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_10-6.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_10-6.webp"
-      },
-      {
         "task": "libero_spatial-7",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_spatial-7.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_spatial-7.webp"
-      },
-      {
-        "task": "libero_object-7",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_object-7.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_object-7.webp"
       },
       {
         "task": "libero_goal-8",
@@ -4073,16 +3783,6 @@
         "task": "libero_spatial-9",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_spatial-9.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_spatial-9.webp"
-      },
-      {
-        "task": "libero_object-9",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_object-9.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_object-9.webp"
-      },
-      {
-        "task": "libero_10-9",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_10-9.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D03/libero_10-9.webp"
       }
     ],
     "D04": [
@@ -4160,11 +3860,6 @@
         "task": "libero_goal-4",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D04/libero_goal-4.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D04/libero_goal-4.webp"
-      },
-      {
-        "task": "libero_10-3",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D04/libero_10-3.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D04/libero_10-3.webp"
       },
       {
         "task": "libero_spatial-5",
@@ -4259,11 +3954,6 @@
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D05/libero_object-0.webp"
       },
       {
-        "task": "libero_10-0",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D05/libero_10-0.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D05/libero_10-0.webp"
-      },
-      {
         "task": "libero_spatial-2",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D05/libero_spatial-2.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D05/libero_spatial-2.webp"
@@ -4277,16 +3967,6 @@
         "task": "libero_goal-1",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D05/libero_goal-1.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D05/libero_goal-1.webp"
-      },
-      {
-        "task": "libero_10-1",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D05/libero_10-1.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D05/libero_10-1.webp"
-      },
-      {
-        "task": "libero_spatial-3",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D05/libero_spatial-3.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D05/libero_spatial-3.webp"
       },
       {
         "task": "libero_object-3",
@@ -4304,11 +3984,6 @@
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D05/libero_10-2.webp"
       },
       {
-        "task": "libero_spatial-4",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D05/libero_spatial-4.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D05/libero_spatial-4.webp"
-      },
-      {
         "task": "libero_object-4",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D05/libero_object-4.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D05/libero_object-4.webp"
@@ -4317,11 +3992,6 @@
         "task": "libero_goal-4",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D05/libero_goal-4.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D05/libero_goal-4.webp"
-      },
-      {
-        "task": "libero_10-3",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D05/libero_10-3.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D05/libero_10-3.webp"
       },
       {
         "task": "libero_spatial-5",
@@ -4339,26 +4009,6 @@
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D05/libero_goal-5.webp"
       },
       {
-        "task": "libero_10-4",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D05/libero_10-4.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D05/libero_10-4.webp"
-      },
-      {
-        "task": "libero_spatial-6",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D05/libero_spatial-6.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D05/libero_spatial-6.webp"
-      },
-      {
-        "task": "libero_object-6",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D05/libero_object-6.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D05/libero_object-6.webp"
-      },
-      {
-        "task": "libero_10-6",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D05/libero_10-6.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D05/libero_10-6.webp"
-      },
-      {
         "task": "libero_spatial-7",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D05/libero_spatial-7.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D05/libero_spatial-7.webp"
@@ -4374,16 +4024,6 @@
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D05/libero_goal-8.webp"
       },
       {
-        "task": "libero_10-7",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D05/libero_10-7.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D05/libero_10-7.webp"
-      },
-      {
-        "task": "libero_spatial-9",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D05/libero_spatial-9.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D05/libero_spatial-9.webp"
-      },
-      {
         "task": "libero_object-9",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D05/libero_object-9.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D05/libero_object-9.webp"
@@ -4392,11 +4032,6 @@
         "task": "libero_goal-9",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D05/libero_goal-9.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D05/libero_goal-9.webp"
-      },
-      {
-        "task": "libero_10-9",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D05/libero_10-9.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D05/libero_10-9.webp"
       }
     ],
     "D06": [
@@ -4474,11 +4109,6 @@
         "task": "libero_goal-4",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D06/libero_goal-4.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D06/libero_goal-4.webp"
-      },
-      {
-        "task": "libero_10-3",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D06/libero_10-3.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D06/libero_10-3.webp"
       },
       {
         "task": "libero_spatial-5",
@@ -4638,11 +4268,6 @@
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D07/libero_goal-4.webp"
       },
       {
-        "task": "libero_10-3",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D07/libero_10-3.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D07/libero_10-3.webp"
-      },
-      {
         "task": "libero_spatial-5",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D07/libero_spatial-5.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D07/libero_spatial-5.webp"
@@ -4800,11 +4425,6 @@
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D08/libero_goal-4.webp"
       },
       {
-        "task": "libero_10-3",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D08/libero_10-3.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D08/libero_10-3.webp"
-      },
-      {
         "task": "libero_spatial-5",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D08/libero_spatial-5.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D08/libero_spatial-5.webp"
@@ -4960,11 +4580,6 @@
         "task": "libero_goal-4",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D09/libero_goal-4.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D09/libero_goal-4.webp"
-      },
-      {
-        "task": "libero_10-3",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D09/libero_10-3.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D09/libero_10-3.webp"
       },
       {
         "task": "libero_spatial-5",
@@ -5286,11 +4901,6 @@
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D11/libero_goal-4.webp"
       },
       {
-        "task": "libero_10-3",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D11/libero_10-3.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D11/libero_10-3.webp"
-      },
-      {
         "task": "libero_spatial-5",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D11/libero_spatial-5.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D11/libero_spatial-5.webp"
@@ -5446,11 +5056,6 @@
         "task": "libero_goal-4",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D12/libero_goal-4.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D12/libero_goal-4.webp"
-      },
-      {
-        "task": "libero_10-3",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D12/libero_10-3.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D12/libero_10-3.webp"
       },
       {
         "task": "libero_spatial-5",
@@ -5610,11 +5215,6 @@
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D13/libero_goal-4.webp"
       },
       {
-        "task": "libero_10-3",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D13/libero_10-3.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D13/libero_10-3.webp"
-      },
-      {
         "task": "libero_spatial-5",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D13/libero_spatial-5.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D13/libero_spatial-5.webp"
@@ -5683,11 +5283,6 @@
         "task": "libero_goal-9",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D13/libero_goal-9.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D13/libero_goal-9.webp"
-      },
-      {
-        "task": "libero_10-9",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D13/libero_10-9.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D13/libero_10-9.webp"
       }
     ],
     "D14": [
@@ -5767,11 +5362,6 @@
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D14/libero_goal-4.webp"
       },
       {
-        "task": "libero_10-3",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D14/libero_10-3.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D14/libero_10-3.webp"
-      },
-      {
         "task": "libero_spatial-5",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D14/libero_spatial-5.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D14/libero_spatial-5.webp"
@@ -5827,11 +5417,6 @@
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D14/libero_goal-8.webp"
       },
       {
-        "task": "libero_10-7",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D14/libero_10-7.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D14/libero_10-7.webp"
-      },
-      {
         "task": "libero_spatial-9",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D14/libero_spatial-9.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D14/libero_spatial-9.webp"
@@ -5845,11 +5430,6 @@
         "task": "libero_goal-9",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D14/libero_goal-9.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D14/libero_goal-9.webp"
-      },
-      {
-        "task": "libero_10-9",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D14/libero_10-9.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D14/libero_10-9.webp"
       }
     ],
     "D15": [
@@ -5914,11 +5494,6 @@
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D15/libero_10-2.webp"
       },
       {
-        "task": "libero_spatial-4",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D15/libero_spatial-4.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D15/libero_spatial-4.webp"
-      },
-      {
         "task": "libero_object-4",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D15/libero_object-4.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D15/libero_object-4.webp"
@@ -5927,11 +5502,6 @@
         "task": "libero_goal-4",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D15/libero_goal-4.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D15/libero_goal-4.webp"
-      },
-      {
-        "task": "libero_10-3",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D15/libero_10-3.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D15/libero_10-3.webp"
       },
       {
         "task": "libero_spatial-5",
@@ -5987,11 +5557,6 @@
         "task": "libero_goal-8",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D15/libero_goal-8.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D15/libero_goal-8.webp"
-      },
-      {
-        "task": "libero_10-7",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D15/libero_10-7.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D15/libero_10-7.webp"
       },
       {
         "task": "libero_spatial-9",
@@ -6091,11 +5656,6 @@
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D16/libero_goal-4.webp"
       },
       {
-        "task": "libero_10-3",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D16/libero_10-3.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D16/libero_10-3.webp"
-      },
-      {
         "task": "libero_spatial-5",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D16/libero_spatial-5.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D16/libero_spatial-5.webp"
@@ -6149,11 +5709,6 @@
         "task": "libero_goal-8",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D16/libero_goal-8.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D16/libero_goal-8.webp"
-      },
-      {
-        "task": "libero_10-7",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D16/libero_10-7.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D16/libero_10-7.webp"
       },
       {
         "task": "libero_spatial-9",
@@ -6248,11 +5803,6 @@
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D17/libero_goal-4.webp"
       },
       {
-        "task": "libero_10-3",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D17/libero_10-3.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D17/libero_10-3.webp"
-      },
-      {
         "task": "libero_spatial-5",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D17/libero_spatial-5.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D17/libero_spatial-5.webp"
@@ -6266,11 +5816,6 @@
         "task": "libero_10-4",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D17/libero_10-4.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D17/libero_10-4.webp"
-      },
-      {
-        "task": "libero_spatial-6",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D17/libero_spatial-6.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D17/libero_spatial-6.webp"
       },
       {
         "task": "libero_object-6",
@@ -6303,16 +5848,6 @@
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D17/libero_goal-8.webp"
       },
       {
-        "task": "libero_10-7",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D17/libero_10-7.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D17/libero_10-7.webp"
-      },
-      {
-        "task": "libero_spatial-9",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D17/libero_spatial-9.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D17/libero_spatial-9.webp"
-      },
-      {
         "task": "libero_object-9",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D17/libero_object-9.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D17/libero_object-9.webp"
@@ -6321,28 +5856,13 @@
         "task": "libero_goal-9",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D17/libero_goal-9.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D17/libero_goal-9.webp"
-      },
-      {
-        "task": "libero_10-9",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D17/libero_10-9.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D17/libero_10-9.webp"
       }
     ],
     "D18": [
       {
-        "task": "libero_spatial-1",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D18/libero_spatial-1.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D18/libero_spatial-1.webp"
-      },
-      {
         "task": "libero_object-0",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D18/libero_object-0.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D18/libero_object-0.webp"
-      },
-      {
-        "task": "libero_10-0",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D18/libero_10-0.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D18/libero_10-0.webp"
       },
       {
         "task": "libero_spatial-2",
@@ -6358,11 +5878,6 @@
         "task": "libero_goal-1",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D18/libero_goal-1.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D18/libero_goal-1.webp"
-      },
-      {
-        "task": "libero_10-1",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D18/libero_10-1.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D18/libero_10-1.webp"
       },
       {
         "task": "libero_spatial-3",
@@ -6385,11 +5900,6 @@
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D18/libero_10-2.webp"
       },
       {
-        "task": "libero_spatial-4",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D18/libero_spatial-4.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D18/libero_spatial-4.webp"
-      },
-      {
         "task": "libero_object-4",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D18/libero_object-4.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D18/libero_object-4.webp"
@@ -6398,16 +5908,6 @@
         "task": "libero_goal-4",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D18/libero_goal-4.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D18/libero_goal-4.webp"
-      },
-      {
-        "task": "libero_10-3",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D18/libero_10-3.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D18/libero_10-3.webp"
-      },
-      {
-        "task": "libero_spatial-5",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D18/libero_spatial-5.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D18/libero_spatial-5.webp"
       },
       {
         "task": "libero_object-5",
@@ -6420,11 +5920,6 @@
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D18/libero_10-4.webp"
       },
       {
-        "task": "libero_spatial-6",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D18/libero_spatial-6.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D18/libero_spatial-6.webp"
-      },
-      {
         "task": "libero_object-6",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D18/libero_object-6.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D18/libero_object-6.webp"
@@ -6433,11 +5928,6 @@
         "task": "libero_10-6",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D18/libero_10-6.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D18/libero_10-6.webp"
-      },
-      {
-        "task": "libero_spatial-7",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D18/libero_spatial-7.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D18/libero_spatial-7.webp"
       },
       {
         "task": "libero_object-7",
@@ -6455,11 +5945,6 @@
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D18/libero_10-7.webp"
       },
       {
-        "task": "libero_spatial-9",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D18/libero_spatial-9.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D18/libero_spatial-9.webp"
-      },
-      {
         "task": "libero_object-9",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D18/libero_object-9.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D18/libero_object-9.webp"
@@ -6468,11 +5953,6 @@
         "task": "libero_goal-9",
         "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D18/libero_goal-9.mp4",
         "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D18/libero_goal-9.webp"
-      },
-      {
-        "task": "libero_10-9",
-        "src": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D18/libero_10-9.mp4",
-        "poster": "https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training/perturbations/D18/libero_10-9.webp"
       }
     ],
     "D19": [
