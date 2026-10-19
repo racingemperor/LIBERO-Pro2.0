@@ -506,7 +506,7 @@ const tests = [
     const training=await (await fetch('../data/training-tasks.json')).json();
     const media=await (await fetch('../data/training-media.json')).json();
     const headings=[...doc().querySelectorAll('.doc-nav-group h2')].map(el=>el.textContent.trim());
-    assert(headings.join(',')==='Overview,Evaluation tasks,Training tasks,Perturbation design,Train datas','Document directory order is incorrect');
+    assert(headings.join(',')==='Overview,Evaluation tasks,Training tasks,Perturbation design,Training datas','Document directory order is incorrect');
     assert(doc().querySelectorAll('[data-task-split="task"] details a').length===8,'Held-out task directory changed');
     assert(doc().querySelectorAll('[data-task-split="training"] details').length===4&&doc().querySelectorAll('[data-task-split="training"] details a').length===32,'Training needs four suites with eight tasks each');
     assert(doc().querySelectorAll('#training-tasks .doc-task-suite').length===4&&doc().querySelectorAll('#training-tasks .base-task').length===32,'Training index is incomplete');
