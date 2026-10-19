@@ -3,12 +3,14 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {rolloutMediaPaths} from '../assets/rollout-media.js';
+import {trainingMediaPaths} from '../assets/training-media.js';
 import {baseScore, summaryScore, deltaScore} from '../assets/scores.js';
 const read = name => JSON.parse(fs.readFileSync(new URL('../data/'+name+'.json',import.meta.url),'utf8'));
 const {categories,perturbations}=read('catalogue');
 const {models}=read('results');
 const {tasks}=read('tasks');
 const training=read('training-tasks');
+const trainingMedia=read('training-media');
 const assets=read('model-assets');
 const profiles=read('model-profiles');
 const designs=read('task-designs').tasks;
@@ -71,6 +73,31 @@ const trainingExceptions={S02:29,S03:31,S04:26,S05:30,S09:31,D02:29,D03:29,D05:3
 for(const p of perturbations)assert.equal(training.tasks.filter(t=>t.variations.includes(p.id)).length,trainingExceptions[p.id]??32,`Training coverage differs from the public release for ${p.id}`);
 assert.equal(training.tasks.reduce((n,t)=>n+t.variations.length,0),training.summary.instances);
 assert.equal(training.summary.instances*training.summary.demonstrationsPerInstance,training.summary.demonstrations);
+assert.deepEqual(Object.keys(trainingMedia).sort(),['base','perturbations']);
+assert.deepEqual(Object.keys(trainingMedia.base).sort(),training.tasks.map(t=>t.id).sort());
+assert.deepEqual(Object.keys(trainingMedia.perturbations).sort(),perturbations.map(p=>p.id).sort());
+const verifyTrainingMedia=(media,task,perturbation)=>{
+  assert.deepEqual(media,trainingMediaPaths(task,perturbation),'Unexpected training media URL');
+  if(process.env.LIBERO_MEDIA_ROOT)for(const file of Object.values(media)){
+    const relative=new URL(file).pathname.replace(/^\/LIBERO-Pro-media\//,'');
+    assert(fs.statSync(path.join(process.env.LIBERO_MEDIA_ROOT,relative)).size>0,`Missing training media ${relative}`);
+  }
+};
+for(const task of training.tasks)verifyTrainingMedia(trainingMedia.base[task.id],task.id,'BASE');
+for(const p of perturbations){
+  const clips=trainingMedia.perturbations[p.id];
+  const supported=training.tasks.filter(task=>task.variations.includes(p.id)).map(task=>task.id).sort();
+  assert.deepEqual(clips.map(clip=>clip.task).sort(),supported,'Training galleries must cover the released task/perturbation pairs');
+  assert.equal(new Set(clips.map(clip=>clip.task)).size,clips.length,'Visual loop copies must not be counted as distinct trajectories');
+  for(const clip of clips){
+    assert.deepEqual(Object.keys(clip).sort(),['poster','src','task'],'Only display paths and task identities belong in the public index');
+    assert(training.tasks.find(t=>t.id===clip.task)?.variations.includes(p.id),'Incorrect training task/perturbation pairing');
+    verifyTrainingMedia({src:clip.src,poster:clip.poster},clip.task,p.id);
+  }
+}
+assert.equal(trainingMediaPaths('../private'),null);
+assert.equal(trainingMediaPaths('libero_spatial-1','D21'),null);
+assert.equal(trainingMediaPaths('libero_spatial-1','S01?redirect=1'),null);
 assert.deepEqual(Object.keys(designs).sort(),tasks.map(t=>t.id).sort(),'Every task needs a design document');
 for(const task of tasks){
   assert(designs[task.id].predicates.length,'Every task needs its BASE success condition');
@@ -249,7 +276,7 @@ assert.equal(rolloutMediaPaths('nora','libero_spatial-0','S01?redirect=1'),null)
 const mediaRoot=new URL('../assets/rollouts/models/',import.meta.url);
 const actualMedia=fs.readdirSync(mediaRoot,{recursive:true,withFileTypes:true}).filter(entry=>entry.isFile()).map(entry=>path.relative(fileURLToPath(new URL('../',import.meta.url)),path.join(entry.parentPath||entry.path,entry.name)).replaceAll('\\','/'));
 assert.deepEqual(actualMedia.sort(),indexedMedia.sort(),'Unexpected or unindexed public media files');
-const publicFiles=['catalogue','home-rollouts','leaderboard-news','model-assets','model-profiles','model-rollouts','news','people','publication','results','task-designs','tasks','training-tasks','upcoming-models'];
+const publicFiles=['catalogue','home-rollouts','leaderboard-news','model-assets','model-profiles','model-rollouts','news','people','publication','results','task-designs','tasks','training-tasks','training-media','upcoming-models'];
 const dataFiles=fs.readdirSync(new URL('../data/',import.meta.url),{recursive:true,withFileTypes:true}).filter(entry=>entry.isFile());
 assert.deepEqual(dataFiles.map(entry=>entry.name).sort(),publicFiles.map(name=>name+'.json').sort(),'Only display data may be distributed');
 for(const file of publicFiles)assert(!JSON.stringify(read(file)).match(/(?:[CD]:\\|\/data[0-9]*\/|PRIVATE KEY|ghp_|docs\.google\.com\/spreadsheets)/i));

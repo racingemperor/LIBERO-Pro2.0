@@ -7,6 +7,7 @@ import {createSiteRouter,siteRoute,isSiteLink} from './site-router.js';
 import {createCapabilities} from './capabilities.js';
 import {bindRolloutPlayers} from './rollout-players.js';
 import {rolloutMediaPaths} from './rollout-media.js';
+import {trainingGallery,bindTrainingGallery} from './training-media.js';
 
 const app = document.querySelector('#app');
 let page = document.body.dataset.page;
@@ -19,7 +20,7 @@ const mean = values => { const valid = values.filter(Number.isFinite); return va
 const modeLabel = mode => mode === 'overall' ? 'Overall' : mode === 'dynamic' ? 'Dynamic' : 'Static';
 const typeClass = type => type === 'World Action Models' ? 'wam' : type === 'Robustness-oriented' ? 'robust' : 'vla';
 const typeLabel = type => type === 'World Action Models' ? 'World Action' : type === 'Robustness-oriented' ? 'Robustness' : 'VLA';
-let catalogue, results, tasks, assets, news, leaderboardNews, designs, people, publication, upcomingModels, modelProfiles, trainingData;
+let catalogue, results, tasks, assets, news, leaderboardNews, designs, people, publication, upcomingModels, modelProfiles, trainingData, trainingMedia;
 let capabilities;
 let modelRollouts={models:{}};
 const baseRollout={id:'BASE',mode:'base',category:'all',name:'Base tasks'};
@@ -325,19 +326,15 @@ function taskPerturbationChips(t,{training=false}={}) {
   }).join('');
 }
 
-function trainingPreview({single=false}={}) {
-  if(single)return '<div class="task-demo training-demo-placeholder" role="img" aria-label="Space reserved for a high-resolution training task demonstration"><span>High-resolution demonstration coming soon.</span></div>';
-  return `<div class="training-gallery-placeholder" role="img" aria-label="Three rows reserved for high-resolution training rollouts"><div class="training-gallery-rows" aria-hidden="true">${[0,1,2].map(row=>`<div class="training-gallery-row" data-direction="${row===1?'left':'right'}">${'<span></span>'.repeat(9)}</div>`).join('')}</div><p>High-resolution rollouts coming soon.</p></div>`;
-}
-
 function taskDocument(t,{training=false}={}) {
   const design=training?{focus:trainingFocus[t.suiteName],predicates:t.predicates}:designs.tasks[t.id];
   const title=training?'Training tasks':'Evaluation tasks',key=training?'training':'task';
   const facts=[['Instruction',esc(t.instruction)],...(!training?[['Description',documentEmphasis(design.description,documentKeyPhrases[t.id])]]:[]),['Task suite',`${suiteLabel(t.suiteName)} · task ${t.taskId} (zero-based)`],['Design focus',esc(design.focus)]];
   if(training)facts.push(['Training coverage',`<strong>${number(t.variations.length*trainingData.summary.demonstrationsPerInstance)} stored demonstrations</strong> across ${t.variations.length} task–variation instances, including the unperturbed base task.`]);
+  const demonstration=training?trainingMedia.base[t.id]:{src:`assets/rollouts/base/${t.id}.mp4`,poster:`assets/rollouts/base/${t.id}.webp`};
   document.title=`${t.instruction} · Document · LIBERO-Pro`;
   return documentLayout(`${head(esc(t.instruction),'',breadcrumb([['Document','docs.html'],[title,`docs.html#${training?'training-tasks':'task-designs'}`],[`${suiteLabel(t.suiteName)} · ${t.taskId}`]]))}
-    ${training?trainingPreview({single:true}):`<figure class="task-demo" id="examples"><video data-task-demo src="assets/rollouts/base/${esc(t.id)}.mp4" poster="assets/rollouts/base/${esc(t.id)}.webp" width="640" height="640" controls muted loop playsinline preload="metadata" aria-label="Successful X-VLA demonstration of an unperturbed LIBERO task: ${esc(t.instruction)}"></video></figure>`}
+    <figure class="task-demo" id="examples"><video data-task-demo src="${esc(demonstration.src)}" poster="${esc(demonstration.poster)}" width="640" height="640" controls muted loop playsinline preload="metadata" aria-label="Successful X-VLA demonstration of an unperturbed LIBERO task: ${esc(t.instruction)}"></video></figure>
     <section class="section" id="design">${sectionHead('Task design')}${designFacts(facts)}</section>
     <section class="section reading" id="success">${sectionHead('Success conditions')}<pre class="goal-predicates" tabindex="0" aria-label="BASE goal predicates"><code>${design.predicates.map(esc).join('\n')}</code></pre></section>
     <section class="section" id="perturbations">${sectionHead('Perturbation design')}${taskPerturbationChips(t,{training})}</section>
@@ -345,6 +342,11 @@ function taskDocument(t,{training=false}={}) {
 }
 
 let releaseDocumentDemo=()=>{};
+let releaseTrainingGallery=()=>{};
+function bindDocumentMedia() {
+  bindDocumentDemo();releaseTrainingGallery();
+  releaseTrainingGallery=bindTrainingGallery()||(()=>{});
+}
 function bindDocumentDemo() {
   releaseDocumentDemo();
   releaseDocumentDemo=()=>{};
@@ -401,7 +403,7 @@ function trainingDataDocument(p) {
   const instances=trainingData.tasks.filter(t=>t.variations.includes(p.id)).length;
   document.title=`${p.id} ${p.name} · Train datas · LIBERO-Pro`;
   return documentLayout(`${head(esc(p.name),'',breadcrumb([['Document','docs.html'],['Train datas','docs.html#train-datas'],[categoryFor(p.category).name],[p.id]]))}
-    <section class="section reading" id="training-data">${sectionHead('Training demonstrations')}<p>For <code>${p.id}</code>, the release provides <strong>${number(instances*trainingData.summary.demonstrationsPerInstance)} stored demonstrations</strong> across <strong>${instances} task–variation instances</strong> from the four LIBERO suites. A <strong>privileged-state oracle</strong> collects trajectories under this ${p.mode==='static'?'static shift':'runtime intervention'}, with <strong>30 stored demonstrations per instance</strong>.</p><p>Release checks cover <strong>HDF5 readability, observation and action shapes, and success attributes</strong>. <a class="text-link" href="${trainingData.source.dataset}/blob/${trainingData.source.revision}/docs/data_format.md" target="_blank" rel="noopener">Training data details ↗</a></p>${trainingPreview()}</section>
+    <section class="section reading" id="training-data">${sectionHead('Training demonstrations')}<p>For <code>${p.id}</code>, the release provides <strong>${number(instances*trainingData.summary.demonstrationsPerInstance)} stored demonstrations</strong> across <strong>${instances} task–variation instances</strong> from the four LIBERO suites. A <strong>privileged-state oracle</strong> collects trajectories under this ${p.mode==='static'?'static shift':'runtime intervention'}, with <strong>30 stored demonstrations per instance</strong>.</p><p>The previews below <strong>replay recorded HDF5 actions</strong> in the simulator without a model, spanning <strong>${trainingMedia.perturbations[p.id].length} base tasks</strong>. They include successful and unsuccessful replays and illustrate the training data rather than evaluation results. <a class="text-link" href="${trainingData.source.dataset}/blob/${trainingData.source.revision}/docs/data_format.md" target="_blank" rel="noopener">Training data details ↗</a></p>${trainingGallery(p.id,trainingMedia.perturbations[p.id],{escape:esc,instruction:id=>trainingData.tasks.find(t=>t.id===id).instruction})}</section>
     ${documentPagination(catalogue.perturbations,p.id,'train-data')}`);
 }
 
@@ -517,7 +519,7 @@ function updateCurrentView(next, {anchor=false, top=false, replace=true}={}) {
     params=new URLSearchParams(next.search);
     document.title=defaultTitle;
     updateView(app,(renderers[page]||homePage)());
-    if(page==='docs')bindDocumentDemo();
+    if(page==='docs')bindDocumentMedia();
     bindRolloutPlayers();
     if(page==='leaderboard'&&perturbationChanged)revealPerturbationColumn();
     prepareDirectories();
@@ -611,7 +613,7 @@ async function preparePage(route) {
   const template=loadTemplate(route);
   if(['report','community'].includes(route.page))return template;
   [catalogue,results,{tasks},assets,designs,people,publication]=await Promise.all(['catalogue','results','tasks','model-assets','task-designs','people','publication'].map(loadData));
-  if(route.page==='docs')trainingData=await loadData('training-tasks');
+  if(route.page==='docs')[trainingData,trainingMedia]=await Promise.all(['training-tasks','training-media'].map(loadData));
   if(route.page==='index')[upcomingModels,news]=await Promise.all(['upcoming-models','news'].map(loadData));
   if(['model','perturbation','task'].includes(route.page))modelRollouts=await loadData('model-rollouts');
   if(route.page==='leaderboard')[modelProfiles,leaderboardNews]=await Promise.all(['model-profiles','leaderboard-news'].map(loadData));
@@ -619,7 +621,7 @@ async function preparePage(route) {
 }
 
 function mountPage(route,template) {
-  releasePage();releaseDocumentDemo();capabilities?.dispose();
+  releasePage();releaseDocumentDemo();releaseTrainingGallery();capabilities?.dispose();
   releaseDocumentDemo=()=>{};
   // Detach first so the rollout manager can release the old players' buffers.
   const oldVideos=[...app.querySelectorAll('video')];
@@ -642,7 +644,7 @@ function mountPage(route,template) {
   const releases=[bindHomeMotion(),bindHomePresentation(),bindHomeNews(),bindHomeFilm()];
   releasePage=()=>releases.forEach(release=>release?.());
   if(page==='index')bindTaxonomy(catalogue);
-  if(page==='docs')bindDocumentDemo();
+  if(page==='docs')bindDocumentMedia();
   bindRolloutPlayers();
   if(page==='leaderboard'){
     capabilities.bind(ids=>{

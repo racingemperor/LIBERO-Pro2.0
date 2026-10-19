@@ -501,9 +501,10 @@ const tests = [
     assert(win().location.pathname.endsWith('/perturbation.html'), 'Task switch opened the model profile');
     assert(query('#model-select').value === 'openvla-oft-m', 'Selected model was lost');
   }],
-  ['Training documents keep splits separate, preserve navigation and reserve media without loading videos', async () => {
+  ['Training documents keep splits separate, preserve navigation and show the correct demonstrations', async () => {
     await load('docs.html');
     const training=await (await fetch('../data/training-tasks.json')).json();
+    const media=await (await fetch('../data/training-media.json')).json();
     const headings=[...doc().querySelectorAll('.doc-nav-group h2')].map(el=>el.textContent.trim());
     assert(headings.join(',')==='Overview,Evaluation tasks,Training tasks,Perturbation design,Train datas','Document directory order is incorrect');
     assert(doc().querySelectorAll('[data-task-split="task"] details a').length===8,'Held-out task directory changed');
@@ -530,7 +531,9 @@ const tests = [
       await change(()=>click(`.docs-sidebar a[href="docs.html?training=${task.id}"]`),()=>query('h1')?.textContent===task.instruction);
       assert(query('.docs-sidebar')===sidebar,'Training selection replaced the directory');
       assert(query('.docs-sidebar a[aria-current="page"]').href.endsWith(`training=${task.id}`),'Wrong active training document');
-      assert(query('.training-demo-placeholder')&&!query('#content video'),'Training tasks must reserve space without loading media');
+      const video=query('[data-task-demo]');
+      assert(video?.getAttribute('src')===media.base[task.id].src&&video.getAttribute('poster')===media.base[task.id].poster,'Training task uses the wrong recording');
+      assert(video.width===640&&video.height===640&&video.playbackRate===1&&video.muted&&video.loop,'Training BASE must retain native 640px and its encoded 4× speed');
       assert(doc().querySelectorAll('#perturbations a.doc-perturbation-chip').length===task.variations.length-1,'Training variant coverage is incorrect');
       assert(query('.goal-predicates').textContent===task.predicates.join('\n'),'Training success predicates were changed');
     }
@@ -544,7 +547,13 @@ const tests = [
       const count=training.tasks.filter(t=>t.variations.includes(id)).length;
       assert(query('#training-data').textContent.includes(`${count*30} stored demonstrations`),'Perturbation training count is incorrect');
       assert(query('.docs-sidebar')===sidebar,'Training data selection replaced the directory');
-      assert(doc().querySelectorAll('.training-gallery-row').length===3&&doc().querySelectorAll('.training-gallery-row>span').length===27&&!query('#content video, #content img, #content source'),'Training gallery must contain three empty rows without media');
+      const rows=[...doc().querySelectorAll('[data-training-row]')];
+      assert(rows.length===5&&rows.map(row=>row.dataset.direction).join(',')==='right,left,right,left,right','Training gallery row directions changed');
+      const originals=[...doc().querySelectorAll('.training-gallery .gallery-group:not([aria-hidden]) video')];
+      assert(originals.length===media.perturbations[id].length&&new Set(originals.map(v=>v.dataset.src)).size===originals.length,'Gallery loop copies must not count as distinct recordings');
+      assert(originals.length===count,'Training gallery omits a released base task');
+      assert(originals.every(video=>media.perturbations[id].some(clip=>clip.src===video.dataset.src&&clip.poster===video.getAttribute('poster'))),'Training gallery shows another perturbation');
+      assert(originals.every(video=>video.width===256&&video.height===256&&video.muted&&video.loop&&video.preload==='none'),'Training gallery must use compact, muted, lazy video loops');
       assert([...doc().querySelectorAll('.doc-pagination a')].every(a=>new URL(a.href).searchParams.has('train-data')),'Adjacent training-data links left the training section');
       assert([...doc().querySelectorAll('#training-data a')].every(a=>win().getComputedStyle(a).textDecorationLine==='none'),'Training data links regained underlines');
       assert(doc().documentElement.scrollWidth<=win().innerWidth,'Training view overflows the viewport');
@@ -560,6 +569,39 @@ const tests = [
     await navigate(()=>click('.site-header a[href="leaderboard.html"]'),()=>!!query('#rankings'));
     await navigate(()=>win().history.back(),()=>!!query('#training-tasks .base-task'),{push:false});
     assert(win().location.hash==='#training-tasks','Back lost the training index anchor');
+  }],
+  ['Training media autoplay, keep explicit pauses and release replaced recordings', async () => {
+    await load('docs.html?training=libero_spatial-1');
+    const base=query('[data-task-demo]');
+    base.scrollIntoView({block:'center',behavior:'instant'});
+    await waitFor(()=>base.videoWidth===640&&base.videoHeight===640&&!base.paused&&base.currentTime>0,'native training BASE playback');
+    assert(base.playbackRate===1,'The already accelerated BASE recording was sped up twice');
+    await change(()=>click('.docs-sidebar a[href="docs.html?train-data=S01"]'),()=>!!query('[data-training-gallery]'));
+    const row=query('[data-training-row]');
+    row.scrollIntoView({block:'start',behavior:'instant'});
+    win().scrollBy(0,-120);
+    row.focus({preventScroll:true});
+    const clips=[...doc().querySelectorAll('[data-training-gallery] video')];
+    await waitFor(()=>clips.some(v=>v.videoWidth===256&&v.videoHeight===256&&!v.paused&&v.currentTime>0),'compact training replay playback');
+    const playing=clips.find(v=>!v.paused&&v.currentTime>0);
+    for(let attempt=0;attempt<6;attempt++){
+      playing.pause();
+      await waitFor(()=>playing.paused);
+      // Readiness and late autoplay events must not undo an explicit pause.
+      await new Promise(resolve=>setTimeout(resolve,80));
+      playing.dispatchEvent(new (win().Event)('canplay'));
+      await new Promise(resolve=>setTimeout(resolve,80));
+      assert(playing.paused,'Autoplay undid an explicit pause');
+      await playing.play();
+      await waitFor(()=>!playing.paused,'manual replay resume');
+    }
+    assert(clips.every(v=>v.playbackRate===1&&v.muted),'Training galleries must retain their original 20 fps speed');
+    const start=row.scrollLeft;
+    row.blur();
+    await waitFor(()=>Math.abs(row.scrollLeft-start)>3,'training gallery motion');
+    await change(()=>click('.docs-sidebar a[href="docs.html?training=libero_object-0"]'),()=>query('[data-task-demo]')?.src.includes('libero_object-0'));
+    assert(clips.every(v=>!v.isConnected&&v.paused&&!v.getAttribute('src')),'Old gallery videos retained playback buffers');
+    assert(doc().documentElement.scrollWidth<=win().innerWidth,'Media overflows the viewport');
   }],
   ['Document directory, adjacent documents and Overview update without history noise', async () => {
     await load('docs.html?perturbation=S01');
