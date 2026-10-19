@@ -525,7 +525,8 @@ const tests = [
     const dataGroups=[...doc().querySelectorAll('[data-perturbation-section="train-data"] details')];
     assert(designGroups.length===6&&dataGroups.length===6,'Both directories need six domains');
     for(let i=0;i<designGroups.length;i++)assert(designGroups[i].textContent===dataGroups[i].textContent,'Training data groups differ from perturbation design');
-    assert(doc().querySelectorAll('#train-datas .doc-training-domain').length===6&&doc().querySelectorAll('#train-datas .doc-perturbation-index>a').length===42,'Training data overview is incomplete');
+    assert(!query('#train-datas .doc-perturbation-index')&&query('#train-datas a[href="docs.html#taxonomy"]'),'Training data overview must refer to the shared taxonomy without repeating its catalogue');
+    for(const count of [training.summary.demonstrations,training.summary.instances,training.summary.uniqueSourceTrajectories])assert(query('#train-datas').textContent.includes(count.toLocaleString('en-US')),'Training data overview must describe the published collection scale');
     const sidebar=query('.docs-sidebar');
     for(const task of training.tasks){
       await change(()=>click(`.docs-sidebar a[href="docs.html?training=${task.id}"]`),()=>query('h1')?.textContent===task.instruction);
