@@ -505,6 +505,7 @@ const tests = [
     await load('docs.html');
     const training=await (await fetch('../data/training-tasks.json')).json();
     const media=await (await fetch('../data/training-media.json')).json();
+    assert(query('#document-overview img')?.getAttribute('src')==='assets/paper/overview-promain.webp','Document Overview must share the Home overview figure');
     const headings=[...doc().querySelectorAll('.doc-nav-group h2')].map(el=>el.textContent.trim());
     assert(headings.join(',')==='Overview,Evaluation tasks,Training tasks,Perturbation design,Training datas','Document directory order is incorrect');
     assert(doc().querySelectorAll('[data-task-split="task"] details a').length===8,'Held-out task directory changed');
@@ -526,6 +527,7 @@ const tests = [
     assert(designGroups.length===6&&dataGroups.length===6,'Both directories need six domains');
     for(let i=0;i<designGroups.length;i++)assert(designGroups[i].textContent===dataGroups[i].textContent,'Training data groups differ from perturbation design');
     assert(!query('#train-datas .doc-perturbation-index')&&query('#train-datas a[href="docs.html#taxonomy"]'),'Training data overview must refer to the shared taxonomy without repeating its catalogue');
+    assert(doc().querySelectorAll('#train-datas>p').length===1,'Training data overview must use a single paragraph');
     for(const count of [training.summary.demonstrations,training.summary.instances,training.summary.uniqueSourceTrajectories])assert(query('#train-datas').textContent.includes(count.toLocaleString('en-US')),'Training data overview must describe the published collection scale');
     const sidebar=query('.docs-sidebar');
     for(const task of training.tasks){
@@ -547,6 +549,7 @@ const tests = [
       await change(()=>click(`.docs-sidebar a[href="docs.html?train-data=${id}"]`),()=>query('.docs-sidebar a[aria-current="page"]')?.href.endsWith(`train-data=${id}`));
       const count=training.tasks.filter(t=>t.variations.includes(id)).length;
       assert(query('#training-data').textContent.includes(`${count*30} stored demonstrations`),'Perturbation training count is incorrect');
+      assert(doc().querySelectorAll('#training-data>p').length===1&&!/HDF5|replay/i.test(query('#training-data>p').textContent),'Training data copy must be one paragraph without replay implementation details');
       assert(query('.docs-sidebar')===sidebar,'Training data selection replaced the directory');
       const rows=[...doc().querySelectorAll('[data-training-row]')];
       assert(rows.length===5&&rows.map(row=>row.dataset.direction).join(',')==='right,left,right,left,right','Training gallery row directions changed');
