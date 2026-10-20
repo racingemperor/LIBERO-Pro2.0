@@ -285,7 +285,7 @@ body[data-page=leaderboard] .capability-data th a{display:inline-flex;align-item
 .paper-report-link img{flex:none;width:20px;height:20px}
 .paper-meta a[href="leaderboard.html"],.paper-meta-contact dd>a{font-size:inherit;line-height:1.6}
 .repository-links{display:flex;flex-wrap:wrap;gap:8px 20px}
-.repository-link{display:inline-flex;align-items:center;gap:8px;min-height:40px;max-width:100%;font-size:inherit;line-height:1.5;color:var(--ink);padding:4px 0}
+.repository-link{display:inline-flex;align-items:center;gap:8px;min-height:40px;max-width:100%;font-size:inherit;line-height:1.5;color:var(--blue);padding:4px 0}
 .repository-link img{flex:none;width:20px;height:20px}
 .repository-name{min-width:0;overflow-wrap:anywhere}
 .repository-link:hover .repository-name{text-decoration:underline;text-underline-offset:4px}
