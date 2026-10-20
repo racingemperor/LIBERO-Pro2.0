@@ -550,14 +550,18 @@ const tests = [
       const count=training.tasks.filter(t=>t.variations.includes(id)).length;
       assert(query('#training-data').textContent.includes(`${count*30} stored demonstrations`),'Perturbation training count is incorrect');
       assert(doc().querySelectorAll('#training-data>p').length===1&&!/HDF5|replay/i.test(query('#training-data>p').textContent),'Training data copy must be one paragraph without replay implementation details');
+      assert(query('#training-data>p').textContent.includes('successful demonstrations')&&!query('#training-data>p').textContent.includes('unsuccessful'),'Training gallery copy must describe the success-only selection');
       assert(query('.docs-sidebar')===sidebar,'Training data selection replaced the directory');
       const rows=[...doc().querySelectorAll('[data-training-row]')];
       assert(rows.length===5&&rows.map(row=>row.dataset.direction).join(',')==='right,left,right,left,right','Training gallery row directions changed');
+      assert(rows.every(row=>row.querySelectorAll('video').length>0),'A filtered training selection left an empty row');
       assert(rows.every(row=>row.scrollWidth>=row.clientWidth+row.querySelector('.gallery-group').getBoundingClientRect().width-1),'Sparse training rows leave a gap when the loop wraps');
       const originals=[...doc().querySelectorAll('.training-gallery .gallery-group:not([aria-hidden]) video')];
       assert(originals.length===media.perturbations[id].length&&new Set(originals.map(v=>v.dataset.src)).size===originals.length,'Gallery loop copies must not count as distinct recordings');
       assert(originals.length>0&&originals.length<=count,'Training gallery must show a curated subset of released base tasks');
       assert(originals.every(video=>media.perturbations[id].some(clip=>clip.src===video.dataset.src&&clip.poster===video.getAttribute('poster'))),'Training gallery shows another perturbation');
+      assert([...doc().querySelectorAll('.training-gallery video')].every(video=>media.perturbations[id].some(clip=>clip.src===video.dataset.src)),'A visual fallback reintroduced a filtered recording');
+      assert([...doc().querySelectorAll('.training-gallery [aria-hidden="true"] video')].every(video=>video.tabIndex===-1),'Visual copies must stay outside keyboard traversal');
       assert(originals.every(video=>video.width===256&&video.height===256&&video.muted&&video.loop&&video.preload==='none'),'Training gallery must use compact, muted, lazy video loops');
       assert([...doc().querySelectorAll('.doc-pagination a')].every(a=>new URL(a.href).searchParams.has('train-data')),'Adjacent training-data links left the training section');
       assert([...doc().querySelectorAll('#training-data a')].every(a=>win().getComputedStyle(a).textDecorationLine==='none'),'Training data links regained underlines');

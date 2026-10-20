@@ -9,13 +9,16 @@ export function trainingMediaPaths(task,perturbation='BASE') {
 export function trainingGallery(perturbation,clips,{escape,instruction}) {
   if(!clips?.length)return '';
   const rows=Array.from({length:5},(_,row)=>{
-    const entries=clips.filter((_,index)=>index%5===row);
+    const originals=clips.filter((_,index)=>index%5===row);
+    // Keep all five rows when a perturbation has fewer than five previews.
+    // Fallback rows are visual copies, never additional distinct tasks.
+    const entries=originals.length?originals:[clips[row%clips.length]];
     const card=(clip,duplicate)=>`<figure class="gallery-item"><video class="gallery-video" data-src="${escape(clip.src)}" poster="${escape(clip.poster)}" width="256" height="256" controls muted loop playsinline preload="none" ${duplicate?'tabindex="-1"':''} aria-label="${escape(perturbation+': '+instruction(clip.task))}"></video></figure>`;
     // Eight cards cover the site's maximum content width, including on resize.
     // Each distinct task is exposed once to assistive technology.
     const copies=Math.max(3,Math.ceil(8/entries.length)+1);
     const groups=Array.from({length:copies},(_,copy)=>{
-      const duplicate=copy>0;
+      const duplicate=copy>0||!originals.length;
       return `<div class="gallery-group" ${duplicate?'aria-hidden="true"':''}>${entries.map(clip=>card(clip,duplicate)).join('')}</div>`;
     }).join('');
     return `<div class="gallery-viewport" data-training-row data-direction="${row%2?'left':'right'}" tabindex="0" role="region" aria-label="Training demonstrations, row ${row+1}, scroll to explore"><div class="gallery-track">${groups}</div></div>`;
