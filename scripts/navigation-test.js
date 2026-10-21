@@ -550,7 +550,7 @@ const tests = [
       const count=training.tasks.filter(t=>t.variations.includes(id)).length;
       assert(query('#training-data').textContent.includes(`${count*30} stored demonstrations`),'Perturbation training count is incorrect');
       assert(doc().querySelectorAll('#training-data>p').length===1&&!/HDF5|replay/i.test(query('#training-data>p').textContent),'Training data copy must be one paragraph without replay implementation details');
-      assert(query('#training-data>p').textContent.includes('successful demonstrations')&&!query('#training-data>p').textContent.includes('unsuccessful'),'Training gallery copy must describe the success-only selection');
+      assert(!query('#training-data>p').textContent.includes('successful demonstrations')&&!query('#training-data>p').textContent.includes('unsuccessful'),'Training gallery copy must not add a success-count description');
       assert(query('.docs-sidebar')===sidebar,'Training data selection replaced the directory');
       const rows=[...doc().querySelectorAll('[data-training-row]')];
       assert(rows.length===5&&rows.map(row=>row.dataset.direction).join(',')==='right,left,right,left,right','Training gallery row directions changed');
