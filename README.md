@@ -17,6 +17,12 @@ Open http://127.0.0.1:8765/. No frontend dependencies or build step are required
 
 For browser navigation regression checks, open http://127.0.0.1:8765/scripts/navigation-test.html (or add `?width=375` for the narrow layout). The checks exercise the real pages and verify document identity, history length, scroll, filters, deep links and the document directory.
 
+## Theme
+
+The sun/moon button at the right of the shared navigation switches the entire site between light and dark. `assets/theme.js` runs before stylesheets to apply a saved choice without a light flash. The first visit follows the system preference; an explicit choice is remembered locally and shared between open tabs. Theme changes preserve routes, filters, scroll positions and existing media players. Palette colors fade over 320 ms while navigation and charts remain interactive; rapid clicks smoothly retarget the current colors. Reduced-motion preferences disable the effect. `assets/theme.css` adapts tables, charts, document surfaces and the wordmark while preserving original scientific imagery and video colors.
+
+Run `node --test scripts/theme-test.mjs` for initialization, persistence, storage failure, interrupted transitions and reduced-motion checks. The browser navigation suite also checks theme changes with selected models, scroll, same-document navigation and a direct reload.
+
 ## Navigation behavior
 
 Home, Document, Leaderboard, Report, Community and model/task details switch within the same document. `assets/site-router.js` adds one browser history entry per page change; Back and Forward restore the visited page, selected filters and page/table/directory scroll. The header stays mounted, its active link follows the current page, and focus moves to the new page heading. Page HTML and JSON are loaded once per session; leaving a page releases its animation observers, listeners and video buffers. Direct links, refresh and GitHub Pages subpaths continue to work without server rewrites.

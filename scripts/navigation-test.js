@@ -1,6 +1,7 @@
 // Run against the real static app: open /scripts/navigation-test.html on the local server.
 const frame = document.querySelector('iframe');
-if(new URLSearchParams(location.search).get('width')==='375'){frame.style.width='375px';frame.style.height='812px';}
+const requestedWidth=Number(new URLSearchParams(location.search).get('width'));
+if(requestedWidth>=320&&requestedWidth<=1600){frame.style.width=`${requestedWidth}px`;frame.style.height='812px';}
 const report = document.querySelector('#results');
 const assert = (condition, message) => { if (!condition) throw new Error(message); };
 const waitFor = async (predicate,message='the updated view') => {
@@ -55,6 +56,44 @@ async function navigate(action,ready,{push=true}={}) {
 }
 
 const tests = [
+  ['Theme switching preserves filters, scroll, chart nodes and navigation history', async()=>{
+    const saved=localStorage.getItem('libero-theme');
+    try {
+      await load('leaderboard.html?compare=cosmos-policy,xvla&mode=dynamic');
+      const before={document:doc(),chart:query('.capability-chart'),svg:query('.capability-svg'),url:win().location.href,history:win().history.length,origin:win().performance.timeOrigin};
+      const expected=doc().documentElement.dataset.theme==='dark'?'light':'dark';
+      win().scrollTo(0,400);const scroll=win().scrollY;
+      click('[data-theme-toggle]');
+      await waitFor(()=>doc().documentElement.dataset.theme===expected,'theme change');
+      assert(doc()===before.document&&win().performance.timeOrigin===before.origin,'Theme switching reloaded the document');
+      assert(query('.capability-chart')===before.chart&&query('.capability-svg')===before.svg,'Theme switching recreated the chart');
+      assert(win().location.href===before.url&&win().history.length===before.history,'Theme switching changed the URL or history');
+      assert(win().scrollY===scroll,'Theme switching changed the scroll position');
+      assert(query('[data-theme-toggle]').getAttribute('aria-label')===`Switch to ${expected==='dark'?'light':'dark'} theme`,'Theme button has the wrong accessible label');
+      assert(localStorage.getItem('libero-theme')===expected,'Theme preference was not saved');
+      for(let i=0;i<10;i++)click('[data-theme-toggle]');
+      await new Promise(resolve=>setTimeout(resolve,500));
+      assert(doc().documentElement.dataset.theme===expected,'Rapid switches ended at a stale theme');
+      await navigate(()=>click('.site-nav a[href="docs.html"]'),()=>win().location.pathname.endsWith('docs.html'));
+      assert(doc().documentElement.dataset.theme===expected,'The theme changed during same-document navigation');
+      await load('report.html');
+      assert(doc().documentElement.dataset.theme===expected,'The saved theme was not applied on direct load');
+      assert(win().getComputedStyle(query('.theme-toggle')).width==='44px','Theme toggle lost its touch target');
+      const originalWidth=frame.style.width;
+      try {
+        for(const width of [320,375,768,1001,1024,1280]){
+          frame.style.width=`${width}px`;
+          await new Promise(resolve=>win().requestAnimationFrame(()=>win().requestAnimationFrame(resolve)));
+          const header=query('.site-header'),toggle=query('.theme-toggle').getBoundingClientRect();
+          assert(header.scrollWidth<=header.clientWidth+1,`Header overflows at ${width}px`);
+          assert(toggle.left>=0&&toggle.right<=win().innerWidth,`Theme toggle is outside the viewport at ${width}px`);
+          assert(doc().documentElement.scrollWidth<=win().innerWidth,`Page overflows at ${width}px`);
+        }
+      } finally {frame.style.width=originalWidth;}
+    } finally {
+      if(saved===null)localStorage.removeItem('libero-theme');else localStorage.setItem('libero-theme',saved);
+    }
+  }],
   ['Citation retains both official BibTeX entries with an accessible Copy control', async()=>{
     await load('index.html');
     const publication=await (await fetch('../data/publication.json')).json();

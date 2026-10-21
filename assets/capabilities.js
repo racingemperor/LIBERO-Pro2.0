@@ -35,7 +35,7 @@ export function createCapabilities(models, assets, profiles, {esc, pct, modelUrl
       ${ordered.map((m,index)=>{
         const vs=values(m),visible=selected.has(m.id),path=vs.map((v,i)=>Number.isFinite(v)?`${i&&Number.isFinite(vs[i-1])?'L':'M'}${x[i]},${y(v)}`:'').join(' ');
         const labelY=labelPositions.get(m.id)??y(vs[last]),dash=index<7?'':index<11?'8 4':'2 5';
-        return `<a class="capability-series${active&&active!==m.id?' muted':''}${active===m.id?' highlighted':''}" href="${modelUrl(m)}" data-series="${m.id}" style="--series:${colors[m.id]}" ${visible?'':'hidden'} tabindex="${visible?0:-1}" aria-label="${esc(m.name)}, ${scoreText(m)}. View model results." ${active===m.id?'aria-describedby="capability-preview"':''}>
+        return `<a class="capability-series${active&&active!==m.id?' muted':''}${active===m.id?' highlighted':''}" href="${modelUrl(m)}" data-series="${m.id}" style="--series-base:${colors[m.id]}" ${visible?'':'hidden'} tabindex="${visible?0:-1}" aria-label="${esc(m.name)}, ${scoreText(m)}. View model results." ${active===m.id?'aria-describedby="capability-preview"':''}>
           <path class="capability-line" d="${path}" stroke-dasharray="${dash}"/>
           <path class="capability-hit" d="${path}"/>
           ${vs.map((v,i)=>Number.isFinite(v)?`<circle class="capability-point" data-metric="${metrics[i].toLowerCase()}" data-value="${v}" cx="${x[i]}" cy="${y(v)}" r="5"/><text class="capability-value" x="${x[i]}" y="${y(v)-14}" text-anchor="${compact?(i===0?'start':i===last?'end':'middle'):'middle'}" aria-hidden="true">${pct(v)}</text>`:'').join('')}
@@ -55,7 +55,7 @@ export function createCapabilities(models, assets, profiles, {esc, pct, modelUrl
 
   function content() {
     return `<div class="capability-selection-head"><span id="capability-model-label">Models <span class="capability-count">${selected.size} / ${ordered.length}</span></span><div><button type="button" data-chart-select="all">Select all</button><button type="button" data-chart-select="none">Clear</button></div></div>
-      <div class="capability-models" role="group" aria-labelledby="capability-model-label">${ordered.map(m=>`<button type="button" class="model-chip" data-chart-model="${m.id}" style="--series:${colors[m.id]}" aria-pressed="${selected.has(m.id)}">${mark(m)}<span>${esc(m.name)}</span><span class="chip-check" aria-hidden="true">${selected.has(m.id)?'✓':'+'}</span></button>`).join('')}</div>
+      <div class="capability-models" role="group" aria-labelledby="capability-model-label">${ordered.map(m=>`<button type="button" class="model-chip" data-chart-model="${m.id}" style="--series-base:${colors[m.id]}" aria-pressed="${selected.has(m.id)}">${mark(m)}<span>${esc(m.name)}</span><span class="chip-check" aria-hidden="true">${selected.has(m.id)?'✓':'+'}</span></button>`).join('')}</div>
       <div class="capability-plot-head"><span>Success rate (%)</span></div>
       <div class="capability-plot">${svg()}<p class="capability-empty" ${selected.size?'hidden':''}>Select a model above to compare its success rates.</p>
         <aside id="capability-preview" class="capability-preview" role="tooltip" aria-label="Model introduction" style="left:${position.left}px;top:${position.top}px" ${active?'':'hidden'}>${previewContent()}</aside>
