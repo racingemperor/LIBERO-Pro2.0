@@ -10,10 +10,15 @@
 @media(min-width:1001px) and (max-width:1120px){.site-header{gap:14px;padding-inline:22px}.site-links{gap:14px}.site-nav{gap:19px}}
 @media(max-width:370px){.site-header{column-gap:8px;padding-inline:12px}.brand-wordmark{width:154px}}
 
-/* Fade palette properties only; the page remains interactive during a switch. */
-.theme-changing :is(body,h1,h2,h3,h4,p,dt,dd,a,small,span,strong,code,pre,select,.site-header,.site-nav,.home-news-card,.model-chip,.leaderboard-table th,.leaderboard-table td,.doc-content,.button,.capability-selection-head button,.capability-preview,.community-card,.community-qr-pending,.publication-venue,.goal-predicates,.citation-card,.citation-copy){transition:color .32s ease,background-color .32s ease,border-color .32s ease}
-.theme-changing :is(.capability-grid line,.capability-grid text,.capability-line,.capability-point,.capability-value,.capability-end-label text,.taxonomy-face,.taxonomy-mode path,.taxonomy-ring text){transition:fill .32s ease,stroke .32s ease}
-@media(prefers-reduced-motion:reduce){.theme-toggle svg,.theme-changing body,.theme-changing *{transition:none!important}}
+/* One compositor fade replaces thousands of per-element palette animations.
+   Capture the final palette without adding hit targets above the snapshots. */
+.theme-transition *,.theme-transition *:before,.theme-transition *:after{transition:none!important}
+.theme-transition::view-transition{pointer-events:none}
+.theme-transition::view-transition-group(root){animation-duration:.28s;animation-timing-function:cubic-bezier(.2,.7,.2,1)}
+.theme-transition::view-transition-old(root){animation:none;mix-blend-mode:normal}
+.theme-transition::view-transition-new(root){animation:theme-reveal .28s cubic-bezier(.2,.7,.2,1) both;mix-blend-mode:normal}
+@keyframes theme-reveal{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){.theme-toggle svg{transition:none!important}}
 
 :root[data-theme=dark] :is(.site-header,.site-nav,.skip,.catalogue-nav .tabs){background:var(--paper)}
 :root[data-theme=dark] .site-header{box-shadow:0 3px 16px #0003}

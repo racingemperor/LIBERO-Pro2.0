@@ -2,7 +2,7 @@ const escape = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp
 
 export function homeFilm() {
   return `<section class="home-film" id="benchmark-video" aria-label="LIBERO-Pro2.0 benchmark video"><figure>
-    <video data-home-video controls playsinline preload="none" width="1920" height="1080" poster="https://racingemperor.github.io/LIBERO-Pro-media/assets/promo/libero-pro2.0-overview-20261022.webp" aria-label="LIBERO-Pro2.0: A Benchmark for Evaluating Robust Embodied Intelligence, 90-second overview"><source src="https://racingemperor.github.io/LIBERO-Pro-media/assets/promo/libero-pro2.0-overview-20261022.mp4" type="video/mp4"></video>
+    <video data-home-video controls playsinline preload="none" width="1920" height="1080" poster="https://racingemperor.github.io/LIBERO-Pro-media/assets/promo/libero-pro2.0-overview-opening-20261022.webp" aria-label="LIBERO-Pro2.0: A Benchmark for Evaluating Robust Embodied Intelligence, 90-second overview"><source src="https://racingemperor.github.io/LIBERO-Pro-media/assets/promo/libero-pro2.0-overview-20261022.mp4" type="video/mp4"></video>
     <button class="home-film-play" data-home-film-play hidden aria-label="Play LIBERO-Pro2.0 video"><span aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 5v14l11-7z"/></svg></span></button>
   </figure></section>`;
 }
