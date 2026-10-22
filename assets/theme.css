@@ -73,6 +73,7 @@
 :root[data-theme=dark] :is(.showcase-static,.showcase-dynamic) .button.secondary:hover{background:var(--slide-accent);color:#121619}
 :root[data-theme=dark] .home-news{--news-bg:#1c2227;--news-ink:#edf1f4;--news-soft:#a6b2bf;--news-line:#3a4650;--news-accent:#89b5ff}
 :root[data-theme=dark] .institution-logos a{background:white;box-shadow:0 0 0 4px white}
+:root[data-theme=dark] .doc-paper-logos img{background:white;box-shadow:0 0 0 4px white;border-radius:2px}
 :root[data-theme=dark] .repository-status{background:var(--wash);color:var(--muted)}
 :root[data-theme=dark] .repository-status.latest{background:var(--support-bg);color:var(--support-ink)}
 :root[data-theme=dark] .taxonomy-mode.static path{fill:#654b29;stroke:var(--paper)}

@@ -39,7 +39,10 @@ const selectedMode = () => params.get('mode') === 'dynamic' ? 'dynamic' : 'stati
 const selectedCategory = () => categoryFor(params.get('category')) ? params.get('category') : 'all';
 const head = (title,desc='',crumb='') => `<header class="page-head">${crumb}<h1>${title}</h1>${desc?`<p>${desc}</p>`:''}</header>`;
 const sectionHead = (title,link='') => `<div class="section-head"><h2>${title}</h2>${link}</div>`;
-const paperOverviewFigure = () => '<figure><a href="assets/paper/overview-promain.webp" target="_blank" rel="noopener" aria-label="Open the full LIBERO-Pro overview figure"><img src="assets/paper/overview-promain.webp" width="3200" height="1660" loading="lazy" alt="LIBERO-Pro overview showing 22 static and 20 dynamic perturbations across six domains"></a></figure>';
+const paperOverviewFigure = ({linked=true}={}) => {
+  const image='<img src="assets/paper/overview-promain.webp" width="3200" height="1660" loading="lazy" alt="LIBERO-Pro overview showing 22 static and 20 dynamic perturbations across six domains">';
+  return `<figure>${linked?`<a href="assets/paper/overview-promain.webp" target="_blank" rel="noopener" aria-label="Open the full LIBERO-Pro overview figure">${image}</a>`:image}</figure>`;
+};
 const breadcrumb = links => `<nav class="breadcrumb" aria-label="Breadcrumb">${links.map(([label,href])=>href?`<a href="${esc(href)}">${esc(label)}</a>`:`<span aria-current="page">${esc(label)}</span>`).join('<span aria-hidden="true">/</span>')}</nav>`;
 const tabs = (mode,href,modes=['static','dynamic']) => `<div class="tabs" aria-label="Distribution shift">${modes.map(x=>`<a class="tab ${mode===x?'active':''}" ${mode===x?'aria-current="true"':''} href="${esc(href(x))}">${modeLabel(x)} <span class="count-label">${x==='overall'?'42':x==='static'?'22':'20'}</span></a>`).join('')}</div>`;
 
@@ -411,6 +414,23 @@ function trainingDataDocument(p) {
     ${documentPagination(catalogue.perturbations,p.id,'train-data')}`);
 }
 
+function documentPaperHeader() {
+  const institutions=people.affiliations;
+  const authors=people.authors.map(author=>{
+    const markers=[...(author.affiliations||[]).map(id=>institutions.findIndex(institution=>institution.id===id)+1).filter(Boolean),...(author.equalContribution?['*']:[]),...(author.corresponding?['†']:[])];
+    return `<span class="author-name">${esc(author.name)}${markers.length?`<sup>${markers.join(',')}</sup>`:''}</span>`;
+  });
+  const authorRows=[authors.slice(0,4),authors.slice(4,8),authors.slice(8)].filter(row=>row.length);
+  const affiliations=institutions.map((institution,index)=>`<span><sup>${index+1}</sup> ${esc(institution.name)}</span>`);
+  return `<header class="doc-paper-header">
+    <h1>LIBERO-Pro2.0: A Benchmark for Evaluating the Robustness of Embodied Foundation Models</h1>
+    <div class="doc-paper-authors" aria-label="Authors">${authorRows.map(row=>`<p>${row.join(', ')}</p>`).join('')}</div>
+    <div class="doc-paper-affiliations" aria-label="Affiliations"><p>${affiliations.slice(0,2).join(' ')}</p><p>${affiliations.slice(2).join(' ')}</p></div>
+    <p class="doc-paper-notes"><span><sup>*</sup> Equal contribution.</span><span><sup>†</sup> Corresponding author.</span></p>
+    <div class="doc-paper-logos">${institutions.map(institution=>`<img src="${esc(institution.logo)}" width="${institution.width}" height="${institution.height}" alt="${esc(institution.name)}" decoding="async">`).join('')}</div>
+  </header>`;
+}
+
 function docsPage() {
   if(params.has('train-data')){
     const perturbation=catalogue.perturbations.find(p=>p.id===params.get('train-data'));
@@ -428,8 +448,8 @@ function docsPage() {
     const perturbation=catalogue.perturbations.find(p=>p.id===params.get('perturbation'));
     return perturbation?perturbationDocument(perturbation):notFound('Perturbation document','docs.html');
   }
-  return documentLayout(`${head('Document','Task designs, perturbation mechanisms and evaluation definitions.')}
-    <div class="paper-overview doc-overview" id="document-overview">${paperOverviewFigure()}</div>
+  return documentLayout(`${documentPaperHeader()}
+    <div class="paper-overview doc-overview" id="document-overview">${paperOverviewFigure({linked:false})}</div>
     <section class="section" id="task-designs">${sectionHead('Evaluation task designs')}<p><strong>Eight base tasks</strong> are selected from four LIBERO suites. Each document gives the original instruction, task setup, success condition and supported perturbations. Task IDs are <strong>zero-based</strong>.</p>${documentTaskGroups(tasks)}</section>
     <section class="section" id="training-tasks">${sectionHead('Training task designs')}<p><strong>32 base tasks</strong>, eight per LIBERO suite, are separate from the eight held-out evaluation tasks. The training release contains <strong>${number(trainingData.summary.demonstrations)} stored demonstrations</strong> across <strong>${number(trainingData.summary.instances)} task–variation instances</strong>, including unperturbed base tasks. Task IDs are <strong>zero-based</strong>.</p><p>The source audit reports <strong>${number(trainingData.summary.uniqueSourceTrajectories)} unique source trajectories</strong>; stored counts include declared replicated trajectories. <a class="text-link" href="${trainingData.source.dataset}" target="_blank" rel="noopener">Explore the training dataset ↗</a></p>${documentTaskGroups(trainingData.tasks,true)}</section>
     <section class="section reading" id="protocol">${sectionHead('Evaluation protocol')}<p>LIBERO-Pro evaluates robot-policy robustness while preserving the <strong>original task goal and feasibility</strong>. The held-out evaluation split contains <strong>eight tasks</strong>: two each from LIBERO-Spatial, LIBERO-Object, LIBERO-Goal and LIBERO-10.</p><p><strong>Static shifts</strong> are introduced at reset. <strong>Dynamic interventions</strong> are triggered during execution at task-relevant phases. Each case applies <strong>one perturbation</strong>. RQ experiments and combined perturbation suites are excluded from this website’s leaderboard.</p></section>
