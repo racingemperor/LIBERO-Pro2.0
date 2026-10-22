@@ -683,7 +683,12 @@ const tests = [
     assert(links.join(',') === 'Home,Document,Leaderboard,Report', 'Main navigation still includes Eval');
     assert(query('.site-links a').href === 'https://github.com/LIBERO-Pro-Team/LIBERO-Pro2.0', 'Code has the wrong repository');
     assert(query('a[aria-current="page"]').textContent === 'Report', 'Report active link is missing');
-    assert(doc().querySelectorAll('.publication-row').length === 2, 'Both paper editions must be present');
+    assert(doc().querySelectorAll('.publication-row').length === 3, 'Both paper editions and LIBERO-Gen must be present');
+    assert(query('#paper-libero-gen')?.textContent === 'Dismantling the Illusion of Vision-Language-Action Models Competence via Explicit Distributional Shifts', 'LIBERO-Gen paper title is missing');
+    assert(query('[aria-label="LIBERO-Gen resources"] a[href="https://openreview.net/forum?id=R7vl47raSn"]'), 'LIBERO-Gen OpenReview link is missing');
+    assert(query('[aria-label="LIBERO-Gen resources"] a[href="https://openreview.net/pdf?id=R7vl47raSn"]'), 'LIBERO-Gen paper link is missing');
+    assert(query('[aria-label="LIBERO-Gen resources"] a[href*="citation_for_view=DmI6FusAAAAJ:0EnyYjriUFMC"]'), 'The supplied Google Scholar citation link is missing');
+    assert(!query('.publication-version'), 'Report must not display Latest or Previous badges');
     assert(doc().documentElement.scrollWidth <= win().innerWidth, 'Report overflows the viewport');
     click('.site-links a[href="community.html"]');
     await waitFor(() => query('h1')?.textContent === 'Community' && query('a[aria-current="page"]')?.textContent === 'Community');
