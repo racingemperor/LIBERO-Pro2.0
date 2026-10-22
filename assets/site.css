@@ -580,6 +580,9 @@ body[data-page=report],body[data-page=community]{background:#f8fafc}
 .community-qr-pending img{opacity:.35;filter:grayscale(1)}
 .community-qr-pending p{font-size:13px;text-align:center;padding:0 8px}
 .community-card figcaption{font-size:13px;font-weight:600;text-align:center;line-height:1.4;margin-top:14px}
+.community-card--external{display:flex;flex-direction:column;align-items:stretch;justify-content:center;min-height:116px}
+.community-card--external .button{width:100%;font-size:13px}
+.community-card--external .button img{flex:none}
 .community-invitation-pending{font-size:14px}
 @media(max-width:1000px) and (min-width:761px){
   .site-header{gap:16px;padding:0 20px}
