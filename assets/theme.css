@@ -21,7 +21,6 @@
 :root[data-theme=dark] .button.secondary{background:var(--wash);color:var(--ink);border-color:var(--theme-border)}
 :root[data-theme=dark] .button:not(.secondary){background:#346dc8;border-color:#5586d4;color:white}
 :root[data-theme=dark] .button:not(.secondary):hover{background:#417bd5}
-:root[data-theme=dark] .showcase-slide:first-child .showcase-copy .button{background:white;border-color:white;color:#19364a}
 :root[data-theme=dark] :is(.mode.static){color:var(--static)}
 :root[data-theme=dark] :is(.mode.dynamic){color:var(--dynamic)}
 :root[data-theme=dark] img[src$="/github.svg"]{filter:invert(1)}
@@ -65,12 +64,9 @@
 :root[data-theme=dark] .capability-selection-head button{background:var(--wash);border-color:var(--theme-border)}
 :root[data-theme=dark] .capability-selection-head button:active{background:var(--theme-hover)}
 
-/* Home: keep the three slide palettes and the paper's original artwork. */
-:root[data-theme=dark] .showcase-stage{background:var(--wash)}
-:root[data-theme=dark] .showcase-static{--slide-ink:#f3dfbc;--slide-muted:#d6c1a5;--slide-accent:#d8aa61;background:linear-gradient(120deg,#30291e,#493722 52%,#573b2c)}
-:root[data-theme=dark] .showcase-dynamic{--slide-ink:#d3f1e5;--slide-muted:#b3d1c6;--slide-accent:#73c9b5;background:linear-gradient(120deg,#1b302a,#23483f 52%,#28545a)}
-:root[data-theme=dark] :is(.showcase-static,.showcase-dynamic) .button.secondary{background:transparent;color:var(--slide-ink);border-color:var(--slide-accent)}
-:root[data-theme=dark] :is(.showcase-static,.showcase-dynamic) .button.secondary:hover{background:var(--slide-accent);color:#121619}
+/* Home: crossfade the foreground scrim without recoloring scientific imagery. */
+:root[data-theme=dark] .hero-shade:before{opacity:0}
+:root[data-theme=dark] .hero-shade:after{opacity:1}
 :root[data-theme=dark] .home-news{--news-bg:#1c2227;--news-ink:#edf1f4;--news-soft:#a6b2bf;--news-line:#3a4650;--news-accent:#89b5ff}
 :root[data-theme=dark] .institution-logos a{background:white;box-shadow:0 0 0 4px white}
 :root[data-theme=dark] .doc-paper-logos img{background:white;box-shadow:0 0 0 4px white;border-radius:2px}

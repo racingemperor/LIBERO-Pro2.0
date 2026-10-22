@@ -71,28 +71,29 @@ export function bindHomeNews() {
 }
 
 export function homeShowcase(catalogue) {
-  const example = id => {
-    const p = catalogue.perturbations.find(item => item.id === id);
-    return `<a class="hero-example" href="docs.html?perturbation=${id}"><img src="assets/home-examples/${id}.webp" alt="${id}: ${escape(p.name)} — paper mechanism illustration" width="1740" height="420"></a>`;
-  };
-  const collageIds = ['S01','S10','S15','D01','D04','D18'];
-  const collage = `<figure class="showcase-collage" aria-label="Selected LIBERO-Pro2.0 perturbation examples"><div class="collage-canvas">${collageIds.map(id=>{const p=catalogue.perturbations.find(item=>item.id===id);return `<div class="collage-card"><img src="${p.image}" alt="${escape(p.id+' '+p.name)}" width="1760" height="510"></div>`;}).join('')}<div class="collage-tint" aria-hidden="true"></div><figcaption><span>LIBERO-Pro2.0</span><small>Static shifts · Runtime interventions</small></figcaption></div></figure>`;
-  return `<section class="home-showcase" aria-label="Benchmark highlights" aria-roledescription="carousel">
-    <div class="showcase-stage">
-      <article class="showcase-slide is-active" role="group" aria-roledescription="slide" aria-label="1 of 3: LIBERO-Pro2.0">
-        ${collage}<div class="showcase-copy"><h1>LIBERO-Pro2.0</h1><p class="showcase-subtitle">A Benchmark for Evaluating Robust Embodied Intelligence</p><p>Static distribution shifts. Runtime interventions. The same task goal.</p><a class="button" href="docs.html#protocol">Explore the benchmark <span aria-hidden="true">↗</span></a></div>
-      </article>
-      <article class="showcase-slide showcase-static" role="group" aria-roledescription="slide" aria-label="2 of 3: Static shifts" aria-hidden="true" inert>
-        <div class="showcase-copy"><span class="mode static">22 static perturbations</span><h2>Before the<br>first action.</h2><p class="showcase-subtitle">Generalization under changed conditions</p><p>Layouts, appearance, sensing and robot configuration change at reset.</p><a class="button secondary" href="docs.html#static-perturbations">Explore static shifts <span aria-hidden="true">↗</span></a></div>
-        <div class="showcase-examples">${['S01','S13','S22'].map(example).join('')}</div>
-      </article>
-      <article class="showcase-slide showcase-dynamic" role="group" aria-roledescription="slide" aria-label="3 of 3: Dynamic interventions" aria-hidden="true" inert>
-        <div class="showcase-copy"><span class="mode dynamic">20 dynamic perturbations</span><h2>When the<br>scene changes.</h2><p class="showcase-subtitle">Adaptation during execution</p><p>Task-triggered interventions test recovery during approach, grasp, transport and placement.</p><a class="button secondary" href="docs.html#dynamic-perturbations">Explore dynamic shifts <span aria-hidden="true">↗</span></a></div>
-        <div class="showcase-examples">${['D01','D04','D18'].map(example).join('')}</div>
-      </article>
+  // Reuse the public, correctly oriented clips. Repeated tiles are decorative,
+  // and never represent additional tasks or demonstrations.
+  const columns = [
+    ['S01','D04','S15','D17'], ['D01','S13','D12','S22'],
+    ['S17','D07','S02','D15'], ['D18','S06','D02','S19'],
+    ['S10','D10','S18','D06'], ['D03','S16','D09','S11']
+  ];
+  const wall = columns.map((ids,index)=>`<div class="hero-wall-column" style="--column:${index}"><div class="hero-wall-track">${[0,1,2].map(()=>`<div class="hero-wall-group">${ids.map(id=>{
+    const clip=perturbationClip(id);
+    return `<div class="hero-wall-tile"><video data-hero-clip data-src="${clip.src}" poster="${clip.poster}" width="256" height="256" muted loop playsinline preload="none" tabindex="-1" disablepictureinpicture></video></div>`;
+  }).join('')}</div>`).join('')}</div></div>`).join('');
+  return `<section class="home-showcase" aria-labelledby="home-title">
+    <div class="hero-wall" aria-hidden="true">${wall}</div>
+    <div class="hero-shade" aria-hidden="true"></div>
+    <div class="hero-content">
+      <h1 id="home-title">LIBERO-Pro2.0</h1>
+      <p class="hero-subtitle">A Benchmark for Evaluating Robust Embodied Intelligence</p>
+      <dl class="hero-statistics" aria-label="Benchmark scale">
+        <div><dt>Perturbation types</dt><dd>${catalogue.perturbations.length}</dd></div>
+        <div><dt>Task–perturbation instances</dt><dd>1,646</dd></div>
+        <div><dt>Demonstration trajectories</dt><dd>39,390</dd></div>
+      </dl>
     </div>
-    <div class="showcase-controls"><button class="round-control" data-slide-step="-1" aria-label="Previous highlight">‹</button><div class="slide-dots" role="group" aria-label="Choose highlight">${['LIBERO-Pro2.0','Static shifts','Dynamic interventions'].map((label,i)=>`<button data-slide="${i}" aria-label="Show ${label}" aria-pressed="${i===0}"><span></span></button>`).join('')}</div><button class="round-control" data-slide-step="1" aria-label="Next highlight">›</button><span class="slide-count" aria-live="off">1 / 3</span></div>
-    <p class="sr-only" data-slide-status aria-live="polite"></p>
   </section>`;
 }
 
@@ -176,7 +177,7 @@ export function bindHomePresentation() {
   const preference = matchMedia('(prefers-reduced-motion: reduce)');
   // Content remains visible if motion is disabled or observation is unavailable.
   if (preference.matches || !('IntersectionObserver' in window)) return release;
-  const blocks = [...document.querySelectorAll('#content > .section, .paper-intro > h2, .paper-meta')];
+  const blocks = [...document.querySelectorAll('.home-body > .section, .paper-intro > h2, .paper-meta')];
   const reveal = block => { block.classList.add('is-revealed'); observer.unobserve(block); };
   observer = new IntersectionObserver(entries => {
     for (const entry of entries) if (entry.isIntersecting) reveal(entry.target);
@@ -196,13 +197,57 @@ export function bindHomePresentation() {
   return release;
 }
 
+function bindHeroBackdrop(root) {
+  const preference=matchMedia('(prefers-reduced-motion: reduce)');
+  const compact=matchMedia('(max-width:760px)');
+  const connection=navigator.connection;
+  const controller=new AbortController();
+  const options={signal:controller.signal};
+  const items=[...root.querySelectorAll('[data-hero-clip]')].map(video=>({video,visible:false,requested:false}));
+  let visible=false;
+  const sync=()=>{
+    const moving=visible&&!document.hidden&&!preference.matches&&!connection?.saveData;
+    root.dataset.moving=String(moving);
+    // Bound simultaneous decoders, especially on phones. Remaining tiles keep
+    // their posters while the wall moves; no extra media files are generated.
+    const playing=moving?items.filter(item=>item.visible).sort((a,b)=>b.video.getBoundingClientRect().left-a.video.getBoundingClientRect().left).slice(0,compact.matches?6:12):[];
+    for(const item of items){
+      if(playing.includes(item)){
+        if(item.requested)continue;
+        item.requested=true;
+        if(!item.video.getAttribute('src'))item.video.src=item.video.dataset.src;
+        item.video.muted=true;
+        item.video.play()?.catch(()=>{item.requested=false;});
+      }else{
+        item.requested=false;
+        item.video.pause();
+      }
+    }
+  };
+  if(!('IntersectionObserver' in window))return;
+  const sectionObserver=new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;sync();});
+  const clipObserver=new IntersectionObserver(entries=>{
+    for(const entry of entries)items.find(item=>item.video===entry.target).visible=entry.isIntersecting&&entry.intersectionRatio>.05;
+    sync();
+  },{root,threshold:[0,.05]});
+  sectionObserver.observe(root);
+  items.forEach(item=>clipObserver.observe(item.video));
+  document.addEventListener('visibilitychange',sync,options);
+  preference.addEventListener('change',sync,options);
+  compact.addEventListener('change',sync,options);
+  connection?.addEventListener('change',sync,options);
+  return ()=>{
+    controller.abort();sectionObserver.disconnect();clipObserver.disconnect();
+    root.dataset.moving='false';items.forEach(item=>item.video.pause());
+  };
+}
+
 export function bindHomeMotion() {
   const root = document.querySelector('.home-showcase');
   if (!root) return;
+  const releaseBackdrop=bindHeroBackdrop(root);
   const preference = matchMedia('(prefers-reduced-motion: reduce)');
-  const slides = [...root.querySelectorAll('.showcase-slide')];
-  const dots = [...root.querySelectorAll('[data-slide]')];
-  let current = 0, elapsed = 0, last = 0, frame;
+  let last = 0, frame;
   const galleries = [...document.querySelectorAll('[data-gallery]')].map(section => ({
     rows: [...section.querySelectorAll('[data-gallery-row]')].map(view=>({view, visible:false, position:0, span:0, holdUntil:0})),
     videos: [...section.querySelectorAll('video')].map(video=>({video, visible:false, requested:false}))
@@ -220,20 +265,6 @@ export function bindHomeMotion() {
       }
     }
   };
-  const show = (index, manual = false) => {
-    current = (index + slides.length) % slides.length;
-    slides.forEach((slide,i)=>{slide.classList.toggle('is-active',i===current);slide.inert=i!==current;slide.setAttribute('aria-hidden',String(i!==current));});
-    dots.forEach((dot,i)=>dot.setAttribute('aria-pressed',String(i===current)));
-    root.querySelector('.slide-count').textContent = `${current+1} / ${slides.length}`;
-    if (manual) root.querySelector('[data-slide-status]').textContent = slides[current].getAttribute('aria-label');
-    elapsed = 0;
-  };
-  dots.forEach(dot=>dot.addEventListener('click',()=>show(Number(dot.dataset.slide),true)));
-  root.querySelectorAll('[data-slide-step]').forEach(button=>button.addEventListener('click',()=>show(current+Number(button.dataset.slideStep),true)));
-  root.addEventListener('keydown',event=>{
-    if(!['ArrowLeft','ArrowRight'].includes(event.key))return;
-    event.preventDefault();show(current+(event.key==='ArrowRight'?1:-1),true);
-  });
   const rows=galleries.flatMap(g=>g.rows), videos=galleries.flatMap(g=>g.videos);
   const observer = new IntersectionObserver(entries=>{
     for (const entry of entries) {
@@ -269,15 +300,11 @@ export function bindHomeMotion() {
     }
   }
   document.addEventListener('visibilitychange',syncVideos);
-  const onPreference=()=>{elapsed=0;syncVideos();};
+  const onPreference=()=>syncVideos();
   preference.addEventListener('change',onPreference);
   const tick = now => {
     const dt = last ? Math.min(now-last,100) : 0;last=now;
     if (!document.hidden) {
-      const bounds=root.getBoundingClientRect();
-      if (!preference.matches && bounds.bottom>0 && bounds.top<innerHeight && !root.matches(':hover,:focus-within')) {
-        elapsed+=dt;if(elapsed>=6500)show(current+1);
-      }
       for (const gallery of galleries) {
         for(const row of gallery.rows) {
           if(preference.matches||!row.visible||now<row.holdUntil||row.view.matches(':hover,:focus-within')){row.position=row.view.scrollLeft;continue;}
@@ -292,6 +319,7 @@ export function bindHomeMotion() {
   };
   syncVideos();frame=requestAnimationFrame(tick);
   return ()=>{
+    releaseBackdrop?.();
     cancelAnimationFrame(frame);observer.disconnect();resize.disconnect();
     document.removeEventListener('visibilitychange',syncVideos);
     preference.removeEventListener('change',onPreference);

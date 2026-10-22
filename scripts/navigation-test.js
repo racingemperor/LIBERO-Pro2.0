@@ -56,6 +56,32 @@ async function navigate(action,ready,{push=true}={}) {
 }
 
 const tests = [
+  ['Home hero moves behind a fixed title, pauses off-screen and preserves the overview film', async()=>{
+    await load('index.html');
+    const hero=query('.home-showcase');
+    assert(query('#home-title')?.textContent==='LIBERO-Pro2.0','Home title changed');
+    assert(!query('.showcase-slide')&&!query('[aria-roledescription="carousel"]'),'The old Home carousel remains');
+    const counts=[...doc().querySelectorAll('.hero-statistics dd')].map(node=>node.textContent);
+    assert(counts.join('|')==='42|1,646|39,390','Hero scale differs from the approved Home introduction');
+    assert(query('.hero-statistics').getBoundingClientRect().top>query('.hero-subtitle').getBoundingClientRect().bottom,'Statistics appear above the title or subtitle');
+    const videos=[...doc().querySelectorAll('[data-hero-clip]')];
+    await waitFor(()=>videos.some(video=>video.currentTime>0&&!video.paused),'visible hero playback');
+    const limit=win().innerWidth<=760?6:12;
+    assert(videos.filter(video=>!video.paused).length<=limit,'Hero exceeded its simultaneous playback limit');
+    const track=query('.hero-wall-track'),titleTop=query('#home-title').getBoundingClientRect().top;
+    const transform=win().getComputedStyle(track).transform;
+    await new Promise(resolve=>setTimeout(resolve,200));
+    assert(win().getComputedStyle(track).transform!==transform,'The task background is stationary');
+    assert(query('#home-title').getBoundingClientRect().top===titleTop,'The main title moves with the background');
+    const film=query('[data-home-video]');
+    assert(film.paused&&!film.autoplay&&!film.loop,'The overview film must wait for a visitor click');
+    query('#news').scrollIntoView({behavior:'instant',block:'center'});
+    await waitFor(()=>hero.dataset.moving==='false'&&videos.every(video=>video.paused),'off-screen hero pause');
+    assert(film.paused,'Scrolling to News auto-played the overview film');
+    win().scrollTo({top:0,behavior:'instant'});
+    await waitFor(()=>hero.dataset.moving==='true'&&videos.some(video=>!video.paused),'hero resume');
+    assert(doc().documentElement.scrollWidth<=win().innerWidth,'Hero overflows the viewport');
+  }],
   ['Theme switching preserves filters, scroll, chart nodes and navigation history', async()=>{
     const saved=localStorage.getItem('libero-theme');
     try {

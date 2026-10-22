@@ -55,6 +55,7 @@ function homePage() {
   const domainLink=c=>`<a class="home-domain" data-home-domain="${c.id}" href="docs.html#domain-${c.id}" ${domainStyle(c)}><h3 class="domain-name">${c.name}</h3><p>${esc(c.description)}</p><span>${c.static.length} static / ${c.dynamic.length} dynamic <span aria-hidden="true">↗</span></span></a>`;
   return `<main id="content">
     ${homeShowcase(catalogue)}
+    <div class="container home-body">
     <section class="paper-intro" id="overview"><h2>LIBERO-Pro2.0: A Benchmark for Evaluating Robust Embodied Intelligence</h2>${peopleSection()}</section>
     ${homeNews(news.entries)}
     ${homeFilm()}
@@ -69,6 +70,7 @@ function homePage() {
     <section class="section home-leaderboard" id="leaderboard">${sectionHead('Leaderboard','<a class="text-link" href="leaderboard.html">Full leaderboard ↗</a>')}<div class="chart-grid">${chart('static',10)}${chart('dynamic',10)}</div></section>
     ${homeModels(results.models,upcomingModels.models,assets,modelUrl)}
     ${citationSection()}
+    </div>
   </main>`;
 }
 
