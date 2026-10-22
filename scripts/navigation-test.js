@@ -696,6 +696,7 @@ const tests = [
     assert(doc().querySelectorAll('.community-section').length === 5, 'Community sections are missing');
     assert(query('#discord a[href="https://discord.gg/havRDWzs6"]'), 'Discord invitation link is missing');
     assert(query('#feishu img[src="assets/community/feishu-20261022.jpg"]'), 'Feishu invitation image is missing');
+    assert(query('#qq img[src="assets/community/qq-20261022.jpg"]'), 'QQ invitation image is missing');
     assert(doc().documentElement.scrollWidth <= win().innerWidth, 'Community overflows the viewport');
     if (win().matchMedia('(max-width:760px)').matches) {
       click('.menu-button');
