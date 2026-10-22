@@ -342,7 +342,10 @@ body[data-page=leaderboard] .capability-data th a{display:inline-flex;align-item
 .institution-logos a:focus-visible{outline:2px solid var(--blue);outline-offset:4px}
 .institution-logos img{display:block;height:36px;width:auto;max-width:none;object-fit:contain;margin:0}
 .home-summary{max-width:900px;margin:0 auto;font-size:18px;line-height:1.85}
+.home-summary p{color:var(--ink);text-align:justify}
 .home-summary p+p{margin-top:22px}
+.home-summary strong,.home-summary a{font-weight:700}
+.home-summary a{color:var(--blue);text-decoration:underline;text-underline-offset:3px}
 .home-model-list{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
 .home-model-list li{display:flex;min-width:0;max-width:100%}
 .home-model-chip{display:inline-flex;align-items:center;gap:8px;min-height:40px;max-width:100%;padding:5px 12px 5px 7px;border:1px solid #87b5ac;border-radius:999px;background:#edf7f3;color:#215e52;font-size:12px;font-weight:600;line-height:1.4;transition:background .15s,border-color .15s}
