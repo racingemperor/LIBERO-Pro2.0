@@ -11,7 +11,7 @@
 @media(max-width:370px){.site-header{column-gap:8px;padding-inline:12px}.brand-wordmark{width:154px}}
 
 /* Fade palette properties only; the page remains interactive during a switch. */
-.theme-changing :is(body,h1,h2,h3,h4,p,dt,dd,a,small,span,strong,code,pre,select,.site-header,.site-nav,.home-news-card,.model-chip,.leaderboard-table th,.leaderboard-table td,.doc-content,.button,.capability-selection-head button,.capability-preview,.community-card,.community-qr-pending,.publication-version,.goal-predicates,.citation-card,.citation-copy){transition:color .32s ease,background-color .32s ease,border-color .32s ease}
+.theme-changing :is(body,h1,h2,h3,h4,p,dt,dd,a,small,span,strong,code,pre,select,.site-header,.site-nav,.home-news-card,.model-chip,.leaderboard-table th,.leaderboard-table td,.doc-content,.button,.capability-selection-head button,.capability-preview,.community-card,.community-qr-pending,.publication-venue,.goal-predicates,.citation-card,.citation-copy){transition:color .32s ease,background-color .32s ease,border-color .32s ease}
 .theme-changing :is(.capability-grid line,.capability-grid text,.capability-line,.capability-point,.capability-value,.capability-end-label text,.taxonomy-face,.taxonomy-mode path,.taxonomy-ring text){transition:fill .32s ease,stroke .32s ease}
 @media(prefers-reduced-motion:reduce){.theme-toggle svg,.theme-changing body,.theme-changing *{transition:none!important}}
 
@@ -94,8 +94,8 @@
 :root[data-theme=dark] :is(.reading code,.doc-content :not(pre)>code,.goal-predicates){background:var(--wash)}
 :root[data-theme=dark] .goal-predicates code{background:none}
 :root[data-theme=dark] body:is([data-page=report],[data-page=community]){background:var(--paper)}
-:root[data-theme=dark] .publication-version{background:#23364e;color:#a9c9ff}
-:root[data-theme=dark] .publication-version.previous{background:var(--wash);color:var(--muted)}
+:root[data-theme=dark] .publication-venue{background:#23364e;color:#a9c9ff}
+:root[data-theme=dark] .publication-venue.preprint{background:var(--wash);color:var(--muted)}
 :root[data-theme=dark] .publication-links a{border-color:var(--line);text-decoration-color:var(--theme-border)}
 :root[data-theme=dark] .community-card{background:var(--wash);border-color:var(--line)}
 :root[data-theme=dark] .community-qr-pending{background:var(--paper)}
