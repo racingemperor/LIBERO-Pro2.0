@@ -109,16 +109,28 @@ export function perturbationClip(id) {
 
 export function homeGallery(catalogue, mode) {
   const entries = catalogue.perturbations.filter(p=>p.mode===mode);
+  // One shuffled arrangement, interleaving tasks and scenes in the current
+  // recordings. Each row also separates matching tasks across its loop seam.
+  const order = {
+    static: [
+      ['S09','S08','S03','S06','S17','S01','S05','S16'],
+      ['S15','S02','S18','S20','S22','S14','S12','S13'],
+      ['S21','S10','S07','S11','S19','S04']
+    ],
+    dynamic: [
+      ['D16','D18','D08','D19','D12','D09','D17'],
+      ['D05','D01','D10','D03','D14','D06','D07'],
+      ['D04','D15','D20','D02','D11','D13']
+    ]
+  };
   const card = (p, duplicate) => {
     const clip = homePreviewClip(p.id);
     return `<a class="gallery-item" href="docs.html?perturbation=${p.id}" ${duplicate?'tabindex="-1"':''} aria-label="${p.id}: ${escape(p.name)} — open perturbation design"><video class="gallery-video" data-src="${escape(clip.src)}" poster="${escape(clip.poster)}" width="256" height="256" muted loop playsinline preload="none" aria-hidden="true" disablepictureinpicture></video></a>`;
   };
   // Keep each perturbation once in the reading order. Two visual copies cover
   // the full viewport through the seam even for the shortest six-card row.
-  let offset = 0;
-  const rows = Array.from({length:3}, (_,i)=>{
-    const count = Math.ceil((entries.length-offset)/(3-i));
-    const items = entries.slice(offset,offset+count);offset+=count;
+  const rows = order[mode].map((ids,i)=>{
+    const items = ids.map(id=>entries.find(p=>p.id===id));
     return `<div class="gallery-viewport" data-gallery-row data-direction="${i===1?'left':'right'}" tabindex="0" role="region" aria-label="${mode} examples, row ${i+1}, scroll to explore"><div class="gallery-track">${[false,true,true].map(duplicate=>`<div class="gallery-group" ${duplicate?'aria-hidden="true"':''}>${items.map(p=>card(p,duplicate)).join('')}</div>`).join('')}</div></div>`;
   }).join('');
   return `<section class="section gallery-section" id="${mode}-gallery" data-gallery="${mode}"><div class="section-head"><h2>${mode==='static'?'Static shifts':'Dynamic interventions'}</h2></div><div class="gallery-rows">${rows}</div><a class="text-link gallery-all" href="docs.html#${mode}-perturbations">View all ${entries.length} ${mode} perturbations ↗</a></section>`;
@@ -204,6 +216,7 @@ export function bindHomePresentation() {
 
 function bindHeroBackdrop(root) {
   const preference=matchMedia('(prefers-reduced-motion: reduce)');
+  let reduced=preference.matches;
   const compact=matchMedia('(max-width:760px)');
   const connection=navigator.connection;
   const controller=new AbortController();
@@ -211,11 +224,13 @@ function bindHeroBackdrop(root) {
   const items=[...root.querySelectorAll('[data-hero-clip]')].map(video=>({video,visible:false,requested:false}));
   let visible=false;
   const sync=()=>{
-    const moving=visible&&!document.hidden&&!preference.matches&&!connection?.saveData;
+    const moving=visible&&!document.hidden&&!reduced&&!connection?.saveData;
     root.dataset.moving=String(moving);
     // Bound simultaneous decoders, especially on phones. Remaining tiles keep
     // their posters while the wall moves; no extra media files are generated.
-    const playing=moving?items.filter(item=>item.visible).sort((a,b)=>b.video.getBoundingClientRect().left-a.video.getBoundingClientRect().left).slice(0,compact.matches?6:12):[];
+    const playing=moving?items.filter(item=>item.visible)
+      .map(item=>({item,left:item.video.getBoundingClientRect().left}))
+      .sort((a,b)=>b.left-a.left).slice(0,compact.matches?4:8).map(entry=>entry.item):[];
     for(const item of items){
       if(playing.includes(item)){
         if(item.requested)continue;
@@ -237,12 +252,15 @@ function bindHeroBackdrop(root) {
   },{root,threshold:[0,.05]});
   sectionObserver.observe(root);
   items.forEach(item=>clipObserver.observe(item.video));
+  const onPreference=event=>{reduced=event.matches;sync();};
   document.addEventListener('visibilitychange',sync,options);
-  preference.addEventListener('change',sync,options);
-  compact.addEventListener('change',sync,options);
+  preference.addEventListener('change',onPreference);
+  compact.addEventListener('change',sync);
   connection?.addEventListener('change',sync,options);
   return ()=>{
     controller.abort();sectionObserver.disconnect();clipObserver.disconnect();
+    preference.removeEventListener('change',onPreference);
+    compact.removeEventListener('change',sync);
     root.dataset.moving='false';items.forEach(item=>item.video.pause());
   };
 }
@@ -251,83 +269,125 @@ export function bindHomeMotion() {
   const root = document.querySelector('.home-showcase');
   if (!root) return;
   const releaseBackdrop=bindHeroBackdrop(root);
+  if (!('IntersectionObserver' in window)) return releaseBackdrop;
   const preference = matchMedia('(prefers-reduced-motion: reduce)');
-  let last = 0, frame;
-  const galleries = [...document.querySelectorAll('[data-gallery]')].map(section => ({
-    rows: [...section.querySelectorAll('[data-gallery-row]')].map(view=>({view, visible:false, position:0, span:0, holdUntil:0})),
-    videos: [...section.querySelectorAll('video')].map(video=>({video, visible:false, requested:false}))
+  // Keep the frame loop independent of live media-query reads. Chromium can
+  // consume the pending change when matches is polled during an animation.
+  let reduced=preference.matches;
+  const compact = matchMedia('(max-width:760px)');
+  const connection = navigator.connection;
+  const controller = new AbortController();
+  const options = {signal:controller.signal};
+  let last=0, frame=0, resumeTimer;
+  const rows = [...document.querySelectorAll('[data-gallery-row]')].map(view=>({
+    view,visible:false,position:0,span:0,holdUntil:0,hovered:false,focused:false,
+    videos:[...view.querySelectorAll('video')].map(video=>({video,visible:false,ratio:0,requested:false}))
   }));
+  const videos=rows.flatMap(row=>row.videos);
+  const rowByElement=new Map(rows.map(row=>[row.view,row]));
+  const videoByElement=new Map(videos.map(item=>[item.video,item]));
+  const motionAllowed=()=>!reduced&&!document.hidden&&!connection?.saveData;
+  const availableRows=()=>motionAllowed()?rows.filter(row=>row.visible&&!row.hovered&&!row.focused):[];
+  const syncMotion=()=>{
+    clearTimeout(resumeTimer);
+    const now=performance.now(), available=availableRows();
+    if(available.some(row=>now>=row.holdUntil)){
+      if(!frame){last=0;frame=requestAnimationFrame(tick);}
+    }else{
+      cancelAnimationFrame(frame);frame=0;last=0;
+      if(available.length)resumeTimer=setTimeout(syncMotion,Math.min(...available.map(row=>row.holdUntil))-now+1);
+    }
+  };
   const syncVideos = () => {
-    for (const gallery of galleries) for (const item of gallery.videos) {
-      const play = item.visible && !preference.matches && !document.hidden;
+    const playing=new Set();
+    if(motionAllowed()){
+      // Share a fixed decoder budget across visible rows, including when both
+      // sections meet in the viewport. Other tiles retain their still posters.
+      const buckets=rows.filter(row=>row.visible).map(row=>row.videos.filter(item=>item.visible)
+        .sort((a,b)=>b.ratio-a.ratio||Number(b.requested)-Number(a.requested)));
+      const limit=compact.matches?6:12;
+      for(let i=0;playing.size<limit&&buckets.some(bucket=>i<bucket.length);i++){
+        for(const bucket of buckets){
+          if(bucket[i])playing.add(bucket[i]);
+          if(playing.size===limit)break;
+        }
+      }
+    }
+    for (const item of videos) {
+      const play = playing.has(item);
       if (play && !item.requested) {
         item.requested=true;
         if (!item.video.getAttribute('src')) item.video.src=item.video.dataset.src;
         item.video.muted=true;
         item.video.play()?.catch(()=>{item.requested=false;});
-      } else if (!play && item.requested) {
+      } else if (!play) {
         item.requested=false;item.video.pause();
       }
     }
+    syncMotion();
   };
-  const rows=galleries.flatMap(g=>g.rows), videos=galleries.flatMap(g=>g.videos);
   const observer = new IntersectionObserver(entries=>{
     for (const entry of entries) {
-      const row=rows.find(r=>r.view===entry.target);
+      const row=rowByElement.get(entry.target);
       if(row)row.visible=entry.isIntersecting;
-      const item=videos.find(v=>v.video===entry.target);
-      if(item)item.visible=entry.isIntersecting;
+      const item=videoByElement.get(entry.target);
+      if(item){item.visible=entry.isIntersecting&&entry.intersectionRatio>.1;item.ratio=entry.intersectionRatio;}
     }
     syncVideos();
-  },{threshold:0});
+  },{threshold:[0,.1,.5,1]});
   const measure = row => {
     const span=row.view.querySelector('.gallery-group').getBoundingClientRect().width;
     if(!span)return;
     row.position=row.span?row.position/row.span*span:(row.view.dataset.direction==='right'?span:0);
     row.span=span;row.view.scrollLeft=row.position;
   };
-  const resize=new ResizeObserver(entries=>entries.forEach(entry=>measure(rows.find(r=>r.view===entry.target))));
-  for (const gallery of galleries) {
-    gallery.videos.forEach(item=>observer.observe(item.video));
-    for(const row of gallery.rows) {
-      measure(row);observer.observe(row.view);resize.observe(row.view);
-      // Hold only the row being browsed, then resume automatically. Videos
-      // keep playing; vertical page scrolling does not interrupt either loop.
-      const hold=()=>{row.holdUntil=performance.now()+1800;};
-      row.view.addEventListener('keydown',event=>{if(['ArrowLeft','ArrowRight','Home','End'].includes(event.key))hold();});
-      row.view.addEventListener('wheel',event=>{if(event.shiftKey||Math.abs(event.deltaX)>Math.abs(event.deltaY))hold();},{passive:true});
-      let gesture=null;
-      row.view.addEventListener('pointerdown',event=>{gesture={x:event.clientX,y:event.clientY};},{passive:true});
-      row.view.addEventListener('pointermove',event=>{
-        if(gesture&&Math.abs(event.clientX-gesture.x)>12&&Math.abs(event.clientX-gesture.x)>Math.abs(event.clientY-gesture.y))hold();
-      },{passive:true});
-      for(const event of ['pointerup','pointercancel','pointerleave'])row.view.addEventListener(event,()=>{gesture=null;},{passive:true});
-    }
+  const resize=new ResizeObserver(entries=>entries.forEach(entry=>measure(rowByElement.get(entry.target))));
+  videos.forEach(item=>observer.observe(item.video));
+  for(const row of rows) {
+    measure(row);observer.observe(row.view);resize.observe(row.view);
+    // Hold only the row being browsed, then resume automatically. Videos
+    // keep playing; vertical page scrolling does not interrupt either loop.
+    const hold=()=>{row.holdUntil=performance.now()+1800;syncMotion();};
+    row.view.addEventListener('scroll',()=>{
+      if(row.hovered||row.focused||performance.now()<row.holdUntil)row.position=row.view.scrollLeft;
+    },{...options,passive:true});
+    row.view.addEventListener('pointerenter',event=>{if(event.pointerType==='mouse'){row.hovered=true;syncMotion();}},options);
+    row.view.addEventListener('pointerleave',()=>{row.hovered=false;syncMotion();},options);
+    row.view.addEventListener('focusin',()=>{row.focused=true;syncMotion();},options);
+    row.view.addEventListener('focusout',event=>{row.focused=row.view.contains(event.relatedTarget);syncMotion();},options);
+    row.view.addEventListener('keydown',event=>{if(['ArrowLeft','ArrowRight','Home','End'].includes(event.key))hold();},options);
+    row.view.addEventListener('wheel',event=>{if(event.shiftKey||Math.abs(event.deltaX)>Math.abs(event.deltaY))hold();},{...options,passive:true});
+    let gesture=null;
+    row.view.addEventListener('pointerdown',event=>{gesture={x:event.clientX,y:event.clientY};},{...options,passive:true});
+    row.view.addEventListener('pointermove',event=>{
+      if(gesture&&Math.abs(event.clientX-gesture.x)>12&&Math.abs(event.clientX-gesture.x)>Math.abs(event.clientY-gesture.y))hold();
+    },{...options,passive:true});
+    for(const event of ['pointerup','pointercancel','pointerleave'])row.view.addEventListener(event,()=>{gesture=null;},{...options,passive:true});
   }
-  document.addEventListener('visibilitychange',syncVideos);
-  const onPreference=()=>syncVideos();
+  const onPreference=event=>{reduced=event.matches;syncVideos();};
+  document.addEventListener('visibilitychange',syncVideos,options);
   preference.addEventListener('change',onPreference);
+  compact.addEventListener('change',syncVideos);
+  connection?.addEventListener('change',syncVideos,options);
   const tick = now => {
     const dt = last ? Math.min(now-last,100) : 0;last=now;
-    if (!document.hidden) {
-      for (const gallery of galleries) {
-        for(const row of gallery.rows) {
-          if(preference.matches||!row.visible||now<row.holdUntil||row.view.matches(':hover,:focus-within')){row.position=row.view.scrollLeft;continue;}
-          if(!row.span)continue;
-          row.position+=dt*.022*(row.view.dataset.direction==='right'?-1:1);
-          row.position=(row.position+row.span)%row.span;
-          row.view.scrollLeft=row.position;
-        }
-      }
+    const active=availableRows().filter(row=>now>=row.holdUntil);
+    for(const row of active) {
+      if(!row.span)continue;
+      row.position+=dt*.022*(row.view.dataset.direction==='right'?-1:1);
+      row.position=(row.position+row.span)%row.span;
+      row.view.scrollLeft=row.position;
     }
-    frame=requestAnimationFrame(tick);
+    if(active.length)frame=requestAnimationFrame(tick);
+    else{frame=0;syncMotion();}
   };
-  syncVideos();frame=requestAnimationFrame(tick);
+  syncVideos();
   return ()=>{
     releaseBackdrop?.();
-    cancelAnimationFrame(frame);observer.disconnect();resize.disconnect();
-    document.removeEventListener('visibilitychange',syncVideos);
+    controller.abort();clearTimeout(resumeTimer);
     preference.removeEventListener('change',onPreference);
+    compact.removeEventListener('change',syncVideos);
+    cancelAnimationFrame(frame);observer.disconnect();resize.disconnect();
     videos.forEach(item=>item.video.pause());
   };
 }
