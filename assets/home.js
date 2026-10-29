@@ -80,7 +80,7 @@ export function homeShowcase(catalogue) {
   ];
   const wall = columns.map((ids,index)=>`<div class="hero-wall-column" style="--column:${index}"><div class="hero-wall-track">${[0,1,2].map(()=>`<div class="hero-wall-group">${ids.map(id=>{
     const clip=perturbationClip(id);
-    return `<div class="hero-wall-tile"><video data-hero-clip data-src="${clip.src}" poster="${clip.poster}" width="256" height="256" muted loop playsinline preload="none" tabindex="-1" disablepictureinpicture></video></div>`;
+    return `<div class="hero-wall-tile"><video data-hero-clip data-src="${clip.src}" poster="${clip.poster}" width="640" height="640" muted loop playsinline preload="none" tabindex="-1" disablepictureinpicture></video></div>`;
   }).join('')}</div>`).join('')}</div></div>`).join('');
   return `<section class="home-showcase" aria-labelledby="home-title">
     <div class="hero-wall" aria-hidden="true">${wall}</div>
@@ -106,7 +106,7 @@ export function homeGallery(catalogue, mode) {
   const entries = catalogue.perturbations.filter(p=>p.mode===mode);
   const card = (p, duplicate) => {
     const clip = perturbationClip(p.id);
-    return `<a class="gallery-item" href="docs.html?perturbation=${p.id}" ${duplicate?'tabindex="-1"':''} aria-label="${p.id}: ${escape(p.name)} — open perturbation design"><video class="gallery-video" data-src="${escape(clip.src)}" poster="${escape(clip.poster)}" width="256" height="256" muted loop playsinline preload="none" aria-hidden="true" disablepictureinpicture></video></a>`;
+    return `<a class="gallery-item" href="docs.html?perturbation=${p.id}" ${duplicate?'tabindex="-1"':''} aria-label="${p.id}: ${escape(p.name)} — open perturbation design"><video class="gallery-video" data-src="${escape(clip.src)}" poster="${escape(clip.poster)}" width="640" height="640" muted loop playsinline preload="none" aria-hidden="true" disablepictureinpicture></video></a>`;
   };
   // Keep each perturbation once in the reading order. Two visual copies cover
   // the full viewport through the seam even for the shortest six-card row.
