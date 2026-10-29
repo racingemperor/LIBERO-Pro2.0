@@ -253,10 +253,10 @@ for(const [model,gallery] of Object.entries(rollouts.models)){
       const expected=rolloutMediaPaths(model,task.id,variant);
       assert.deepEqual(media,expected,'Media must use the exact approved model/task/perturbation URL');
       for(const file of [media.src,media.poster]){
-        if(model==='nora'){
+        if(file.startsWith('https://racingemperor.github.io/LIBERO-Pro-media/')){
           remoteMediaCount++;
           if(process.env.LIBERO_MEDIA_ROOT){
-            const relative=`assets/rollouts/models/${model}/${task.id}/${variant}${file.endsWith('.mp4')?'.mp4':'.webp'}`;
+            const relative=new URL(file).pathname.replace(/^\/LIBERO-Pro-media\//,'');
             assert(fs.statSync(path.join(process.env.LIBERO_MEDIA_ROOT,relative)).size>0,`Missing companion media ${relative}`);
           }
         }else{
@@ -269,7 +269,8 @@ for(const [model,gallery] of Object.entries(rollouts.models)){
   }
   assert.equal(count,331+baseCount,'Each imported model must retain all 331 applicable perturbation videos');
 }
-assert.equal(remoteMediaCount,rollouts.models.nora?662:0,'NORA needs all 331 remote video/poster pairs');
+assert.equal(remoteMediaCount,(rollouts.models.nora?662:0)+(rollouts.models['pi0-5']?662:0),
+  'Companion-hosted model recordings need all 331 video/poster pairs');
 assert.equal(rolloutMediaPaths('nora','../private','S01'),null);
 assert.equal(rolloutMediaPaths('https://example.com','libero_spatial-0','S01'),null);
 assert.equal(rolloutMediaPaths('nora','libero_spatial-0','S01?redirect=1'),null);
