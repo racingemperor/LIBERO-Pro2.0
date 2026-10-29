@@ -22,6 +22,7 @@ def build(clip):
     source = ROOT / 'assets/rollouts/documents' / f'{identifier}.mp4'
     output = ROOT / clip['src']
     poster = ROOT / clip['poster']
+    output.parent.mkdir(parents=True, exist_ok=True)
     subprocess.run([
         imageio_ffmpeg.get_ffmpeg_exe(), '-hide_banner', '-loglevel', 'error',
         '-xerror', '-y', '-i', str(source), '-map', '0:v:0', '-an',

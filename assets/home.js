@@ -98,7 +98,7 @@ export function homeShowcase(catalogue) {
 }
 
 function homePreviewClip(id) {
-  const base = `assets/rollouts/home/${id}`;
+  const base = `assets/rollouts/home/pi0-5/${id}`;
   return {src:`${base}.mp4`,poster:`${base}.webp`};
 }
 
