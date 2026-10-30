@@ -230,7 +230,7 @@ function bindHeroBackdrop(root) {
     // their posters while the wall moves; no extra media files are generated.
     const playing=moving?items.filter(item=>item.visible)
       .map(item=>({item,left:item.video.getBoundingClientRect().left}))
-      .sort((a,b)=>b.left-a.left).slice(0,compact.matches?4:8).map(entry=>entry.item):[];
+      .sort((a,b)=>b.left-a.left).slice(0,compact.matches?6:12).map(entry=>entry.item):[];
     for(const item of items){
       if(playing.includes(item)){
         if(item.requested)continue;
@@ -274,14 +274,13 @@ export function bindHomeMotion() {
   // Keep the frame loop independent of live media-query reads. Chromium can
   // consume the pending change when matches is polled during an animation.
   let reduced=preference.matches;
-  const compact = matchMedia('(max-width:760px)');
   const connection = navigator.connection;
   const controller = new AbortController();
   const options = {signal:controller.signal};
   let last=0, frame=0, resumeTimer;
   const rows = [...document.querySelectorAll('[data-gallery-row]')].map(view=>({
     view,visible:false,position:0,span:0,holdUntil:0,hovered:false,focused:false,
-    videos:[...view.querySelectorAll('video')].map(video=>({video,visible:false,ratio:0,requested:false}))
+    videos:[...view.querySelectorAll('video')].map(video=>({video,visible:false,requested:false}))
   }));
   const videos=rows.flatMap(row=>row.videos);
   const rowByElement=new Map(rows.map(row=>[row.view,row]));
@@ -299,22 +298,9 @@ export function bindHomeMotion() {
     }
   };
   const syncVideos = () => {
-    const playing=new Set();
-    if(motionAllowed()){
-      // Share a fixed decoder budget across visible rows, including when both
-      // sections meet in the viewport. Other tiles retain their still posters.
-      const buckets=rows.filter(row=>row.visible).map(row=>row.videos.filter(item=>item.visible)
-        .sort((a,b)=>b.ratio-a.ratio||Number(b.requested)-Number(a.requested)));
-      const limit=compact.matches?6:12;
-      for(let i=0;playing.size<limit&&buckets.some(bucket=>i<bucket.length);i++){
-        for(const bucket of buckets){
-          if(bucket[i])playing.add(bucket[i]);
-          if(playing.size===limit)break;
-        }
-      }
-    }
+    const allowed=motionAllowed();
     for (const item of videos) {
-      const play = playing.has(item);
+      const play = allowed && item.visible;
       if (play && !item.requested) {
         item.requested=true;
         if (!item.video.getAttribute('src')) item.video.src=item.video.dataset.src;
@@ -331,10 +317,10 @@ export function bindHomeMotion() {
       const row=rowByElement.get(entry.target);
       if(row)row.visible=entry.isIntersecting;
       const item=videoByElement.get(entry.target);
-      if(item){item.visible=entry.isIntersecting&&entry.intersectionRatio>.1;item.ratio=entry.intersectionRatio;}
+      if(item)item.visible=entry.isIntersecting;
     }
     syncVideos();
-  },{threshold:[0,.1,.5,1]});
+  },{threshold:0});
   const measure = row => {
     const span=row.view.querySelector('.gallery-group').getBoundingClientRect().width;
     if(!span)return;
@@ -367,7 +353,6 @@ export function bindHomeMotion() {
   const onPreference=event=>{reduced=event.matches;syncVideos();};
   document.addEventListener('visibilitychange',syncVideos,options);
   preference.addEventListener('change',onPreference);
-  compact.addEventListener('change',syncVideos);
   connection?.addEventListener('change',syncVideos,options);
   const tick = now => {
     const dt = last ? Math.min(now-last,100) : 0;last=now;
@@ -386,7 +371,6 @@ export function bindHomeMotion() {
     releaseBackdrop?.();
     controller.abort();clearTimeout(resumeTimer);
     preference.removeEventListener('change',onPreference);
-    compact.removeEventListener('change',syncVideos);
     cancelAnimationFrame(frame);observer.disconnect();resize.disconnect();
     videos.forEach(item=>item.video.pause());
   };
