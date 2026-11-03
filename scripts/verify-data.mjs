@@ -23,14 +23,15 @@ assert(manifestArg<0||process.argv[manifestArg+1],'--task-manifest requires a fi
 const publishedTasks=manifestArg<0?null:JSON.parse(fs.readFileSync(process.argv[manifestArg+1],'utf8')).tasks;
 const readPrivate=name=>JSON.parse(fs.readFileSync(path.join(privateRoot,'data',name+'.json'),'utf8'));
 const completed=privateRoot?readPrivate('completed-evaluations-2026-10-08'):null;
+const worldCompleted=privateRoot?readPrivate('worldvla-completed-2026-11-03'):null;
 const sheet=privateRoot?readPrivate('sheet-success-rates'):null;
-const taskModels=['OpenVLA','OpenVLA-OFT_w','OpenVLA-OFT_m','OpenVLA-OFT+','RIPT-VLA','NORA','UniVLA','π0-FAST'];
+const taskModels=['OpenVLA','OpenVLA-OFT_w','OpenVLA-OFT_m','OpenVLA-OFT+','RIPT-VLA','NORA','UniVLA','π0-FAST','WorldVLA'];
 const avg=vs=>vs.length?vs.reduce((a,b)=>a+b,0)/vs.length:null;
 const close=(actual,expected)=>assert(Math.abs(actual-expected)<1e-10,`${actual} != ${expected}`);
-assert.equal(models.length,18);assert.equal(tasks.length,8);assert.equal(perturbations.length,42);
+assert.equal(models.length,19);assert.equal(tasks.length,8);assert.equal(perturbations.length,42);
 assert.equal(new Set(models.map(m=>m.id)).size,models.length);
 assert.deepEqual(models.filter(m=>m.granularity==='task').map(m=>m.name).sort(),taskModels.sort());
-assert(!models.some(m=>/worldvla/i.test(m.name)));
+assert(models.some(m=>m.id==='worldvla'&&m.name==='WorldVLA'));
 const sortedCases=cases=>[...cases].sort((a,b)=>JSON.stringify([a.suite,a.taskId,a.direction]).localeCompare(JSON.stringify([b.suite,b.taskId,b.direction])));
 if(privateRoot){
   const priorModels=readPrivate('completed-evaluations-2026-10-04').models;
@@ -144,7 +145,7 @@ for(const m of models){
   }
   assert.equal(m.taskRates.length,m.granularity==='task'?331:0,'Keep only available, displayed task rates');
   if(!privateRoot)continue;
-  const raw=completed.models.find(c=>c.model===m.name);
+  const raw=[...completed.models,...worldCompleted.models].find(c=>c.model===m.name);
   if(raw){
     assert.equal(m.cells.length,167);
     assert.equal(raw.completedEpisodes,10170);
@@ -153,7 +154,7 @@ for(const m of models){
       const cases=raw.cases.filter(c=>c.direction==='BASE'&&c.suite===suite);
       return cases.reduce((sum,c)=>sum+c.successes,0)/cases.reduce((sum,c)=>sum+c.episodes,0);
     })));
-    assert.equal(m.updated,'2026-10-08');
+    assert.equal(m.updated,m.id==='worldvla'?'2026-11-03':'2026-10-08');
     for(const c of m.taskRates){
       const task=tasks.find(t=>t.id===c.task),internal=perturbations.find(p=>p.id===c.direction)?.sourceId||'BASE';
       const source=raw.cases.find(r=>r.suite===task.suite&&r.taskId===task.taskId&&r.direction===internal);
@@ -243,7 +244,7 @@ for(const [model,gallery] of Object.entries(rollouts.models)){
   assert(models.some(m=>m.id===model),'Unknown rollout model');
   assert.deepEqual(Object.keys(gallery).sort(),tasks.map(t=>t.id).sort());
   const baseCount=tasks.filter(task=>gallery[task.id].BASE).length;
-  assert(baseCount===8||(['openvla-oft-m','nora'].includes(model)&&baseCount===0),'Require all eight Base videos when supplied; OFT_m and NORA currently have perturbation recordings only');
+  assert(baseCount===8||(['openvla-oft-m','nora','worldvla'].includes(model)&&baseCount===0),'Require all eight Base videos when supplied; OFT_m, NORA and WorldVLA currently have perturbation recordings only');
   let count=0;
   for(const task of tasks){
     const expected=[...(baseCount?['BASE']:[]),...perturbations.filter(p=>!designs[task.id].excluded.includes(p.id)).map(p=>p.id)];
@@ -269,7 +270,7 @@ for(const [model,gallery] of Object.entries(rollouts.models)){
   }
   assert.equal(count,331+baseCount,'Each imported model must retain all 331 applicable perturbation videos');
 }
-assert.equal(remoteMediaCount,(rollouts.models.nora?662:0)+(rollouts.models['pi0-5']?662:0),
+assert.equal(remoteMediaCount,(rollouts.models.nora?662:0)+(rollouts.models['pi0-5']?662:0)+(rollouts.models.worldvla?662:0),
   'Companion-hosted model recordings need all 331 video/poster pairs');
 assert.equal(rolloutMediaPaths('nora','../private','S01'),null);
 assert.equal(rolloutMediaPaths('https://example.com','libero_spatial-0','S01'),null);
@@ -319,4 +320,4 @@ for(const field of [
   'url = {https://arxiv.org/abs/2510.03827}'
 ])assert(earlierCitation.includes(field),'1.0 citation differs from the official README: '+field);
 assert.equal(read('news').entries.find(entry=>entry.link?.label==='leaderboards')?.link.url,officialRepository,'News must link to the new repository without a missing anchor');
-console.log('PASS: display-only fields; no snapshots or data download links; 18 models; 42 perturbations and Home clips; eight tasks; aggregate rates; paper controls; official repository links.'+(privateRoot?' Private source comparisons passed.':''));
+console.log('PASS: display-only fields; no snapshots or data download links; 19 models; 42 perturbations and Home clips; eight tasks; aggregate rates; paper controls; official repository links.'+(privateRoot?' Private source comparisons passed.':''));

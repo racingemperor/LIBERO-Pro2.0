@@ -44,7 +44,6 @@
     {"id":"mobilesam2","name":"MobileSAM2"},
     {"id":"exp2vla","name":"Exp2VLA"},
     {"id":"airvla","name":"AirVLA"},
-    {"id":"3d4d","name":"3D4D"},
-    {"id":"worldvla","name":"WorldVLA"}
+    {"id":"3d4d","name":"3D4D"}
   ]
 }
