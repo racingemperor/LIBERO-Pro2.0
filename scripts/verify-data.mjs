@@ -244,7 +244,7 @@ for(const [model,gallery] of Object.entries(rollouts.models)){
   assert(models.some(m=>m.id===model),'Unknown rollout model');
   assert.deepEqual(Object.keys(gallery).sort(),tasks.map(t=>t.id).sort());
   const baseCount=tasks.filter(task=>gallery[task.id].BASE).length;
-  assert(baseCount===8||(['openvla-oft-m','nora','worldvla','openvla','openvla-oft-w','openvla-oft-plus'].includes(model)&&baseCount===0),'Require all eight Base videos when supplied; perturbation-only releases must retain their actual coverage');
+  assert(baseCount===8||(['openvla-oft-m','nora','worldvla','openvla','openvla-oft-w','openvla-oft-plus','univla'].includes(model)&&baseCount===0),'Require all eight Base videos when supplied; perturbation-only releases must retain their actual coverage');
   let count=0;
   for(const task of tasks){
     const expected=[...(baseCount?['BASE']:[]),...perturbations.filter(p=>!designs[task.id].excluded.includes(p.id)).map(p=>p.id)];
@@ -276,7 +276,7 @@ for(const [model,gallery] of Object.entries(rollouts.models)){
   }
   assert.equal(count,331+baseCount,'Each imported model must retain all 331 applicable perturbation videos');
 }
-assert.equal(remoteMediaCount,['nora','pi0-5','worldvla','openvla','openvla-oft-w','openvla-oft-plus','pi0']
+assert.equal(remoteMediaCount,['nora','pi0-5','worldvla','openvla','openvla-oft-w','openvla-oft-plus','pi0','univla']
   .reduce((total,model)=>total+(rollouts.models[model]?662:0),0),
   'Companion-hosted model recordings need all 331 video/poster pairs');
 assert.equal(rolloutMediaPaths('nora','../private','S01'),null);

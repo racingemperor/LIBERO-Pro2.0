@@ -5,7 +5,7 @@ export function rolloutMediaPaths(model, task, variant) {
      typeof variant!=='string'||!/^(BASE|[SD]\d{2})$/.test(variant))return null;
   const nativePi05=model==='pi0-5'&&variant!=='BASE';
   const repository=['openvla','openvla-oft-w'].includes(model)?'LIBERO-Pro-media-2':
-    (model==='openvla-oft-plus'||model==='pi0'&&variant!=='BASE')?'LIBERO-Pro-media-3':
+    (['openvla-oft-plus','univla'].includes(model)||model==='pi0'&&variant!=='BASE')?'LIBERO-Pro-media-3':
     (['nora','worldvla'].includes(model)||nativePi05)?'LIBERO-Pro-media':'';
   const base=repository==='LIBERO-Pro-media-2'
     ?'https://raw.githubusercontent.com/racingemperor/LIBERO-Pro-media-2/1c262f27cdaad4ad786091704fd90ef91775840f/'
