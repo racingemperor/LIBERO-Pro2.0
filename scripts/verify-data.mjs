@@ -244,7 +244,7 @@ for(const [model,gallery] of Object.entries(rollouts.models)){
   assert(models.some(m=>m.id===model),'Unknown rollout model');
   assert.deepEqual(Object.keys(gallery).sort(),tasks.map(t=>t.id).sort());
   const baseCount=tasks.filter(task=>gallery[task.id].BASE).length;
-  assert(baseCount===8||(['openvla-oft-m','nora','worldvla','openvla','openvla-oft-w','openvla-oft-plus','univla','pi0-fast'].includes(model)&&baseCount===0),'Require all eight Base videos when supplied; perturbation-only releases must retain their actual coverage');
+  assert(baseCount===8||(['openvla-oft-m','nora','worldvla','openvla','openvla-oft-w','openvla-oft-plus','univla','pi0-fast','fastwam','openvla-oft'].includes(model)&&baseCount===0),'Require all eight Base videos when supplied; perturbation-only releases must retain their actual coverage');
   let count=0;
   for(const task of tasks){
     const expected=[...(baseCount?['BASE']:[]),...perturbations.filter(p=>!designs[task.id].excluded.includes(p.id)).map(p=>p.id)];
@@ -257,15 +257,18 @@ for(const [model,gallery] of Object.entries(rollouts.models)){
         const pinnedMedia=file.startsWith('https://raw.githubusercontent.com/racingemperor/LIBERO-Pro-media-2/1c262f27cdaad4ad786091704fd90ef91775840f/')||
           file.startsWith('https://raw.githubusercontent.com/racingemperor/LIBERO-Pro-media-4/45056eabdebe226dfb0188732b26fd14593e9005/')||
           file.startsWith('https://raw.githubusercontent.com/racingemperor/LIBERO-Pro-media-2/7aa1997986ba7d382d8defbf3069c8c9fdd37294/')||
-          file.startsWith('https://raw.githubusercontent.com/racingemperor/LIBERO-Pro-media-4/a852bda9d58aa4615d74362cab168c18a716f8b9/');
-        if(pinnedMedia||/^https:\/\/racingemperor\.github\.io\/LIBERO-Pro-media(?:-[234])?\//.test(file)){
+          file.startsWith('https://raw.githubusercontent.com/racingemperor/LIBERO-Pro-media-4/a852bda9d58aa4615d74362cab168c18a716f8b9/')||
+          file.startsWith('https://raw.githubusercontent.com/racingemperor/LIBERO-Pro-media-7/6bc96444b0c830f633bc502f5f073a63965f517a/')||
+          file.startsWith('https://raw.githubusercontent.com/racingemperor/LIBERO-Pro-media-8/49e0a237002ec58239a3c095d816410392db4bfc/')||
+          file.startsWith('https://raw.githubusercontent.com/racingemperor/LIBERO-Pro-media-6/858f04d02f8aa72a8f4483e475b80b8c8da41b96/')||
+          file.startsWith('https://raw.githubusercontent.com/racingemperor/LIBERO-Pro-media-5/68c93046b49cb62f0efd15289bbe8c9697245e14/');
+        if(pinnedMedia||/^https:\/\/racingemperor\.github\.io\/LIBERO-Pro-media(?:-[2-8])?\//.test(file)){
           remoteMediaCount++;
           const pathname=new URL(file).pathname.split('/');
           const repository=pinnedMedia?pathname[2]:pathname[1];
           const parts=pathname.slice(pinnedMedia?4:2);
-          const root=repository==='LIBERO-Pro-media'?process.env.LIBERO_MEDIA_ROOT:
-            process.env[repository==='LIBERO-Pro-media-2'?'LIBERO_MEDIA_2_ROOT':
-              repository==='LIBERO-Pro-media-3'?'LIBERO_MEDIA_3_ROOT':'LIBERO_MEDIA_4_ROOT'];
+          const suffix=repository.replace('LIBERO-Pro-media','').replace('-','');
+          const root=process.env[suffix?`LIBERO_MEDIA_${suffix}_ROOT`:'LIBERO_MEDIA_ROOT'];
           if(root){
             const relative=parts.join('/');
             assert(fs.statSync(path.join(root,relative)).size>0,`Missing companion media ${repository}/${relative}`);
