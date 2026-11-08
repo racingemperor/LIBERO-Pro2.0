@@ -255,7 +255,9 @@ for(const [model,gallery] of Object.entries(rollouts.models)){
       assert.deepEqual(media,expected,'Media must use the exact approved model/task/perturbation URL');
       for(const file of [media.src,media.poster]){
         const pinnedMedia=file.startsWith('https://raw.githubusercontent.com/racingemperor/LIBERO-Pro-media-2/1c262f27cdaad4ad786091704fd90ef91775840f/')||
-          file.startsWith('https://raw.githubusercontent.com/racingemperor/LIBERO-Pro-media-4/45056eabdebe226dfb0188732b26fd14593e9005/');
+          file.startsWith('https://raw.githubusercontent.com/racingemperor/LIBERO-Pro-media-4/45056eabdebe226dfb0188732b26fd14593e9005/')||
+          file.startsWith('https://raw.githubusercontent.com/racingemperor/LIBERO-Pro-media-2/7aa1997986ba7d382d8defbf3069c8c9fdd37294/')||
+          file.startsWith('https://raw.githubusercontent.com/racingemperor/LIBERO-Pro-media-4/a852bda9d58aa4615d74362cab168c18a716f8b9/');
         if(pinnedMedia||/^https:\/\/racingemperor\.github\.io\/LIBERO-Pro-media(?:-[234])?\//.test(file)){
           remoteMediaCount++;
           const pathname=new URL(file).pathname.split('/');
@@ -278,14 +280,14 @@ for(const [model,gallery] of Object.entries(rollouts.models)){
   }
   assert.equal(count,331+baseCount,'Each imported model must retain all 331 applicable perturbation videos');
 }
-assert.equal(remoteMediaCount,['nora','pi0-5','worldvla','openvla','openvla-oft-w','openvla-oft-plus','pi0','univla','pi0-fast']
-  .reduce((total,model)=>total+(rollouts.models[model]?662:0),0),
-  'Companion-hosted model recordings need all 331 video/poster pairs');
+assert.equal(remoteMediaCount,Object.values(rollouts.models).reduce((total,gallery)=>
+  total+Object.values(gallery).reduce((count,clips)=>count+Object.keys(clips).length*2,0),0),
+  'Every model video and poster must be served from its companion repository');
 assert.equal(rolloutMediaPaths('nora','../private','S01'),null);
 assert.equal(rolloutMediaPaths('https://example.com','libero_spatial-0','S01'),null);
 assert.equal(rolloutMediaPaths('nora','libero_spatial-0','S01?redirect=1'),null);
 const mediaRoot=new URL('../assets/rollouts/models/',import.meta.url);
-const actualMedia=fs.readdirSync(mediaRoot,{recursive:true,withFileTypes:true}).filter(entry=>entry.isFile()).map(entry=>path.relative(fileURLToPath(new URL('../',import.meta.url)),path.join(entry.parentPath||entry.path,entry.name)).replaceAll('\\','/'));
+const actualMedia=fs.existsSync(mediaRoot)?fs.readdirSync(mediaRoot,{recursive:true,withFileTypes:true}).filter(entry=>entry.isFile()).map(entry=>path.relative(fileURLToPath(new URL('../',import.meta.url)),path.join(entry.parentPath||entry.path,entry.name)).replaceAll('\\','/')):[];
 assert.deepEqual(actualMedia.sort(),indexedMedia.sort(),'Unexpected or unindexed public media files');
 const publicFiles=['catalogue','home-rollouts','leaderboard-news','model-assets','model-profiles','model-rollouts','news','people','publication','results','task-designs','tasks','training-tasks','training-media','upcoming-models'];
 const dataFiles=fs.readdirSync(new URL('../data/',import.meta.url),{recursive:true,withFileTypes:true}).filter(entry=>entry.isFile());
