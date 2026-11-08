@@ -244,7 +244,7 @@ for(const [model,gallery] of Object.entries(rollouts.models)){
   assert(models.some(m=>m.id===model),'Unknown rollout model');
   assert.deepEqual(Object.keys(gallery).sort(),tasks.map(t=>t.id).sort());
   const baseCount=tasks.filter(task=>gallery[task.id].BASE).length;
-  assert(baseCount===8||(['openvla-oft-m','nora','worldvla','openvla','openvla-oft-w','openvla-oft-plus','univla'].includes(model)&&baseCount===0),'Require all eight Base videos when supplied; perturbation-only releases must retain their actual coverage');
+  assert(baseCount===8||(['openvla-oft-m','nora','worldvla','openvla','openvla-oft-w','openvla-oft-plus','univla','pi0-fast'].includes(model)&&baseCount===0),'Require all eight Base videos when supplied; perturbation-only releases must retain their actual coverage');
   let count=0;
   for(const task of tasks){
     const expected=[...(baseCount?['BASE']:[]),...perturbations.filter(p=>!designs[task.id].excluded.includes(p.id)).map(p=>p.id)];
@@ -254,14 +254,16 @@ for(const [model,gallery] of Object.entries(rollouts.models)){
       const expected=rolloutMediaPaths(model,task.id,variant);
       assert.deepEqual(media,expected,'Media must use the exact approved model/task/perturbation URL');
       for(const file of [media.src,media.poster]){
-        const pinnedMedia=file.startsWith('https://raw.githubusercontent.com/racingemperor/LIBERO-Pro-media-2/1c262f27cdaad4ad786091704fd90ef91775840f/');
-        if(pinnedMedia||/^https:\/\/racingemperor\.github\.io\/LIBERO-Pro-media(?:-[23])?\//.test(file)){
+        const pinnedMedia=file.startsWith('https://raw.githubusercontent.com/racingemperor/LIBERO-Pro-media-2/1c262f27cdaad4ad786091704fd90ef91775840f/')||
+          file.startsWith('https://raw.githubusercontent.com/racingemperor/LIBERO-Pro-media-4/45056eabdebe226dfb0188732b26fd14593e9005/');
+        if(pinnedMedia||/^https:\/\/racingemperor\.github\.io\/LIBERO-Pro-media(?:-[234])?\//.test(file)){
           remoteMediaCount++;
           const pathname=new URL(file).pathname.split('/');
           const repository=pinnedMedia?pathname[2]:pathname[1];
           const parts=pathname.slice(pinnedMedia?4:2);
           const root=repository==='LIBERO-Pro-media'?process.env.LIBERO_MEDIA_ROOT:
-            process.env[repository==='LIBERO-Pro-media-2'?'LIBERO_MEDIA_2_ROOT':'LIBERO_MEDIA_3_ROOT'];
+            process.env[repository==='LIBERO-Pro-media-2'?'LIBERO_MEDIA_2_ROOT':
+              repository==='LIBERO-Pro-media-3'?'LIBERO_MEDIA_3_ROOT':'LIBERO_MEDIA_4_ROOT'];
           if(root){
             const relative=parts.join('/');
             assert(fs.statSync(path.join(root,relative)).size>0,`Missing companion media ${repository}/${relative}`);
@@ -276,7 +278,7 @@ for(const [model,gallery] of Object.entries(rollouts.models)){
   }
   assert.equal(count,331+baseCount,'Each imported model must retain all 331 applicable perturbation videos');
 }
-assert.equal(remoteMediaCount,['nora','pi0-5','worldvla','openvla','openvla-oft-w','openvla-oft-plus','pi0','univla']
+assert.equal(remoteMediaCount,['nora','pi0-5','worldvla','openvla','openvla-oft-w','openvla-oft-plus','pi0','univla','pi0-fast']
   .reduce((total,model)=>total+(rollouts.models[model]?662:0),0),
   'Companion-hosted model recordings need all 331 video/poster pairs');
 assert.equal(rolloutMediaPaths('nora','../private','S01'),null);
