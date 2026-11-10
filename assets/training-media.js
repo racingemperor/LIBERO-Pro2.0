@@ -1,4 +1,5 @@
-const mediaRoot='https://racingemperor.github.io/LIBERO-Pro-media/assets/rollouts/training';
+import {hfMediaRoot} from './rollout-media.js';
+const mediaRoot=hfMediaRoot+'assets/rollouts/training';
 
 export function trainingMediaPaths(task,perturbation='BASE') {
   if(!/^libero_(?:spatial|object|goal|10)-[0-9]$/.test(task)||!/^(?:BASE|S(?:0[1-9]|1[0-9]|2[0-2])|D(?:0[1-9]|1[0-9]|20))$/.test(perturbation))return null;

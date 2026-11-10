@@ -33,7 +33,7 @@ Open [localhost:8765](http://127.0.0.1:8765/). No frontend dependencies or build
 
 ## Data and media
 
-The site publishes display scores and demonstration videos; internal evaluation records are excluded. Additional videos are hosted in [LIBERO-Pro-media](https://github.com/racingemperor/LIBERO-Pro-media). The overview film plays on click; demonstration galleries support muted autoplay.
+The site publishes display scores and demonstration videos; internal evaluation records are excluded. Additional videos are hosted in [LIBERO-Pro-Videos](https://huggingface.co/datasets/racingemperor/LIBERO-Pro-Videos). The overview film plays on click; demonstration galleries support muted autoplay.
 
 ## Credits
 

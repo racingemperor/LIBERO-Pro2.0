@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {rolloutMediaPaths} from '../assets/rollout-media.js';
+import {rolloutMediaPaths,hfMediaRoot} from '../assets/rollout-media.js';
 import {trainingMediaPaths} from '../assets/training-media.js';
 import {baseScore, summaryScore, deltaScore} from '../assets/scores.js';
 const read = name => JSON.parse(fs.readFileSync(new URL('../data/'+name+'.json',import.meta.url),'utf8'));
@@ -77,12 +77,15 @@ assert.equal(training.summary.instances*training.summary.demonstrationsPerInstan
 assert.deepEqual(Object.keys(trainingMedia).sort(),['base','perturbations']);
 assert.deepEqual(Object.keys(trainingMedia.base).sort(),training.tasks.map(t=>t.id).sort());
 assert.deepEqual(Object.keys(trainingMedia.perturbations).sort(),perturbations.map(p=>p.id).sort());
+const verifyHfMedia=file=>{
+  assert(file.startsWith(hfMediaRoot),'Media must use the pinned public Hugging Face repository');
+  const relative=file.slice(hfMediaRoot.length);
+  assert(/^assets\/[a-zA-Z0-9_./-]+\.(mp4|webp)$/.test(relative)&&!relative.split('/').includes('..'),'Invalid media path');
+  if(process.env.LIBERO_HF_MEDIA_ROOT)assert(fs.statSync(path.join(process.env.LIBERO_HF_MEDIA_ROOT,relative)).size>0,`Missing Hugging Face media ${relative}`);
+};
 const verifyTrainingMedia=(media,task,perturbation)=>{
   assert.deepEqual(media,trainingMediaPaths(task,perturbation),'Unexpected training media URL');
-  if(process.env.LIBERO_MEDIA_ROOT)for(const file of Object.values(media)){
-    const relative=new URL(file).pathname.replace(/^\/LIBERO-Pro-media\//,'');
-    assert(fs.statSync(path.join(process.env.LIBERO_MEDIA_ROOT,relative)).size>0,`Missing training media ${relative}`);
-  }
+  for(const file of Object.values(media))verifyHfMedia(file);
 };
 for(const task of training.tasks)verifyTrainingMedia(trainingMedia.base[task.id],task.id,'BASE');
 for(const p of perturbations){
@@ -254,29 +257,8 @@ for(const [model,gallery] of Object.entries(rollouts.models)){
       const expected=rolloutMediaPaths(model,task.id,variant);
       assert.deepEqual(media,expected,'Media must use the exact approved model/task/perturbation URL');
       for(const file of [media.src,media.poster]){
-        const pinnedMedia=file.startsWith('https://raw.githubusercontent.com/racingemperor/LIBERO-Pro-media-2/1c262f27cdaad4ad786091704fd90ef91775840f/')||
-          file.startsWith('https://raw.githubusercontent.com/racingemperor/LIBERO-Pro-media-4/45056eabdebe226dfb0188732b26fd14593e9005/')||
-          file.startsWith('https://raw.githubusercontent.com/racingemperor/LIBERO-Pro-media-2/7aa1997986ba7d382d8defbf3069c8c9fdd37294/')||
-          file.startsWith('https://raw.githubusercontent.com/racingemperor/LIBERO-Pro-media-4/a852bda9d58aa4615d74362cab168c18a716f8b9/')||
-          file.startsWith('https://raw.githubusercontent.com/racingemperor/LIBERO-Pro-media-7/6bc96444b0c830f633bc502f5f073a63965f517a/')||
-          file.startsWith('https://raw.githubusercontent.com/racingemperor/LIBERO-Pro-media-8/49e0a237002ec58239a3c095d816410392db4bfc/')||
-          file.startsWith('https://raw.githubusercontent.com/racingemperor/LIBERO-Pro-media-6/858f04d02f8aa72a8f4483e475b80b8c8da41b96/')||
-          file.startsWith('https://raw.githubusercontent.com/racingemperor/LIBERO-Pro-media-5/68c93046b49cb62f0efd15289bbe8c9697245e14/');
-        if(pinnedMedia||/^https:\/\/racingemperor\.github\.io\/LIBERO-Pro-media(?:-[2-8])?\//.test(file)){
-          remoteMediaCount++;
-          const pathname=new URL(file).pathname.split('/');
-          const repository=pinnedMedia?pathname[2]:pathname[1];
-          const parts=pathname.slice(pinnedMedia?4:2);
-          const suffix=repository.replace('LIBERO-Pro-media','').replace('-','');
-          const root=process.env[suffix?`LIBERO_MEDIA_${suffix}_ROOT`:'LIBERO_MEDIA_ROOT'];
-          if(root){
-            const relative=parts.join('/');
-            assert(fs.statSync(path.join(root,relative)).size>0,`Missing companion media ${repository}/${relative}`);
-          }
-        }else{
-          assert(fs.statSync(new URL('../'+file,import.meta.url)).size>0,`Missing rollout ${file}`);
-          indexedMedia.push(file);
-        }
+        verifyHfMedia(file);
+        remoteMediaCount++;
       }
       count++;
     }
@@ -285,7 +267,7 @@ for(const [model,gallery] of Object.entries(rollouts.models)){
 }
 assert.equal(remoteMediaCount,Object.values(rollouts.models).reduce((total,gallery)=>
   total+Object.values(gallery).reduce((count,clips)=>count+Object.keys(clips).length*2,0),0),
-  'Every model video and poster must be served from its companion repository');
+  'Every model video and poster must be served from the pinned Hugging Face repository');
 assert.equal(rolloutMediaPaths('nora','../private','S01'),null);
 assert.equal(rolloutMediaPaths('https://example.com','libero_spatial-0','S01'),null);
 assert.equal(rolloutMediaPaths('nora','libero_spatial-0','S01?redirect=1'),null);
