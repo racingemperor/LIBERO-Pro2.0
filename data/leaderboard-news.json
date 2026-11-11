@@ -1,6 +1,10 @@
 {
   "entries": [
     {
+      "date": "2026-11-11",
+      "text": "We now support CloudRobo-WM 1.0, with submitted success rates available on the leaderboard."
+    },
+    {
       "date": "2026-11-03",
       "text": "We now support WorldVLA, with success rates and rollout videos available on the leaderboard."
     },

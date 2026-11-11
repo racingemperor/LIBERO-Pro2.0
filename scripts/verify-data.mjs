@@ -24,11 +24,12 @@ const publishedTasks=manifestArg<0?null:JSON.parse(fs.readFileSync(process.argv[
 const readPrivate=name=>JSON.parse(fs.readFileSync(path.join(privateRoot,'data',name+'.json'),'utf8'));
 const completed=privateRoot?readPrivate('completed-evaluations-2026-10-08'):null;
 const worldCompleted=privateRoot?readPrivate('worldvla-completed-2026-11-03'):null;
+const cloudCompleted=privateRoot?readPrivate('cloudrobo-wm-completed-2026-11-11'):null;
 const sheet=privateRoot?readPrivate('sheet-success-rates'):null;
-const taskModels=['OpenVLA','OpenVLA-OFT_w','OpenVLA-OFT_m','OpenVLA-OFT+','RIPT-VLA','NORA','UniVLA','π0-FAST','WorldVLA'];
+const taskModels=['OpenVLA','OpenVLA-OFT_w','OpenVLA-OFT_m','OpenVLA-OFT+','RIPT-VLA','NORA','UniVLA','π0-FAST','WorldVLA','CloudRobo-WM'];
 const avg=vs=>vs.length?vs.reduce((a,b)=>a+b,0)/vs.length:null;
 const close=(actual,expected)=>assert(Math.abs(actual-expected)<1e-10,`${actual} != ${expected}`);
-assert.equal(models.length,19);assert.equal(tasks.length,8);assert.equal(perturbations.length,42);
+assert.equal(models.length,20);assert.equal(tasks.length,8);assert.equal(perturbations.length,42);
 assert.equal(new Set(models.map(m=>m.id)).size,models.length);
 assert.deepEqual(models.filter(m=>m.granularity==='task').map(m=>m.name).sort(),taskModels.sort());
 assert(models.some(m=>m.id==='worldvla'&&m.name==='WorldVLA'));
@@ -148,7 +149,7 @@ for(const m of models){
   }
   assert.equal(m.taskRates.length,m.granularity==='task'?331:0,'Keep only available, displayed task rates');
   if(!privateRoot)continue;
-  const raw=[...completed.models,...worldCompleted.models].find(c=>c.model===m.name);
+  const raw=[...completed.models,...worldCompleted.models,...cloudCompleted.models].find(c=>c.model===m.name);
   if(raw){
     assert.equal(m.cells.length,167);
     assert.equal(raw.completedEpisodes,10170);
@@ -157,7 +158,7 @@ for(const m of models){
       const cases=raw.cases.filter(c=>c.direction==='BASE'&&c.suite===suite);
       return cases.reduce((sum,c)=>sum+c.successes,0)/cases.reduce((sum,c)=>sum+c.episodes,0);
     })));
-    assert.equal(m.updated,m.id==='worldvla'?'2026-11-03':'2026-10-08');
+    assert.equal(m.updated,m.id==='cloudrobo-wm'?'2026-11-11':m.id==='worldvla'?'2026-11-03':'2026-10-08');
     for(const c of m.taskRates){
       const task=tasks.find(t=>t.id===c.task),internal=perturbations.find(p=>p.id===c.direction)?.sourceId||'BASE';
       const source=raw.cases.find(r=>r.suite===task.suite&&r.taskId===task.taskId&&r.direction===internal);
@@ -193,6 +194,16 @@ for(const row of paper.rows){
   }
 }
 assert.equal(baseScore(models.find(m=>m.id==='nora')),models.find(m=>m.id==='nora').scores.base);
+const cloud=models.find(m=>m.id==='cloudrobo-wm');
+assert(cloud&&cloud.name==='CloudRobo-WM'&&cloud.type==='World Action Models');
+close(cloud.scores.base,239/240);
+close(cloud.scores.static.average,0.77816091954023);
+close(cloud.scores.dynamic.average,0.8597916666666666);
+close(cloud.scores.overall,0.8172654690618762);
+for(const cell of cloud.cells){
+  const rates=cloud.taskRates.filter(r=>r.task.startsWith(cell.suite+'-')&&r.direction===cell.direction);
+  assert(rates.length>0);close(cell.rate,avg(rates.map(r=>r.rate)));
+}
 // Independent displayed-value controls transcribed from the supplied paper table.
 for(const [name,s,d] of [['OpenVLA-OFT',58.9,64.6],['Lingbot-VA',68.7,81.8],['MolmoAct2',71.2,76.9],['Cosmos Policy',70.8,72.2],['FastWAM',55.9,70.1]]){
   const m=models.find(m=>m.name===name);assert.equal((m.scores.static.average*100).toFixed(1),s.toFixed(1));assert.equal((m.scores.dynamic.average*100).toFixed(1),d.toFixed(1));
@@ -316,4 +327,4 @@ for(const field of [
   'url = {https://arxiv.org/abs/2510.03827}'
 ])assert(earlierCitation.includes(field),'1.0 citation differs from the official README: '+field);
 assert.equal(read('news').entries.find(entry=>entry.link?.label==='leaderboards')?.link.url,officialRepository,'News must link to the new repository without a missing anchor');
-console.log('PASS: display-only fields; no snapshots or data download links; 19 models; 42 perturbations and Home clips; eight tasks; aggregate rates; paper controls; official repository links.'+(privateRoot?' Private source comparisons passed.':''));
+console.log('PASS: display-only fields; no snapshots or data download links; 20 models; 42 perturbations and Home clips; eight tasks; aggregate rates; paper controls; official repository links.'+(privateRoot?' Private source comparisons passed.':''));

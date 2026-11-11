@@ -348,7 +348,7 @@ const tests = [
     assert(doc().activeElement===query('[data-chart-model="pi0"]'),'Toggle lost keyboard focus');
     assert(query('.capability-svg')===chart&&Math.abs(win().scrollY-scroll)<2,'Chart or scroll reset');
     const selection=chosen().join(',');
-    await change(()=>select('[data-query="type"]','World Action Models'),()=>doc().querySelectorAll('#rankings tbody tr').length===3);
+    await change(()=>select('[data-query="type"]','World Action Models'),()=>doc().querySelectorAll('#rankings tbody tr').length===models.filter(m=>m.type==='World Action Models').length);
     await change(()=>click('#perturbation-rankings .tab[href*="perturbationMode=dynamic"]'),()=>!!query('[data-perturbation-sort="D20"]'));
     assert(chosen().join(',')===selection&&new URL(win().location).searchParams.get('compare')===selection,'Table controls changed chart selection');
     await load(win().location.href);
@@ -474,9 +474,10 @@ const tests = [
   }],
   ['Leaderboard filters and sorting update in place and keep their state', async () => {
     await load('leaderboard.html');
+    const {models}=await (await fetch('../data/results.json')).json();
     win().scrollTo(0, query('#rankings').offsetTop - 120);
     const charts = query('#capabilities'), scroll = win().scrollY;
-    await change(() => select('[data-query="type"]', 'World Action Models'), () => doc().querySelectorAll('#rankings tbody tr').length === 3);
+    await change(() => select('[data-query="type"]', 'World Action Models'), () => doc().querySelectorAll('#rankings tbody tr').length === models.filter(m=>m.type==='World Action Models').length);
     await change(() => click('[data-sort="environment"]'), () => query('[data-sort="environment"]').closest('th').getAttribute('aria-sort') === 'descending');
     const tableScroll = query('#rankings .table-scroll');
     tableScroll.scrollLeft = 80;

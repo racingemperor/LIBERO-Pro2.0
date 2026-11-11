@@ -17,5 +17,6 @@
   "nora": {"description":"NORA is an open generalist vision-language-action model that predicts robot actions from visual observations and language instructions.","source":"https://github.com/declare-lab/nora"},
   "univla": {"description":"UniVLA learns task-centric latent actions from cross-embodiment videos, then adapts its generalist policy to robot control and navigation tasks.","source":"https://github.com/OpenDriveLab/UniVLA"},
   "pi0-fast": {"description":"Physical Intelligence’s autoregressive vision-language-action model uses FAST action tokenization to generate robot action sequences.","source":"https://github.com/Physical-Intelligence/openpi"},
-  "worldvla": {"description":"WorldVLA jointly models actions and visual dynamics in an autoregressive framework for robot manipulation.","source":"https://github.com/alibaba-damo-academy/WorldVLA"}
+  "worldvla": {"description":"WorldVLA jointly models actions and visual dynamics in an autoregressive framework for robot manipulation.","source":"https://github.com/alibaba-damo-academy/WorldVLA"},
+  "cloudrobo-wm": {"description":"CloudRobo-WM 1.0 jointly predicts future visual modalities and robot actions in a multimodal generative world model. The submitted LIBERO-Pro2.0 evaluation uses RGB observations without depth.","source":"https://github.com/CloudRobo-dev/CloudRobo-WM-1.0-LIBERO-Pro2-20261109/blob/main/Cloudrobo_WM_20261016.pdf"}
 }

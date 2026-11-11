@@ -7,7 +7,8 @@ const colors = {
   'pi0-5':'#965616', 'xvla':'#7753b5', 'fastwam':'#007e9b', 'gr00t-n1-7':'#677c19',
   'openvla-oft-m':'#ad4a3a', 'openvla-oft':'#5365a1', 'openvla-oft-plus':'#866440',
   'anchor-align':'#ac5a00', 'openvla-oft-w':'#537b7f', 'ript-vla':'#a03949', 'pi0':'#586371',
-  'openvla':'#824394', 'nora':'#397849', 'univla':'#4966bd', 'pi0-fast':'#97694c'
+  'openvla':'#824394', 'nora':'#397849', 'univla':'#4966bd', 'pi0-fast':'#97694c',
+  'cloudrobo-wm':'#643dc9'
 };
 
 export function createCapabilities(models, assets, profiles, {esc, pct, modelUrl, updateView}) {
