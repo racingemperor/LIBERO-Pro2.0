@@ -10,7 +10,7 @@ A static website for the LIBERO-Pro2.0 benchmark: 42 perturbation types across s
 | --- | --- |
 | Home | Moving task background, benchmark overview, news, overview film, task galleries, model previews and citations. |
 | Document | Task instructions, success conditions, perturbation designs, support coverage and training-data demonstrations. |
-| Leaderboard | Success rates for 20 models, with comparison charts, domain and perturbation rankings, model profiles and task-level videos for 18 models. |
+| Leaderboard | Success rates for 20 models, with comparison charts, domain and perturbation rankings, model profiles and task-level videos for 19 models. |
 | Report | LIBERO-Pro2.0, LIBERO-Pro and LIBERO-Gen papers with previews and resource links. |
 | Community | Community invitations, QR codes and platform links. |
 
