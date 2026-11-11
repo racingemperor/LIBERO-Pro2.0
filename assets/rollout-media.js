@@ -1,6 +1,6 @@
 // Version-pinned public media, preserving the existing gallery coverage.
 export const hfMediaRoot='https://huggingface.co/datasets/racingemperor/LIBERO-Pro-Videos/resolve/eeff29d265e62d6ea269fe75d5344b3cffc7b041/';
-export const cloudroboMediaRoot='https://huggingface.co/datasets/racingemperor/LIBERO-Pro-Videos/resolve/dd5b01fc4425581feaf6d80ff81b5b48339f952f/';
+export const cloudroboMediaRoot='https://huggingface.co/datasets/racingemperor/LIBERO-Pro-Videos/resolve/7d1c811249101881ea5bf300ef38a06a4d12875d/';
 
 export function rolloutMediaPaths(model, task, variant) {
   if(typeof model!=='string'||!/^[a-z0-9-]+$/.test(model)||
