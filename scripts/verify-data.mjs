@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {rolloutMediaPaths,hfMediaRoot,cloudroboMediaRoot} from '../assets/rollout-media.js';
+import {rolloutMediaPaths,hfMediaRoot,cloudroboMediaRoot,pi0MediaRoot} from '../assets/rollout-media.js';
 import {trainingMediaPaths} from '../assets/training-media.js';
 import {baseScore, summaryScore, deltaScore} from '../assets/scores.js';
 const read = name => JSON.parse(fs.readFileSync(new URL('../data/'+name+'.json',import.meta.url),'utf8'));
@@ -26,7 +26,7 @@ const completed=privateRoot?readPrivate('completed-evaluations-2026-10-08'):null
 const worldCompleted=privateRoot?readPrivate('worldvla-completed-2026-11-03'):null;
 const cloudCompleted=privateRoot?readPrivate('cloudrobo-wm-completed-2026-11-11'):null;
 const sheet=privateRoot?readPrivate('sheet-success-rates'):null;
-const taskModels=['OpenVLA','OpenVLA-OFT_w','OpenVLA-OFT_m','OpenVLA-OFT+','RIPT-VLA','NORA','UniVLA','π0-FAST','WorldVLA','CloudRobo-WM'];
+const taskModels=['OpenVLA','OpenVLA-OFT_w','OpenVLA-OFT_m','OpenVLA-OFT+','RIPT-VLA','NORA','UniVLA','π0-FAST','π0','WorldVLA','CloudRobo-WM'];
 const avg=vs=>vs.length?vs.reduce((a,b)=>a+b,0)/vs.length:null;
 const close=(actual,expected)=>assert(Math.abs(actual-expected)<1e-10,`${actual} != ${expected}`);
 assert.equal(models.length,20);assert.equal(tasks.length,8);assert.equal(perturbations.length,42);
@@ -79,7 +79,7 @@ assert.deepEqual(Object.keys(trainingMedia).sort(),['base','perturbations']);
 assert.deepEqual(Object.keys(trainingMedia.base).sort(),training.tasks.map(t=>t.id).sort());
 assert.deepEqual(Object.keys(trainingMedia.perturbations).sort(),perturbations.map(p=>p.id).sort());
 const verifyHfMedia=file=>{
-  const root=[hfMediaRoot,cloudroboMediaRoot].find(root=>file.startsWith(root));
+  const root=[hfMediaRoot,cloudroboMediaRoot,pi0MediaRoot].find(root=>file.startsWith(root));
   assert(root,'Media must use a pinned public Hugging Face revision');
   const relative=file.slice(root.length);
   assert(/^assets\/[a-zA-Z0-9_./-]+\.(mp4|webp)$/.test(relative)&&!relative.split('/').includes('..'),'Invalid media path');
@@ -126,7 +126,7 @@ for(const institution of people.affiliations){
 }
 for(const author of people.authors)for(const id of author.affiliations||[])assert(people.affiliations.some(a=>a.id===id));
 for(const m of models){
-  assert.deepEqual(Object.keys(m).sort(),['id','name','type','scores','cells','taskRates','updated','granularity',...(m.reportedScores?['reportedScores']:[]),...(m.baseEvaluation?['baseEvaluation']:[])].sort(),'Unexpected public model fields');
+  assert.deepEqual(Object.keys(m).sort(),['id','name','type','scores','cells','taskRates','updated','granularity',...(m.reportedScores?['reportedScores']:[]),...(m.baseEvaluation?['baseEvaluation']:[]),...(m.evaluation?['evaluation']:[])].sort(),'Unexpected public model fields');
   assert(profiles[m.id]?.description&&/^https:\/\//.test(profiles[m.id].source),`Missing sourced model introduction ${m.id}`);
   assert(assets[m.id],`Missing model image ${m.id}`);
   assert(fs.existsSync(new URL('../assets/models/'+assets[m.id].asset,import.meta.url)));
@@ -149,7 +149,7 @@ for(const m of models){
     assert(Number.isFinite(rate.rate)&&rate.rate>=0&&rate.rate<=1);
   }
   assert.equal(m.taskRates.length,m.granularity==='task'?331:0,'Keep only available, displayed task rates');
-  if(!privateRoot)continue;
+  if(!privateRoot || m.evaluation)continue;
   const raw=[...completed.models,...worldCompleted.models,...cloudCompleted.models].find(c=>c.model===m.name);
   if(raw){
     assert.equal(m.cells.length,167);
@@ -185,7 +185,7 @@ assert.equal(models.filter(m=>m.reportedScores).length,17);
 for(const row of paper.rows){
   const model=models.find(m=>m.id===row.id);assert(model?.reportedScores);
   assert.deepEqual(Object.keys(model.reportedScores).sort(),['base','dynamic','static']);
-  const summary=summaryScore(model,row.mode);
+  const summary=model.reportedScores[row.mode];
   assert.deepEqual(Object.keys(summary).sort(),['average','categories','delta']);
   assert.deepEqual(Object.keys(summary.categories).sort(),categories.map(c=>c.id).sort());
   const actual={...summary.categories,average:summary.average,base:model.reportedScores.base,delta:summary.delta};
@@ -197,13 +197,27 @@ for(const row of paper.rows){
 const evaluationUpdates=JSON.parse(fs.readFileSync(new URL('./evaluation-updates.json',import.meta.url),'utf8'));
 for(const [id,update] of Object.entries(evaluationUpdates)){
   const model=models.find(m=>m.id===id);assert(model);
-  assert.deepEqual(model.baseEvaluation,update.baseEvaluation);
+  for(const [key,value] of Object.entries(update))assert.deepEqual(model[key],value);
   assert.deepEqual(Object.keys(model.baseEvaluation).sort(),['rate','evaluatedAt','taskCount','trialsPerTask'].sort());
-  close(baseScore(model),197/240);
+  close(baseScore(model),model.scores.base);
   assert.equal(model.baseEvaluation.taskCount,8);
   assert.equal(model.baseEvaluation.trialsPerTask,30);
-  assert.equal(deltaScore(model,'static'),null);
-  assert.equal(deltaScore(model,'dynamic'),null);
+  if(model.evaluation){
+    assert.deepEqual(model.evaluation,{evaluatedAt:'2026-11-21',plannedTrials:10170,validTrials:10169,invalidTrials:1,videoCount:339,
+      exclusions:[{task:'libero_10-5',direction:'D19',validTrials:29,plannedTrials:30,reason:'Joint-limit constraint'}]});
+    close(baseScore(model),202/240);
+    close(summaryScore(model,'static').average,model.scores.static.average);
+    close(summaryScore(model,'dynamic').average,model.scores.dynamic.average);
+    for(const mode of ['static','dynamic'])close(deltaScore(model,mode),model.scores[mode].average-model.scores.base);
+    for(const cell of model.cells){
+      const rates=model.taskRates.filter(r=>r.task.startsWith(cell.suite+'-')&&r.direction===cell.direction);
+      const weights=rates.map(r=>model.evaluation.exclusions.find(e=>e.task===r.task&&e.direction===r.direction)?.validTrials??30);
+      close(cell.rate,rates.reduce((sum,r,i)=>sum+r.rate*weights[i],0)/weights.reduce((a,b)=>a+b,0));
+    }
+  }else{
+    assert.equal(deltaScore(model,'static'),null);
+    assert.equal(deltaScore(model,'dynamic'),null);
+  }
 }
 assert.equal(baseScore(models.find(m=>m.id==='nora')),models.find(m=>m.id==='nora').scores.base);
 const cloud=models.find(m=>m.id==='cloudrobo-wm');

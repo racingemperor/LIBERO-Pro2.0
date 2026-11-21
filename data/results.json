@@ -18331,358 +18331,463 @@
       "name": "π0",
       "type": "Mainstream VLA",
       "scores": {
-        "base": 0.6375,
-        "overall": 0.3704604790419162,
+        "base": 0.8416666666666667,
+        "overall": 0.555296187286444,
         "static": {
-          "average": 0.38621149425287354,
+          "average": 0.5262452107279694,
+          "cells": 87,
           "categories": {
-            "condition": 0.2500032258064516,
-            "environment": 0.5381,
-            "observation": 0.6000083333333334,
-            "execution": 0.05,
-            "robot": 0.191675,
-            "language": 0.4625
-          },
-          "cells": 87
+            "condition": 0.3838709677419355,
+            "environment": 0.7494047619047619,
+            "observation": 0.44722222222222224,
+            "execution": 0.008333333333333333,
+            "robot": 0.5291666666666667,
+            "language": 0.8166666666666667
+          }
         },
         "dynamic": {
-          "average": 0.35333125,
+          "average": 0.5868891242937854,
+          "cells": 80,
           "categories": {
-            "condition": 0.24930416666666666,
-            "environment": 0.5694416666666667,
-            "observation": 0.52708125,
-            "execution": 0.3083333333333333,
-            "robot": 0.07221666666666667,
-            "language": 0.6125
-          },
-          "cells": 80
+            "condition": 0.3965277777777778,
+            "environment": 0.548611111111111,
+            "observation": 0.7395833333333334,
+            "execution": 0.7847222222222222,
+            "robot": 0.5167608286252354,
+            "language": 0.85
+          }
         }
       },
       "cells": [
         {
-          "suite": "libero_spatial",
-          "direction": "S01",
-          "rate": 0.0667
+          "suite": "libero_10",
+          "direction": "D01",
+          "rate": 0.0
         },
         {
-          "suite": "libero_spatial",
+          "suite": "libero_10",
+          "direction": "D02",
+          "rate": 0.1
+        },
+        {
+          "suite": "libero_10",
+          "direction": "D03",
+          "rate": 0.03333333333333333
+        },
+        {
+          "suite": "libero_10",
+          "direction": "D04",
+          "rate": 0.6166666666666667
+        },
+        {
+          "suite": "libero_10",
+          "direction": "D05",
+          "rate": 0.36666666666666664
+        },
+        {
+          "suite": "libero_10",
+          "direction": "D06",
+          "rate": 0.9333333333333333
+        },
+        {
+          "suite": "libero_10",
+          "direction": "D07",
+          "rate": 0.1
+        },
+        {
+          "suite": "libero_10",
+          "direction": "D08",
+          "rate": 0.0
+        },
+        {
+          "suite": "libero_10",
+          "direction": "D09",
+          "rate": 0.6
+        },
+        {
+          "suite": "libero_10",
+          "direction": "D10",
+          "rate": 0.48333333333333334
+        },
+        {
+          "suite": "libero_10",
+          "direction": "D11",
+          "rate": 0.36666666666666664
+        },
+        {
+          "suite": "libero_10",
+          "direction": "D12",
+          "rate": 0.5166666666666667
+        },
+        {
+          "suite": "libero_10",
+          "direction": "D13",
+          "rate": 0.5166666666666667
+        },
+        {
+          "suite": "libero_10",
+          "direction": "D14",
+          "rate": 0.5
+        },
+        {
+          "suite": "libero_10",
+          "direction": "D15",
+          "rate": 0.5333333333333333
+        },
+        {
+          "suite": "libero_10",
+          "direction": "D16",
+          "rate": 0.55
+        },
+        {
+          "suite": "libero_10",
+          "direction": "D17",
+          "rate": 0.4666666666666667
+        },
+        {
+          "suite": "libero_10",
+          "direction": "D18",
+          "rate": 0.03333333333333333
+        },
+        {
+          "suite": "libero_10",
+          "direction": "D19",
+          "rate": 0.06779661016949153
+        },
+        {
+          "suite": "libero_10",
+          "direction": "D20",
+          "rate": 0.65
+        },
+        {
+          "suite": "libero_10",
+          "direction": "S01",
+          "rate": 0.05
+        },
+        {
+          "suite": "libero_10",
           "direction": "S02",
           "rate": 0.0
         },
         {
-          "suite": "libero_spatial",
+          "suite": "libero_10",
           "direction": "S03",
-          "rate": 0.0833
+          "rate": 0.4166666666666667
         },
         {
-          "suite": "libero_spatial",
-          "direction": "S05",
+          "suite": "libero_10",
+          "direction": "S04",
           "rate": 0.0
         },
         {
-          "suite": "libero_spatial",
+          "suite": "libero_10",
+          "direction": "S05",
+          "rate": 0.2833333333333333
+        },
+        {
+          "suite": "libero_10",
           "direction": "S06",
-          "rate": 0.4
+          "rate": 0.08333333333333333
         },
         {
-          "suite": "libero_spatial",
+          "suite": "libero_10",
           "direction": "S07",
-          "rate": 0.6167
+          "rate": 0.5166666666666667
         },
         {
-          "suite": "libero_spatial",
+          "suite": "libero_10",
           "direction": "S08",
-          "rate": 0.7167
+          "rate": 0.5666666666666667
         },
         {
-          "suite": "libero_spatial",
+          "suite": "libero_10",
           "direction": "S09",
-          "rate": 0.65
+          "rate": 0.36666666666666664
         },
         {
-          "suite": "libero_spatial",
+          "suite": "libero_10",
           "direction": "S10",
-          "rate": 0.55
+          "rate": 0.5833333333333334
         },
         {
-          "suite": "libero_spatial",
+          "suite": "libero_10",
           "direction": "S11",
-          "rate": 0.6667000000000001
+          "rate": 0.5
         },
         {
-          "suite": "libero_spatial",
+          "suite": "libero_10",
           "direction": "S12",
-          "rate": 0.6167
+          "rate": 0.6166666666666667
         },
         {
-          "suite": "libero_spatial",
+          "suite": "libero_10",
           "direction": "S13",
-          "rate": 0.5667
+          "rate": 0.6333333333333333
         },
         {
-          "suite": "libero_spatial",
+          "suite": "libero_10",
           "direction": "S14",
-          "rate": 0.6
+          "rate": 0.5666666666666667
         },
         {
-          "suite": "libero_spatial",
+          "suite": "libero_10",
           "direction": "S15",
-          "rate": 0.5832999999999999
+          "rate": 0.0
         },
         {
-          "suite": "libero_spatial",
+          "suite": "libero_10",
           "direction": "S16",
-          "rate": 0.7167
+          "rate": 0.4666666666666667
         },
         {
-          "suite": "libero_spatial",
+          "suite": "libero_10",
           "direction": "S17",
+          "rate": 0.06666666666666667
+        },
+        {
+          "suite": "libero_10",
+          "direction": "S18",
+          "rate": 0.3333333333333333
+        },
+        {
+          "suite": "libero_10",
+          "direction": "S19",
           "rate": 0.55
         },
         {
-          "suite": "libero_spatial",
-          "direction": "S18",
-          "rate": 0.1
-        },
-        {
-          "suite": "libero_spatial",
-          "direction": "S19",
-          "rate": 0.6833
-        },
-        {
-          "suite": "libero_spatial",
+          "suite": "libero_10",
           "direction": "S20",
-          "rate": 0.0333
+          "rate": 0.016666666666666666
         },
         {
-          "suite": "libero_spatial",
+          "suite": "libero_10",
           "direction": "S21",
-          "rate": 0.6
+          "rate": 0.5666666666666667
         },
         {
-          "suite": "libero_spatial",
+          "suite": "libero_10",
           "direction": "S22",
           "rate": 0.6
         },
         {
-          "suite": "libero_spatial",
+          "suite": "libero_goal",
           "direction": "D01",
-          "rate": 0.0333
-        },
-        {
-          "suite": "libero_spatial",
-          "direction": "D02",
-          "rate": 0.0167
-        },
-        {
-          "suite": "libero_spatial",
-          "direction": "D03",
           "rate": 0.15
         },
         {
-          "suite": "libero_spatial",
-          "direction": "D04",
-          "rate": 0.6
+          "suite": "libero_goal",
+          "direction": "D02",
+          "rate": 0.13333333333333333
         },
         {
-          "suite": "libero_spatial",
+          "suite": "libero_goal",
+          "direction": "D03",
+          "rate": 0.48333333333333334
+        },
+        {
+          "suite": "libero_goal",
+          "direction": "D04",
+          "rate": 0.7666666666666667
+        },
+        {
+          "suite": "libero_goal",
           "direction": "D05",
+          "rate": 0.2
+        },
+        {
+          "suite": "libero_goal",
+          "direction": "D06",
+          "rate": 0.5666666666666667
+        },
+        {
+          "suite": "libero_goal",
+          "direction": "D07",
+          "rate": 0.016666666666666666
+        },
+        {
+          "suite": "libero_goal",
+          "direction": "D08",
+          "rate": 0.5333333333333333
+        },
+        {
+          "suite": "libero_goal",
+          "direction": "D09",
+          "rate": 0.8333333333333334
+        },
+        {
+          "suite": "libero_goal",
+          "direction": "D10",
+          "rate": 0.7166666666666667
+        },
+        {
+          "suite": "libero_goal",
+          "direction": "D11",
+          "rate": 0.6166666666666667
+        },
+        {
+          "suite": "libero_goal",
+          "direction": "D12",
+          "rate": 0.65
+        },
+        {
+          "suite": "libero_goal",
+          "direction": "D13",
+          "rate": 0.5833333333333334
+        },
+        {
+          "suite": "libero_goal",
+          "direction": "D14",
+          "rate": 0.7166666666666667
+        },
+        {
+          "suite": "libero_goal",
+          "direction": "D15",
+          "rate": 0.7833333333333333
+        },
+        {
+          "suite": "libero_goal",
+          "direction": "D16",
+          "rate": 0.7666666666666667
+        },
+        {
+          "suite": "libero_goal",
+          "direction": "D17",
+          "rate": 0.8
+        },
+        {
+          "suite": "libero_goal",
+          "direction": "D18",
+          "rate": 0.31666666666666665
+        },
+        {
+          "suite": "libero_goal",
+          "direction": "D19",
+          "rate": 0.4666666666666667
+        },
+        {
+          "suite": "libero_goal",
+          "direction": "D20",
+          "rate": 0.75
+        },
+        {
+          "suite": "libero_goal",
+          "direction": "S01",
+          "rate": 0.5333333333333333
+        },
+        {
+          "suite": "libero_goal",
+          "direction": "S02",
+          "rate": 0.03333333333333333
+        },
+        {
+          "suite": "libero_goal",
+          "direction": "S03",
           "rate": 0.0
         },
         {
-          "suite": "libero_spatial",
-          "direction": "D06",
-          "rate": 0.4833
+          "suite": "libero_goal",
+          "direction": "S04",
+          "rate": 0.0
         },
         {
-          "suite": "libero_spatial",
-          "direction": "D07",
-          "rate": 0.5
+          "suite": "libero_goal",
+          "direction": "S05",
+          "rate": 0.03333333333333333
         },
         {
-          "suite": "libero_spatial",
-          "direction": "D08",
-          "rate": 0.6
-        },
-        {
-          "suite": "libero_spatial",
-          "direction": "D09",
-          "rate": 0.5667
-        },
-        {
-          "suite": "libero_spatial",
-          "direction": "D10",
-          "rate": 0.5832999999999999
-        },
-        {
-          "suite": "libero_spatial",
-          "direction": "D11",
+          "suite": "libero_goal",
+          "direction": "S06",
           "rate": 0.55
         },
         {
-          "suite": "libero_spatial",
-          "direction": "D12",
-          "rate": 0.4833
+          "suite": "libero_goal",
+          "direction": "S07",
+          "rate": 0.7166666666666667
         },
         {
-          "suite": "libero_spatial",
-          "direction": "D13",
-          "rate": 0.31670000000000004
+          "suite": "libero_goal",
+          "direction": "S08",
+          "rate": 0.7333333333333333
         },
         {
-          "suite": "libero_spatial",
-          "direction": "D14",
-          "rate": 0.16670000000000001
+          "suite": "libero_goal",
+          "direction": "S09",
+          "rate": 0.5
         },
         {
-          "suite": "libero_spatial",
-          "direction": "D15",
+          "suite": "libero_goal",
+          "direction": "S10",
+          "rate": 0.8333333333333334
+        },
+        {
+          "suite": "libero_goal",
+          "direction": "S11",
+          "rate": 0.8333333333333334
+        },
+        {
+          "suite": "libero_goal",
+          "direction": "S12",
+          "rate": 0.5166666666666667
+        },
+        {
+          "suite": "libero_goal",
+          "direction": "S13",
+          "rate": 0.7666666666666667
+        },
+        {
+          "suite": "libero_goal",
+          "direction": "S14",
+          "rate": 0.7666666666666667
+        },
+        {
+          "suite": "libero_goal",
+          "direction": "S15",
+          "rate": 0.0
+        },
+        {
+          "suite": "libero_goal",
+          "direction": "S16",
+          "rate": 0.23333333333333334
+        },
+        {
+          "suite": "libero_goal",
+          "direction": "S17",
+          "rate": 0.36666666666666664
+        },
+        {
+          "suite": "libero_goal",
+          "direction": "S18",
+          "rate": 0.11666666666666667
+        },
+        {
+          "suite": "libero_goal",
+          "direction": "S19",
+          "rate": 0.8666666666666667
+        },
+        {
+          "suite": "libero_goal",
+          "direction": "S20",
+          "rate": 0.0
+        },
+        {
+          "suite": "libero_goal",
+          "direction": "S21",
+          "rate": 0.7166666666666667
+        },
+        {
+          "suite": "libero_goal",
+          "direction": "S22",
+          "rate": 0.8
+        },
+        {
+          "suite": "libero_object",
+          "direction": "D01",
           "rate": 0.25
         },
         {
-          "suite": "libero_spatial",
-          "direction": "D16",
-          "rate": 0.1833
-        },
-        {
-          "suite": "libero_spatial",
-          "direction": "D17",
-          "rate": 0.0333
-        },
-        {
-          "suite": "libero_spatial",
-          "direction": "D18",
-          "rate": 0.0
-        },
-        {
-          "suite": "libero_spatial",
-          "direction": "D19",
-          "rate": 0.2833
-        },
-        {
-          "suite": "libero_spatial",
-          "direction": "D20",
-          "rate": 0.6667000000000001
-        },
-        {
-          "suite": "libero_object",
-          "direction": "S01",
-          "rate": 0.0167
-        },
-        {
-          "suite": "libero_object",
-          "direction": "S02",
-          "rate": 0.0
-        },
-        {
-          "suite": "libero_object",
-          "direction": "S03",
-          "rate": 0.0
-        },
-        {
-          "suite": "libero_object",
-          "direction": "S04",
-          "rate": 0.0
-        },
-        {
-          "suite": "libero_object",
-          "direction": "S05",
-          "rate": 0.0
-        },
-        {
-          "suite": "libero_object",
-          "direction": "S06",
-          "rate": 0.0
-        },
-        {
-          "suite": "libero_object",
-          "direction": "S07",
-          "rate": 0.6167
-        },
-        {
-          "suite": "libero_object",
-          "direction": "S08",
-          "rate": 0.7833
-        },
-        {
-          "suite": "libero_object",
-          "direction": "S09",
-          "rate": 0.8167
-        },
-        {
-          "suite": "libero_object",
-          "direction": "S10",
-          "rate": 0.8167
-        },
-        {
-          "suite": "libero_object",
-          "direction": "S11",
-          "rate": 0.4167
-        },
-        {
-          "suite": "libero_object",
-          "direction": "S12",
-          "rate": 0.7167
-        },
-        {
-          "suite": "libero_object",
-          "direction": "S13",
-          "rate": 0.8833
-        },
-        {
-          "suite": "libero_object",
-          "direction": "S14",
-          "rate": 0.8
-        },
-        {
-          "suite": "libero_object",
-          "direction": "S15",
-          "rate": 0.85
-        },
-        {
-          "suite": "libero_object",
-          "direction": "S16",
-          "rate": 0.7667
-        },
-        {
-          "suite": "libero_object",
-          "direction": "S17",
-          "rate": 0.2
-        },
-        {
-          "suite": "libero_object",
-          "direction": "S18",
-          "rate": 0.0
-        },
-        {
-          "suite": "libero_object",
-          "direction": "S19",
-          "rate": 0.7333
-        },
-        {
-          "suite": "libero_object",
-          "direction": "S20",
-          "rate": 0.0167
-        },
-        {
-          "suite": "libero_object",
-          "direction": "S21",
-          "rate": 0.4167
-        },
-        {
-          "suite": "libero_object",
-          "direction": "S22",
-          "rate": 0.85
-        },
-        {
-          "suite": "libero_object",
-          "direction": "D01",
-          "rate": 0.0
-        },
-        {
           "suite": "libero_object",
           "direction": "D02",
-          "rate": 0.0
+          "rate": 0.016666666666666666
         },
         {
           "suite": "libero_object",
@@ -18692,512 +18797,2063 @@
         {
           "suite": "libero_object",
           "direction": "D04",
-          "rate": 0.7833
+          "rate": 1.0
         },
         {
           "suite": "libero_object",
           "direction": "D05",
-          "rate": 0.0667
+          "rate": 0.0
         },
         {
           "suite": "libero_object",
           "direction": "D06",
-          "rate": 0.75
+          "rate": 1.0
         },
         {
           "suite": "libero_object",
           "direction": "D07",
-          "rate": 0.8
-        },
-        {
-          "suite": "libero_object",
-          "direction": "D08",
-          "rate": 0.8
-        },
-        {
-          "suite": "libero_object",
-          "direction": "D09",
-          "rate": 0.7333
-        },
-        {
-          "suite": "libero_object",
-          "direction": "D10",
-          "rate": 0.7667
-        },
-        {
-          "suite": "libero_object",
-          "direction": "D11",
-          "rate": 0.8833
-        },
-        {
-          "suite": "libero_object",
-          "direction": "D12",
-          "rate": 0.8167
-        },
-        {
-          "suite": "libero_object",
-          "direction": "D13",
-          "rate": 0.3333
-        },
-        {
-          "suite": "libero_object",
-          "direction": "D14",
-          "rate": 0.2
-        },
-        {
-          "suite": "libero_object",
-          "direction": "D15",
-          "rate": 0.7333
-        },
-        {
-          "suite": "libero_object",
-          "direction": "D16",
-          "rate": 0.5832999999999999
-        },
-        {
-          "suite": "libero_object",
-          "direction": "D17",
-          "rate": 0.0167
-        },
-        {
-          "suite": "libero_object",
-          "direction": "D18",
           "rate": 0.0
         },
         {
           "suite": "libero_object",
+          "direction": "D08",
+          "rate": 0.9166666666666666
+        },
+        {
+          "suite": "libero_object",
+          "direction": "D09",
+          "rate": 0.9833333333333333
+        },
+        {
+          "suite": "libero_object",
+          "direction": "D10",
+          "rate": 0.9833333333333333
+        },
+        {
+          "suite": "libero_object",
+          "direction": "D11",
+          "rate": 0.9666666666666667
+        },
+        {
+          "suite": "libero_object",
+          "direction": "D12",
+          "rate": 0.9166666666666666
+        },
+        {
+          "suite": "libero_object",
+          "direction": "D13",
+          "rate": 0.85
+        },
+        {
+          "suite": "libero_object",
+          "direction": "D14",
+          "rate": 0.9
+        },
+        {
+          "suite": "libero_object",
+          "direction": "D15",
+          "rate": 0.9833333333333333
+        },
+        {
+          "suite": "libero_object",
+          "direction": "D16",
+          "rate": 1.0
+        },
+        {
+          "suite": "libero_object",
+          "direction": "D17",
+          "rate": 0.9666666666666667
+        },
+        {
+          "suite": "libero_object",
+          "direction": "D18",
+          "rate": 0.5166666666666667
+        },
+        {
+          "suite": "libero_object",
           "direction": "D19",
-          "rate": 0.0333
+          "rate": 0.0
         },
         {
           "suite": "libero_object",
           "direction": "D20",
+          "rate": 1.0
+        },
+        {
+          "suite": "libero_object",
+          "direction": "S01",
+          "rate": 0.4666666666666667
+        },
+        {
+          "suite": "libero_object",
+          "direction": "S02",
+          "rate": 0.05
+        },
+        {
+          "suite": "libero_object",
+          "direction": "S03",
+          "rate": 0.13333333333333333
+        },
+        {
+          "suite": "libero_object",
+          "direction": "S04",
+          "rate": 0.0
+        },
+        {
+          "suite": "libero_object",
+          "direction": "S05",
+          "rate": 0.0
+        },
+        {
+          "suite": "libero_object",
+          "direction": "S06",
+          "rate": 0.0
+        },
+        {
+          "suite": "libero_object",
+          "direction": "S07",
+          "rate": 0.6833333333333333
+        },
+        {
+          "suite": "libero_object",
+          "direction": "S08",
           "rate": 0.75
         },
         {
-          "suite": "libero_goal",
+          "suite": "libero_object",
+          "direction": "S09",
+          "rate": 0.85
+        },
+        {
+          "suite": "libero_object",
+          "direction": "S10",
+          "rate": 1.0
+        },
+        {
+          "suite": "libero_object",
+          "direction": "S11",
+          "rate": 0.9166666666666666
+        },
+        {
+          "suite": "libero_object",
+          "direction": "S12",
+          "rate": 0.9666666666666667
+        },
+        {
+          "suite": "libero_object",
+          "direction": "S13",
+          "rate": 0.9833333333333333
+        },
+        {
+          "suite": "libero_object",
+          "direction": "S14",
+          "rate": 0.9333333333333333
+        },
+        {
+          "suite": "libero_object",
+          "direction": "S15",
+          "rate": 0.0
+        },
+        {
+          "suite": "libero_object",
+          "direction": "S16",
+          "rate": 0.0
+        },
+        {
+          "suite": "libero_object",
+          "direction": "S17",
+          "rate": 0.8333333333333334
+        },
+        {
+          "suite": "libero_object",
+          "direction": "S18",
+          "rate": 0.8833333333333333
+        },
+        {
+          "suite": "libero_object",
+          "direction": "S19",
+          "rate": 0.9833333333333333
+        },
+        {
+          "suite": "libero_object",
+          "direction": "S20",
+          "rate": 0.0
+        },
+        {
+          "suite": "libero_object",
+          "direction": "S21",
+          "rate": 1.0
+        },
+        {
+          "suite": "libero_object",
+          "direction": "S22",
+          "rate": 0.95
+        },
+        {
+          "suite": "libero_spatial",
+          "direction": "D01",
+          "rate": 0.23333333333333334
+        },
+        {
+          "suite": "libero_spatial",
+          "direction": "D02",
+          "rate": 0.6
+        },
+        {
+          "suite": "libero_spatial",
+          "direction": "D03",
+          "rate": 0.1
+        },
+        {
+          "suite": "libero_spatial",
+          "direction": "D04",
+          "rate": 0.95
+        },
+        {
+          "suite": "libero_spatial",
+          "direction": "D05",
+          "rate": 0.016666666666666666
+        },
+        {
+          "suite": "libero_spatial",
+          "direction": "D06",
+          "rate": 1.0
+        },
+        {
+          "suite": "libero_spatial",
+          "direction": "D07",
+          "rate": 0.65
+        },
+        {
+          "suite": "libero_spatial",
+          "direction": "D08",
+          "rate": 0.9666666666666667
+        },
+        {
+          "suite": "libero_spatial",
+          "direction": "D09",
+          "rate": 0.9833333333333333
+        },
+        {
+          "suite": "libero_spatial",
+          "direction": "D10",
+          "rate": 0.9666666666666667
+        },
+        {
+          "suite": "libero_spatial",
+          "direction": "D11",
+          "rate": 0.9666666666666667
+        },
+        {
+          "suite": "libero_spatial",
+          "direction": "D12",
+          "rate": 0.9166666666666666
+        },
+        {
+          "suite": "libero_spatial",
+          "direction": "D13",
+          "rate": 0.8166666666666667
+        },
+        {
+          "suite": "libero_spatial",
+          "direction": "D14",
+          "rate": 0.7833333333333333
+        },
+        {
+          "suite": "libero_spatial",
+          "direction": "D15",
+          "rate": 0.9166666666666666
+        },
+        {
+          "suite": "libero_spatial",
+          "direction": "D16",
+          "rate": 0.9833333333333333
+        },
+        {
+          "suite": "libero_spatial",
+          "direction": "D17",
+          "rate": 0.9333333333333333
+        },
+        {
+          "suite": "libero_spatial",
+          "direction": "D18",
+          "rate": 0.6333333333333333
+        },
+        {
+          "suite": "libero_spatial",
+          "direction": "D19",
+          "rate": 1.0
+        },
+        {
+          "suite": "libero_spatial",
+          "direction": "D20",
+          "rate": 1.0
+        },
+        {
+          "suite": "libero_spatial",
           "direction": "S01",
-          "rate": 0.0333
+          "rate": 0.8166666666666667
         },
         {
-          "suite": "libero_goal",
+          "suite": "libero_spatial",
           "direction": "S02",
-          "rate": 0.0
+          "rate": 0.6333333333333333
         },
         {
-          "suite": "libero_goal",
+          "suite": "libero_spatial",
           "direction": "S03",
-          "rate": 0.0
+          "rate": 0.26666666666666666
         },
         {
-          "suite": "libero_goal",
-          "direction": "S04",
-          "rate": 0.0
-        },
-        {
-          "suite": "libero_goal",
+          "suite": "libero_spatial",
           "direction": "S05",
           "rate": 0.0
         },
         {
-          "suite": "libero_goal",
+          "suite": "libero_spatial",
           "direction": "S06",
-          "rate": 0.4833
+          "rate": 0.7333333333333333
         },
         {
-          "suite": "libero_goal",
+          "suite": "libero_spatial",
           "direction": "S07",
-          "rate": 0.5167
+          "rate": 1.0
         },
         {
-          "suite": "libero_goal",
+          "suite": "libero_spatial",
           "direction": "S08",
-          "rate": 0.5832999999999999
-        },
-        {
-          "suite": "libero_goal",
-          "direction": "S09",
-          "rate": 0.5667
-        },
-        {
-          "suite": "libero_goal",
-          "direction": "S10",
-          "rate": 0.55
-        },
-        {
-          "suite": "libero_goal",
-          "direction": "S11",
-          "rate": 0.45
-        },
-        {
-          "suite": "libero_goal",
-          "direction": "S12",
-          "rate": 0.6333
-        },
-        {
-          "suite": "libero_goal",
-          "direction": "S13",
-          "rate": 0.65
-        },
-        {
-          "suite": "libero_goal",
-          "direction": "S14",
-          "rate": 0.43329999999999996
-        },
-        {
-          "suite": "libero_goal",
-          "direction": "S15",
           "rate": 0.5
         },
         {
-          "suite": "libero_goal",
-          "direction": "S16",
-          "rate": 0.5167
+          "suite": "libero_spatial",
+          "direction": "S09",
+          "rate": 1.0
         },
         {
-          "suite": "libero_goal",
-          "direction": "S17",
+          "suite": "libero_spatial",
+          "direction": "S10",
+          "rate": 0.95
+        },
+        {
+          "suite": "libero_spatial",
+          "direction": "S11",
+          "rate": 1.0
+        },
+        {
+          "suite": "libero_spatial",
+          "direction": "S12",
+          "rate": 0.95
+        },
+        {
+          "suite": "libero_spatial",
+          "direction": "S13",
+          "rate": 1.0
+        },
+        {
+          "suite": "libero_spatial",
+          "direction": "S14",
+          "rate": 0.9833333333333333
+        },
+        {
+          "suite": "libero_spatial",
+          "direction": "S15",
           "rate": 0.3
         },
         {
-          "suite": "libero_goal",
+          "suite": "libero_spatial",
+          "direction": "S16",
+          "rate": 0.9666666666666667
+        },
+        {
+          "suite": "libero_spatial",
+          "direction": "S17",
+          "rate": 0.9833333333333333
+        },
+        {
+          "suite": "libero_spatial",
           "direction": "S18",
-          "rate": 0.0167
+          "rate": 0.65
         },
         {
-          "suite": "libero_goal",
+          "suite": "libero_spatial",
           "direction": "S19",
-          "rate": 0.5167
+          "rate": 1.0
         },
         {
-          "suite": "libero_goal",
+          "suite": "libero_spatial",
           "direction": "S20",
-          "rate": 0.1333
+          "rate": 0.016666666666666666
         },
         {
-          "suite": "libero_goal",
+          "suite": "libero_spatial",
           "direction": "S21",
-          "rate": 0.4
+          "rate": 0.9833333333333333
         },
         {
-          "suite": "libero_goal",
+          "suite": "libero_spatial",
           "direction": "S22",
-          "rate": 0.5167
-        },
+          "rate": 0.9666666666666667
+        }
+      ],
+      "taskRates": [
         {
-          "suite": "libero_goal",
+          "task": "libero_10-5",
           "direction": "D01",
-          "rate": 0.05
+          "rate": 0.0
         },
         {
-          "suite": "libero_goal",
+          "task": "libero_10-5",
           "direction": "D02",
           "rate": 0.0
         },
         {
-          "suite": "libero_goal",
+          "task": "libero_10-5",
           "direction": "D03",
-          "rate": 0.4
+          "rate": 0.0
         },
         {
-          "suite": "libero_goal",
+          "task": "libero_10-5",
           "direction": "D04",
-          "rate": 0.5167
+          "rate": 0.9
         },
         {
-          "suite": "libero_goal",
+          "task": "libero_10-5",
           "direction": "D05",
-          "rate": 0.1333
+          "rate": 0.7333333333333333
         },
         {
-          "suite": "libero_goal",
+          "task": "libero_10-5",
           "direction": "D06",
-          "rate": 0.5
+          "rate": 0.9333333333333333
         },
         {
-          "suite": "libero_goal",
+          "task": "libero_10-5",
           "direction": "D07",
-          "rate": 0.5832999999999999
+          "rate": 0.2
         },
         {
-          "suite": "libero_goal",
+          "task": "libero_10-5",
           "direction": "D08",
-          "rate": 0.43329999999999996
+          "rate": 0.0
         },
         {
-          "suite": "libero_goal",
+          "task": "libero_10-5",
           "direction": "D09",
-          "rate": 0.55
+          "rate": 0.9
         },
         {
-          "suite": "libero_goal",
+          "task": "libero_10-5",
           "direction": "D10",
-          "rate": 0.65
+          "rate": 0.8666666666666667
         },
         {
-          "suite": "libero_goal",
+          "task": "libero_10-5",
           "direction": "D11",
-          "rate": 0.5667
+          "rate": 0.5666666666666667
         },
         {
-          "suite": "libero_goal",
+          "task": "libero_10-5",
           "direction": "D12",
-          "rate": 0.5667
+          "rate": 0.9333333333333333
         },
         {
-          "suite": "libero_goal",
+          "task": "libero_10-5",
           "direction": "D13",
+          "rate": 0.9
+        },
+        {
+          "task": "libero_10-5",
+          "direction": "D14",
+          "rate": 0.8666666666666667
+        },
+        {
+          "task": "libero_10-5",
+          "direction": "D15",
+          "rate": 0.9
+        },
+        {
+          "task": "libero_10-5",
+          "direction": "D16",
+          "rate": 0.9
+        },
+        {
+          "task": "libero_10-5",
+          "direction": "D17",
+          "rate": 0.8
+        },
+        {
+          "task": "libero_10-5",
+          "direction": "D18",
+          "rate": 0.03333333333333333
+        },
+        {
+          "task": "libero_10-5",
+          "direction": "D19",
+          "rate": 0.10344827586206896
+        },
+        {
+          "task": "libero_10-5",
+          "direction": "D20",
+          "rate": 0.9333333333333333
+        },
+        {
+          "task": "libero_10-5",
+          "direction": "S01",
+          "rate": 0.1
+        },
+        {
+          "task": "libero_10-5",
+          "direction": "S02",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_10-5",
+          "direction": "S03",
+          "rate": 0.7333333333333333
+        },
+        {
+          "task": "libero_10-5",
+          "direction": "S04",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_10-5",
+          "direction": "S05",
+          "rate": 0.5666666666666667
+        },
+        {
+          "task": "libero_10-5",
+          "direction": "S06",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_10-5",
+          "direction": "S07",
+          "rate": 0.9
+        },
+        {
+          "task": "libero_10-5",
+          "direction": "S08",
+          "rate": 0.8333333333333334
+        },
+        {
+          "task": "libero_10-5",
+          "direction": "S09",
+          "rate": 0.7333333333333333
+        },
+        {
+          "task": "libero_10-5",
+          "direction": "S10",
+          "rate": 0.9333333333333333
+        },
+        {
+          "task": "libero_10-5",
+          "direction": "S11",
+          "rate": 0.9
+        },
+        {
+          "task": "libero_10-5",
+          "direction": "S12",
+          "rate": 0.9
+        },
+        {
+          "task": "libero_10-5",
+          "direction": "S13",
+          "rate": 0.9333333333333333
+        },
+        {
+          "task": "libero_10-5",
+          "direction": "S14",
+          "rate": 0.8666666666666667
+        },
+        {
+          "task": "libero_10-5",
+          "direction": "S15",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_10-5",
+          "direction": "S16",
+          "rate": 0.9
+        },
+        {
+          "task": "libero_10-5",
+          "direction": "S17",
+          "rate": 0.13333333333333333
+        },
+        {
+          "task": "libero_10-5",
+          "direction": "S18",
+          "rate": 0.6666666666666666
+        },
+        {
+          "task": "libero_10-5",
+          "direction": "S19",
+          "rate": 0.9
+        },
+        {
+          "task": "libero_10-5",
+          "direction": "S20",
+          "rate": 0.03333333333333333
+        },
+        {
+          "task": "libero_10-5",
+          "direction": "S21",
+          "rate": 0.9
+        },
+        {
+          "task": "libero_10-5",
+          "direction": "S22",
+          "rate": 0.9
+        },
+        {
+          "task": "libero_10-8",
+          "direction": "D01",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_10-8",
+          "direction": "D02",
+          "rate": 0.2
+        },
+        {
+          "task": "libero_10-8",
+          "direction": "D03",
+          "rate": 0.06666666666666667
+        },
+        {
+          "task": "libero_10-8",
+          "direction": "D04",
+          "rate": 0.3333333333333333
+        },
+        {
+          "task": "libero_10-8",
+          "direction": "D05",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_10-8",
+          "direction": "D07",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_10-8",
+          "direction": "D08",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_10-8",
+          "direction": "D09",
           "rate": 0.3
         },
         {
-          "suite": "libero_goal",
+          "task": "libero_10-8",
+          "direction": "D10",
+          "rate": 0.1
+        },
+        {
+          "task": "libero_10-8",
+          "direction": "D11",
+          "rate": 0.16666666666666666
+        },
+        {
+          "task": "libero_10-8",
+          "direction": "D12",
+          "rate": 0.1
+        },
+        {
+          "task": "libero_10-8",
+          "direction": "D13",
+          "rate": 0.13333333333333333
+        },
+        {
+          "task": "libero_10-8",
           "direction": "D14",
-          "rate": 0.15
+          "rate": 0.13333333333333333
         },
         {
-          "suite": "libero_goal",
+          "task": "libero_10-8",
           "direction": "D15",
-          "rate": 0.3333
+          "rate": 0.16666666666666666
         },
         {
-          "suite": "libero_goal",
+          "task": "libero_10-8",
           "direction": "D16",
           "rate": 0.2
         },
         {
-          "suite": "libero_goal",
+          "task": "libero_10-8",
           "direction": "D17",
-          "rate": 0.0333
+          "rate": 0.13333333333333333
         },
         {
-          "suite": "libero_goal",
+          "task": "libero_10-8",
           "direction": "D18",
-          "rate": 0.0
+          "rate": 0.03333333333333333
         },
         {
-          "suite": "libero_goal",
+          "task": "libero_10-8",
           "direction": "D19",
-          "rate": 0.2667
+          "rate": 0.03333333333333333
         },
         {
-          "suite": "libero_goal",
+          "task": "libero_10-8",
           "direction": "D20",
-          "rate": 0.55
+          "rate": 0.36666666666666664
         },
         {
-          "suite": "libero_10",
+          "task": "libero_10-8",
           "direction": "S01",
           "rate": 0.0
         },
         {
-          "suite": "libero_10",
+          "task": "libero_10-8",
           "direction": "S02",
-          "rate": 0.0167
+          "rate": 0.0
         },
         {
-          "suite": "libero_10",
+          "task": "libero_10-8",
           "direction": "S03",
-          "rate": 0.1833
+          "rate": 0.1
         },
         {
-          "suite": "libero_10",
-          "direction": "S04",
-          "rate": 0.0
-        },
-        {
-          "suite": "libero_10",
+          "task": "libero_10-8",
           "direction": "S05",
-          "rate": 0.31670000000000004
-        },
-        {
-          "suite": "libero_10",
-          "direction": "S06",
-          "rate": 0.1
-        },
-        {
-          "suite": "libero_10",
-          "direction": "S07",
-          "rate": 0.55
-        },
-        {
-          "suite": "libero_10",
-          "direction": "S08",
-          "rate": 0.43329999999999996
-        },
-        {
-          "suite": "libero_10",
-          "direction": "S09",
-          "rate": 0.1833
-        },
-        {
-          "suite": "libero_10",
-          "direction": "S10",
-          "rate": 0.5167
-        },
-        {
-          "suite": "libero_10",
-          "direction": "S11",
-          "rate": 0.5
-        },
-        {
-          "suite": "libero_10",
-          "direction": "S12",
-          "rate": 0.45
-        },
-        {
-          "suite": "libero_10",
-          "direction": "S13",
-          "rate": 0.4
-        },
-        {
-          "suite": "libero_10",
-          "direction": "S14",
-          "rate": 0.4167
-        },
-        {
-          "suite": "libero_10",
-          "direction": "S15",
-          "rate": 0.4167
-        },
-        {
-          "suite": "libero_10",
-          "direction": "S16",
-          "rate": 0.4167
-        },
-        {
-          "suite": "libero_10",
-          "direction": "S17",
-          "rate": 0.31670000000000004
-        },
-        {
-          "suite": "libero_10",
-          "direction": "S18",
-          "rate": 0.05
-        },
-        {
-          "suite": "libero_10",
-          "direction": "S19",
-          "rate": 0.5
-        },
-        {
-          "suite": "libero_10",
-          "direction": "S20",
-          "rate": 0.0167
-        },
-        {
-          "suite": "libero_10",
-          "direction": "S21",
-          "rate": 0.43329999999999996
-        },
-        {
-          "suite": "libero_10",
-          "direction": "S22",
-          "rate": 0.4833
-        },
-        {
-          "suite": "libero_10",
-          "direction": "D01",
           "rate": 0.0
         },
         {
-          "suite": "libero_10",
+          "task": "libero_10-8",
+          "direction": "S06",
+          "rate": 0.16666666666666666
+        },
+        {
+          "task": "libero_10-8",
+          "direction": "S07",
+          "rate": 0.13333333333333333
+        },
+        {
+          "task": "libero_10-8",
+          "direction": "S08",
+          "rate": 0.3
+        },
+        {
+          "task": "libero_10-8",
+          "direction": "S09",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_10-8",
+          "direction": "S10",
+          "rate": 0.23333333333333334
+        },
+        {
+          "task": "libero_10-8",
+          "direction": "S11",
+          "rate": 0.1
+        },
+        {
+          "task": "libero_10-8",
+          "direction": "S12",
+          "rate": 0.3333333333333333
+        },
+        {
+          "task": "libero_10-8",
+          "direction": "S13",
+          "rate": 0.3333333333333333
+        },
+        {
+          "task": "libero_10-8",
+          "direction": "S14",
+          "rate": 0.26666666666666666
+        },
+        {
+          "task": "libero_10-8",
+          "direction": "S15",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_10-8",
+          "direction": "S16",
+          "rate": 0.03333333333333333
+        },
+        {
+          "task": "libero_10-8",
+          "direction": "S17",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_10-8",
+          "direction": "S18",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_10-8",
+          "direction": "S19",
+          "rate": 0.2
+        },
+        {
+          "task": "libero_10-8",
+          "direction": "S20",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_10-8",
+          "direction": "S21",
+          "rate": 0.23333333333333334
+        },
+        {
+          "task": "libero_10-8",
+          "direction": "S22",
+          "rate": 0.3
+        },
+        {
+          "task": "libero_goal-3",
+          "direction": "D01",
+          "rate": 0.2
+        },
+        {
+          "task": "libero_goal-3",
           "direction": "D02",
-          "rate": 0.1
+          "rate": 0.23333333333333334
         },
         {
-          "suite": "libero_10",
+          "task": "libero_goal-3",
           "direction": "D03",
-          "rate": 0.1
+          "rate": 0.0
         },
         {
-          "suite": "libero_10",
+          "task": "libero_goal-3",
           "direction": "D04",
-          "rate": 0.4167
+          "rate": 0.6
         },
         {
-          "suite": "libero_10",
+          "task": "libero_goal-3",
           "direction": "D05",
-          "rate": 0.1833
+          "rate": 0.26666666666666666
         },
         {
-          "suite": "libero_10",
+          "task": "libero_goal-3",
           "direction": "D06",
+          "rate": 0.5
+        },
+        {
+          "task": "libero_goal-3",
+          "direction": "D07",
+          "rate": 0.03333333333333333
+        },
+        {
+          "task": "libero_goal-3",
+          "direction": "D08",
+          "rate": 0.3
+        },
+        {
+          "task": "libero_goal-3",
+          "direction": "D09",
           "rate": 0.7
         },
         {
-          "suite": "libero_10",
-          "direction": "D07",
-          "rate": 0.4167
-        },
-        {
-          "suite": "libero_10",
-          "direction": "D08",
-          "rate": 0.3667
-        },
-        {
-          "suite": "libero_10",
-          "direction": "D09",
-          "rate": 0.4833
-        },
-        {
-          "suite": "libero_10",
+          "task": "libero_goal-3",
           "direction": "D10",
-          "rate": 0.3833
+          "rate": 0.4666666666666667
         },
         {
-          "suite": "libero_10",
+          "task": "libero_goal-3",
           "direction": "D11",
+          "rate": 0.36666666666666664
+        },
+        {
+          "task": "libero_goal-3",
+          "direction": "D12",
           "rate": 0.5
         },
         {
-          "suite": "libero_10",
-          "direction": "D12",
-          "rate": 0.43329999999999996
-        },
-        {
-          "suite": "libero_10",
+          "task": "libero_goal-3",
           "direction": "D13",
-          "rate": 0.3
+          "rate": 0.36666666666666664
         },
         {
-          "suite": "libero_10",
+          "task": "libero_goal-3",
           "direction": "D14",
-          "rate": 0.1167
+          "rate": 0.5333333333333333
         },
         {
-          "suite": "libero_10",
+          "task": "libero_goal-3",
           "direction": "D15",
-          "rate": 0.3667
+          "rate": 0.6333333333333333
         },
         {
-          "suite": "libero_10",
+          "task": "libero_goal-3",
           "direction": "D16",
-          "rate": 0.4167
+          "rate": 0.6
         },
         {
-          "suite": "libero_10",
+          "task": "libero_goal-3",
           "direction": "D17",
-          "rate": 0.05
+          "rate": 0.6666666666666666
         },
         {
-          "suite": "libero_10",
+          "task": "libero_goal-3",
           "direction": "D18",
+          "rate": 0.36666666666666664
+        },
+        {
+          "task": "libero_goal-3",
+          "direction": "D19",
           "rate": 0.0
         },
         {
-          "suite": "libero_10",
-          "direction": "D19",
-          "rate": 0.15
+          "task": "libero_goal-3",
+          "direction": "D20",
+          "rate": 0.6333333333333333
         },
         {
-          "suite": "libero_10",
+          "task": "libero_goal-3",
+          "direction": "S01",
+          "rate": 0.6333333333333333
+        },
+        {
+          "task": "libero_goal-3",
+          "direction": "S02",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_goal-3",
+          "direction": "S03",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_goal-3",
+          "direction": "S04",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_goal-3",
+          "direction": "S06",
+          "rate": 0.43333333333333335
+        },
+        {
+          "task": "libero_goal-3",
+          "direction": "S07",
+          "rate": 0.43333333333333335
+        },
+        {
+          "task": "libero_goal-3",
+          "direction": "S08",
+          "rate": 0.5666666666666667
+        },
+        {
+          "task": "libero_goal-3",
+          "direction": "S09",
+          "rate": 0.4666666666666667
+        },
+        {
+          "task": "libero_goal-3",
+          "direction": "S10",
+          "rate": 0.6666666666666666
+        },
+        {
+          "task": "libero_goal-3",
+          "direction": "S11",
+          "rate": 0.7
+        },
+        {
+          "task": "libero_goal-3",
+          "direction": "S12",
+          "rate": 0.26666666666666666
+        },
+        {
+          "task": "libero_goal-3",
+          "direction": "S13",
+          "rate": 0.6333333333333333
+        },
+        {
+          "task": "libero_goal-3",
+          "direction": "S14",
+          "rate": 0.6
+        },
+        {
+          "task": "libero_goal-3",
+          "direction": "S15",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_goal-3",
+          "direction": "S16",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_goal-3",
+          "direction": "S17",
+          "rate": 0.03333333333333333
+        },
+        {
+          "task": "libero_goal-3",
+          "direction": "S18",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_goal-3",
+          "direction": "S19",
+          "rate": 0.7333333333333333
+        },
+        {
+          "task": "libero_goal-3",
+          "direction": "S20",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_goal-3",
+          "direction": "S21",
+          "rate": 0.7
+        },
+        {
+          "task": "libero_goal-3",
+          "direction": "S22",
+          "rate": 0.6
+        },
+        {
+          "task": "libero_goal-6",
+          "direction": "D01",
+          "rate": 0.1
+        },
+        {
+          "task": "libero_goal-6",
+          "direction": "D02",
+          "rate": 0.03333333333333333
+        },
+        {
+          "task": "libero_goal-6",
+          "direction": "D03",
+          "rate": 0.9666666666666667
+        },
+        {
+          "task": "libero_goal-6",
+          "direction": "D04",
+          "rate": 0.9333333333333333
+        },
+        {
+          "task": "libero_goal-6",
+          "direction": "D05",
+          "rate": 0.13333333333333333
+        },
+        {
+          "task": "libero_goal-6",
+          "direction": "D06",
+          "rate": 0.6333333333333333
+        },
+        {
+          "task": "libero_goal-6",
+          "direction": "D07",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_goal-6",
+          "direction": "D08",
+          "rate": 0.7666666666666667
+        },
+        {
+          "task": "libero_goal-6",
+          "direction": "D09",
+          "rate": 0.9666666666666667
+        },
+        {
+          "task": "libero_goal-6",
+          "direction": "D10",
+          "rate": 0.9666666666666667
+        },
+        {
+          "task": "libero_goal-6",
+          "direction": "D11",
+          "rate": 0.8666666666666667
+        },
+        {
+          "task": "libero_goal-6",
+          "direction": "D12",
+          "rate": 0.8
+        },
+        {
+          "task": "libero_goal-6",
+          "direction": "D13",
+          "rate": 0.8
+        },
+        {
+          "task": "libero_goal-6",
+          "direction": "D14",
+          "rate": 0.9
+        },
+        {
+          "task": "libero_goal-6",
+          "direction": "D15",
+          "rate": 0.9333333333333333
+        },
+        {
+          "task": "libero_goal-6",
+          "direction": "D16",
+          "rate": 0.9333333333333333
+        },
+        {
+          "task": "libero_goal-6",
+          "direction": "D17",
+          "rate": 0.9333333333333333
+        },
+        {
+          "task": "libero_goal-6",
+          "direction": "D18",
+          "rate": 0.26666666666666666
+        },
+        {
+          "task": "libero_goal-6",
+          "direction": "D19",
+          "rate": 0.9333333333333333
+        },
+        {
+          "task": "libero_goal-6",
           "direction": "D20",
-          "rate": 0.4833
+          "rate": 0.8666666666666667
+        },
+        {
+          "task": "libero_goal-6",
+          "direction": "S01",
+          "rate": 0.43333333333333335
+        },
+        {
+          "task": "libero_goal-6",
+          "direction": "S02",
+          "rate": 0.06666666666666667
+        },
+        {
+          "task": "libero_goal-6",
+          "direction": "S03",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_goal-6",
+          "direction": "S04",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_goal-6",
+          "direction": "S05",
+          "rate": 0.03333333333333333
+        },
+        {
+          "task": "libero_goal-6",
+          "direction": "S06",
+          "rate": 0.6666666666666666
+        },
+        {
+          "task": "libero_goal-6",
+          "direction": "S07",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_goal-6",
+          "direction": "S08",
+          "rate": 0.9
+        },
+        {
+          "task": "libero_goal-6",
+          "direction": "S09",
+          "rate": 0.5333333333333333
+        },
+        {
+          "task": "libero_goal-6",
+          "direction": "S10",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_goal-6",
+          "direction": "S11",
+          "rate": 0.9666666666666667
+        },
+        {
+          "task": "libero_goal-6",
+          "direction": "S12",
+          "rate": 0.7666666666666667
+        },
+        {
+          "task": "libero_goal-6",
+          "direction": "S13",
+          "rate": 0.9
+        },
+        {
+          "task": "libero_goal-6",
+          "direction": "S14",
+          "rate": 0.9333333333333333
+        },
+        {
+          "task": "libero_goal-6",
+          "direction": "S15",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_goal-6",
+          "direction": "S16",
+          "rate": 0.4666666666666667
+        },
+        {
+          "task": "libero_goal-6",
+          "direction": "S17",
+          "rate": 0.7
+        },
+        {
+          "task": "libero_goal-6",
+          "direction": "S18",
+          "rate": 0.23333333333333334
+        },
+        {
+          "task": "libero_goal-6",
+          "direction": "S19",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_goal-6",
+          "direction": "S20",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_goal-6",
+          "direction": "S21",
+          "rate": 0.7333333333333333
+        },
+        {
+          "task": "libero_goal-6",
+          "direction": "S22",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_object-1",
+          "direction": "D01",
+          "rate": 0.5
+        },
+        {
+          "task": "libero_object-1",
+          "direction": "D02",
+          "rate": 0.03333333333333333
+        },
+        {
+          "task": "libero_object-1",
+          "direction": "D03",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_object-1",
+          "direction": "D04",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_object-1",
+          "direction": "D05",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_object-1",
+          "direction": "D06",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_object-1",
+          "direction": "D07",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_object-1",
+          "direction": "D08",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_object-1",
+          "direction": "D09",
+          "rate": 0.9666666666666667
+        },
+        {
+          "task": "libero_object-1",
+          "direction": "D10",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_object-1",
+          "direction": "D11",
+          "rate": 0.9666666666666667
+        },
+        {
+          "task": "libero_object-1",
+          "direction": "D12",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_object-1",
+          "direction": "D13",
+          "rate": 0.8333333333333334
+        },
+        {
+          "task": "libero_object-1",
+          "direction": "D14",
+          "rate": 0.9333333333333333
+        },
+        {
+          "task": "libero_object-1",
+          "direction": "D15",
+          "rate": 0.9666666666666667
+        },
+        {
+          "task": "libero_object-1",
+          "direction": "D16",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_object-1",
+          "direction": "D17",
+          "rate": 0.9333333333333333
+        },
+        {
+          "task": "libero_object-1",
+          "direction": "D18",
+          "rate": 0.9666666666666667
+        },
+        {
+          "task": "libero_object-1",
+          "direction": "D19",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_object-1",
+          "direction": "D20",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_object-1",
+          "direction": "S01",
+          "rate": 0.7
+        },
+        {
+          "task": "libero_object-1",
+          "direction": "S02",
+          "rate": 0.06666666666666667
+        },
+        {
+          "task": "libero_object-1",
+          "direction": "S03",
+          "rate": 0.26666666666666666
+        },
+        {
+          "task": "libero_object-1",
+          "direction": "S04",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_object-1",
+          "direction": "S05",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_object-1",
+          "direction": "S06",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_object-1",
+          "direction": "S07",
+          "rate": 0.9666666666666667
+        },
+        {
+          "task": "libero_object-1",
+          "direction": "S08",
+          "rate": 0.5666666666666667
+        },
+        {
+          "task": "libero_object-1",
+          "direction": "S09",
+          "rate": 0.8333333333333334
+        },
+        {
+          "task": "libero_object-1",
+          "direction": "S10",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_object-1",
+          "direction": "S11",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_object-1",
+          "direction": "S12",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_object-1",
+          "direction": "S13",
+          "rate": 0.9666666666666667
+        },
+        {
+          "task": "libero_object-1",
+          "direction": "S14",
+          "rate": 0.9333333333333333
+        },
+        {
+          "task": "libero_object-1",
+          "direction": "S15",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_object-1",
+          "direction": "S16",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_object-1",
+          "direction": "S17",
+          "rate": 0.6666666666666666
+        },
+        {
+          "task": "libero_object-1",
+          "direction": "S18",
+          "rate": 0.8666666666666667
+        },
+        {
+          "task": "libero_object-1",
+          "direction": "S19",
+          "rate": 0.9666666666666667
+        },
+        {
+          "task": "libero_object-1",
+          "direction": "S20",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_object-1",
+          "direction": "S21",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_object-1",
+          "direction": "S22",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_object-8",
+          "direction": "D01",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_object-8",
+          "direction": "D02",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_object-8",
+          "direction": "D03",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_object-8",
+          "direction": "D04",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_object-8",
+          "direction": "D05",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_object-8",
+          "direction": "D06",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_object-8",
+          "direction": "D07",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_object-8",
+          "direction": "D08",
+          "rate": 0.8333333333333334
+        },
+        {
+          "task": "libero_object-8",
+          "direction": "D09",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_object-8",
+          "direction": "D10",
+          "rate": 0.9666666666666667
+        },
+        {
+          "task": "libero_object-8",
+          "direction": "D11",
+          "rate": 0.9666666666666667
+        },
+        {
+          "task": "libero_object-8",
+          "direction": "D12",
+          "rate": 0.8333333333333334
+        },
+        {
+          "task": "libero_object-8",
+          "direction": "D13",
+          "rate": 0.8666666666666667
+        },
+        {
+          "task": "libero_object-8",
+          "direction": "D14",
+          "rate": 0.8666666666666667
+        },
+        {
+          "task": "libero_object-8",
+          "direction": "D15",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_object-8",
+          "direction": "D16",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_object-8",
+          "direction": "D17",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_object-8",
+          "direction": "D18",
+          "rate": 0.06666666666666667
+        },
+        {
+          "task": "libero_object-8",
+          "direction": "D19",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_object-8",
+          "direction": "D20",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_object-8",
+          "direction": "S01",
+          "rate": 0.23333333333333334
+        },
+        {
+          "task": "libero_object-8",
+          "direction": "S02",
+          "rate": 0.03333333333333333
+        },
+        {
+          "task": "libero_object-8",
+          "direction": "S03",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_object-8",
+          "direction": "S04",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_object-8",
+          "direction": "S05",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_object-8",
+          "direction": "S06",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_object-8",
+          "direction": "S07",
+          "rate": 0.4
+        },
+        {
+          "task": "libero_object-8",
+          "direction": "S08",
+          "rate": 0.9333333333333333
+        },
+        {
+          "task": "libero_object-8",
+          "direction": "S09",
+          "rate": 0.8666666666666667
+        },
+        {
+          "task": "libero_object-8",
+          "direction": "S10",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_object-8",
+          "direction": "S11",
+          "rate": 0.8333333333333334
+        },
+        {
+          "task": "libero_object-8",
+          "direction": "S12",
+          "rate": 0.9333333333333333
+        },
+        {
+          "task": "libero_object-8",
+          "direction": "S13",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_object-8",
+          "direction": "S14",
+          "rate": 0.9333333333333333
+        },
+        {
+          "task": "libero_object-8",
+          "direction": "S15",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_object-8",
+          "direction": "S16",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_object-8",
+          "direction": "S17",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_object-8",
+          "direction": "S18",
+          "rate": 0.9
+        },
+        {
+          "task": "libero_object-8",
+          "direction": "S19",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_object-8",
+          "direction": "S20",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_object-8",
+          "direction": "S21",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_object-8",
+          "direction": "S22",
+          "rate": 0.9
+        },
+        {
+          "task": "libero_spatial-0",
+          "direction": "D01",
+          "rate": 0.3
+        },
+        {
+          "task": "libero_spatial-0",
+          "direction": "D02",
+          "rate": 0.4
+        },
+        {
+          "task": "libero_spatial-0",
+          "direction": "D03",
+          "rate": 0.06666666666666667
+        },
+        {
+          "task": "libero_spatial-0",
+          "direction": "D04",
+          "rate": 0.9666666666666667
+        },
+        {
+          "task": "libero_spatial-0",
+          "direction": "D05",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_spatial-0",
+          "direction": "D06",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_spatial-0",
+          "direction": "D07",
+          "rate": 0.4666666666666667
+        },
+        {
+          "task": "libero_spatial-0",
+          "direction": "D08",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_spatial-0",
+          "direction": "D09",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_spatial-0",
+          "direction": "D10",
+          "rate": 0.9666666666666667
+        },
+        {
+          "task": "libero_spatial-0",
+          "direction": "D11",
+          "rate": 0.9666666666666667
+        },
+        {
+          "task": "libero_spatial-0",
+          "direction": "D12",
+          "rate": 0.9
+        },
+        {
+          "task": "libero_spatial-0",
+          "direction": "D13",
+          "rate": 0.7666666666666667
+        },
+        {
+          "task": "libero_spatial-0",
+          "direction": "D14",
+          "rate": 0.9
+        },
+        {
+          "task": "libero_spatial-0",
+          "direction": "D15",
+          "rate": 0.8666666666666667
+        },
+        {
+          "task": "libero_spatial-0",
+          "direction": "D16",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_spatial-0",
+          "direction": "D17",
+          "rate": 0.9
+        },
+        {
+          "task": "libero_spatial-0",
+          "direction": "D18",
+          "rate": 0.7333333333333333
+        },
+        {
+          "task": "libero_spatial-0",
+          "direction": "D19",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_spatial-0",
+          "direction": "D20",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_spatial-0",
+          "direction": "S01",
+          "rate": 0.8666666666666667
+        },
+        {
+          "task": "libero_spatial-0",
+          "direction": "S02",
+          "rate": 0.4
+        },
+        {
+          "task": "libero_spatial-0",
+          "direction": "S03",
+          "rate": 0.5333333333333333
+        },
+        {
+          "task": "libero_spatial-0",
+          "direction": "S05",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_spatial-0",
+          "direction": "S06",
+          "rate": 0.5666666666666667
+        },
+        {
+          "task": "libero_spatial-0",
+          "direction": "S07",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_spatial-0",
+          "direction": "S08",
+          "rate": 0.26666666666666666
+        },
+        {
+          "task": "libero_spatial-0",
+          "direction": "S09",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_spatial-0",
+          "direction": "S10",
+          "rate": 0.9
+        },
+        {
+          "task": "libero_spatial-0",
+          "direction": "S11",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_spatial-0",
+          "direction": "S12",
+          "rate": 0.9666666666666667
+        },
+        {
+          "task": "libero_spatial-0",
+          "direction": "S13",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_spatial-0",
+          "direction": "S14",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_spatial-0",
+          "direction": "S15",
+          "rate": 0.1
+        },
+        {
+          "task": "libero_spatial-0",
+          "direction": "S16",
+          "rate": 0.9666666666666667
+        },
+        {
+          "task": "libero_spatial-0",
+          "direction": "S17",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_spatial-0",
+          "direction": "S18",
+          "rate": 0.3
+        },
+        {
+          "task": "libero_spatial-0",
+          "direction": "S19",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_spatial-0",
+          "direction": "S20",
+          "rate": 0.03333333333333333
+        },
+        {
+          "task": "libero_spatial-0",
+          "direction": "S21",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_spatial-0",
+          "direction": "S22",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_spatial-8",
+          "direction": "D01",
+          "rate": 0.16666666666666666
+        },
+        {
+          "task": "libero_spatial-8",
+          "direction": "D02",
+          "rate": 0.8
+        },
+        {
+          "task": "libero_spatial-8",
+          "direction": "D03",
+          "rate": 0.13333333333333333
+        },
+        {
+          "task": "libero_spatial-8",
+          "direction": "D04",
+          "rate": 0.9333333333333333
+        },
+        {
+          "task": "libero_spatial-8",
+          "direction": "D05",
+          "rate": 0.03333333333333333
+        },
+        {
+          "task": "libero_spatial-8",
+          "direction": "D06",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_spatial-8",
+          "direction": "D07",
+          "rate": 0.8333333333333334
+        },
+        {
+          "task": "libero_spatial-8",
+          "direction": "D08",
+          "rate": 0.9333333333333333
+        },
+        {
+          "task": "libero_spatial-8",
+          "direction": "D09",
+          "rate": 0.9666666666666667
+        },
+        {
+          "task": "libero_spatial-8",
+          "direction": "D10",
+          "rate": 0.9666666666666667
+        },
+        {
+          "task": "libero_spatial-8",
+          "direction": "D11",
+          "rate": 0.9666666666666667
+        },
+        {
+          "task": "libero_spatial-8",
+          "direction": "D12",
+          "rate": 0.9333333333333333
+        },
+        {
+          "task": "libero_spatial-8",
+          "direction": "D13",
+          "rate": 0.8666666666666667
+        },
+        {
+          "task": "libero_spatial-8",
+          "direction": "D14",
+          "rate": 0.6666666666666666
+        },
+        {
+          "task": "libero_spatial-8",
+          "direction": "D15",
+          "rate": 0.9666666666666667
+        },
+        {
+          "task": "libero_spatial-8",
+          "direction": "D16",
+          "rate": 0.9666666666666667
+        },
+        {
+          "task": "libero_spatial-8",
+          "direction": "D17",
+          "rate": 0.9666666666666667
+        },
+        {
+          "task": "libero_spatial-8",
+          "direction": "D18",
+          "rate": 0.5333333333333333
+        },
+        {
+          "task": "libero_spatial-8",
+          "direction": "D19",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_spatial-8",
+          "direction": "D20",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_spatial-8",
+          "direction": "S01",
+          "rate": 0.7666666666666667
+        },
+        {
+          "task": "libero_spatial-8",
+          "direction": "S02",
+          "rate": 0.8666666666666667
+        },
+        {
+          "task": "libero_spatial-8",
+          "direction": "S03",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_spatial-8",
+          "direction": "S05",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_spatial-8",
+          "direction": "S06",
+          "rate": 0.9
+        },
+        {
+          "task": "libero_spatial-8",
+          "direction": "S07",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_spatial-8",
+          "direction": "S08",
+          "rate": 0.7333333333333333
+        },
+        {
+          "task": "libero_spatial-8",
+          "direction": "S09",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_spatial-8",
+          "direction": "S10",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_spatial-8",
+          "direction": "S11",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_spatial-8",
+          "direction": "S12",
+          "rate": 0.9333333333333333
+        },
+        {
+          "task": "libero_spatial-8",
+          "direction": "S13",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_spatial-8",
+          "direction": "S14",
+          "rate": 0.9666666666666667
+        },
+        {
+          "task": "libero_spatial-8",
+          "direction": "S15",
+          "rate": 0.5
+        },
+        {
+          "task": "libero_spatial-8",
+          "direction": "S16",
+          "rate": 0.9666666666666667
+        },
+        {
+          "task": "libero_spatial-8",
+          "direction": "S17",
+          "rate": 0.9666666666666667
+        },
+        {
+          "task": "libero_spatial-8",
+          "direction": "S18",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_spatial-8",
+          "direction": "S19",
+          "rate": 1.0
+        },
+        {
+          "task": "libero_spatial-8",
+          "direction": "S20",
+          "rate": 0.0
+        },
+        {
+          "task": "libero_spatial-8",
+          "direction": "S21",
+          "rate": 0.9666666666666667
+        },
+        {
+          "task": "libero_spatial-8",
+          "direction": "S22",
+          "rate": 0.9333333333333333
         }
       ],
-      "taskRates": [],
-      "updated": "2026-10-07",
-      "granularity": "suite",
+      "updated": "2026-11-21",
+      "granularity": "task",
       "reportedScores": {
         "base": 0.638,
         "static": {
@@ -19226,10 +20882,26 @@
         }
       },
       "baseEvaluation": {
-        "rate": 0.8208333333333333,
-        "evaluatedAt": "2026-11-14",
+        "rate": 0.8416666666666667,
+        "evaluatedAt": "2026-11-21",
         "taskCount": 8,
         "trialsPerTask": 30
+      },
+      "evaluation": {
+        "evaluatedAt": "2026-11-21",
+        "plannedTrials": 10170,
+        "validTrials": 10169,
+        "invalidTrials": 1,
+        "videoCount": 339,
+        "exclusions": [
+          {
+            "task": "libero_10-5",
+            "direction": "D19",
+            "validTrials": 29,
+            "plannedTrials": 30,
+            "reason": "Joint-limit constraint"
+          }
+        ]
       }
     },
     {
