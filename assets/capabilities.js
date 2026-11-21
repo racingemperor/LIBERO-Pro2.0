@@ -49,7 +49,7 @@ export function createCapabilities(models, assets, profiles, {esc, pct, modelUrl
   function previewContent() {
     const m=ordered.find(m=>m.id===active);
     if(!m)return '';
-    return `<div class="capability-preview-head">${mark(m)}<div><strong>${esc(m.name)}</strong><span>${esc(m.type)}</span></div></div>
+    return `<div class="capability-preview-head">${mark(m)}<div><strong>${esc(profiles[m.id]?.name||m.name)}</strong><span>${esc(m.type)}</span></div></div>
       <p>${esc(profiles[m.id]?.description||m.type)}</p>
       <dl>${values(m).map((v,i)=>`<div><dt>${metrics[i]}</dt><dd>${pct(v)}</dd></div>`).join('')}</dl>`;
   }
