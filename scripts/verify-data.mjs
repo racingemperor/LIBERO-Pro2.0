@@ -126,7 +126,7 @@ for(const institution of people.affiliations){
 }
 for(const author of people.authors)for(const id of author.affiliations||[])assert(people.affiliations.some(a=>a.id===id));
 for(const m of models){
-  assert.deepEqual(Object.keys(m).sort(),['id','name','type','scores','cells','taskRates','updated','granularity',...(m.reportedScores?['reportedScores']:[])].sort(),'Unexpected public model fields');
+  assert.deepEqual(Object.keys(m).sort(),['id','name','type','scores','cells','taskRates','updated','granularity',...(m.reportedScores?['reportedScores']:[]),...(m.baseEvaluation?['baseEvaluation']:[])].sort(),'Unexpected public model fields');
   assert(profiles[m.id]?.description&&/^https:\/\//.test(profiles[m.id].source),`Missing sourced model introduction ${m.id}`);
   assert(assets[m.id],`Missing model image ${m.id}`);
   assert(fs.existsSync(new URL('../assets/models/'+assets[m.id].asset,import.meta.url)));
@@ -188,11 +188,22 @@ for(const row of paper.rows){
   const summary=summaryScore(model,row.mode);
   assert.deepEqual(Object.keys(summary).sort(),['average','categories','delta']);
   assert.deepEqual(Object.keys(summary.categories).sort(),categories.map(c=>c.id).sort());
-  const actual={...summary.categories,average:summary.average,base:baseScore(model),delta:deltaScore(model,row.mode)};
+  const actual={...summary.categories,average:summary.average,base:model.reportedScores.base,delta:summary.delta};
   for(const [field,value] of Object.entries(actual)){
     assert(Number.isFinite(value));
     assert.equal((value*100).toFixed(1),row[field].toFixed(1),`${row.id}/${row.mode}/${field} differs from release paper`);
   }
+}
+const evaluationUpdates=JSON.parse(fs.readFileSync(new URL('./evaluation-updates.json',import.meta.url),'utf8'));
+for(const [id,update] of Object.entries(evaluationUpdates)){
+  const model=models.find(m=>m.id===id);assert(model);
+  assert.deepEqual(model.baseEvaluation,update.baseEvaluation);
+  assert.deepEqual(Object.keys(model.baseEvaluation).sort(),['rate','evaluatedAt','taskCount','trialsPerTask'].sort());
+  close(baseScore(model),197/240);
+  assert.equal(model.baseEvaluation.taskCount,8);
+  assert.equal(model.baseEvaluation.trialsPerTask,30);
+  assert.equal(deltaScore(model,'static'),null);
+  assert.equal(deltaScore(model,'dynamic'),null);
 }
 assert.equal(baseScore(models.find(m=>m.id==='nora')),models.find(m=>m.id==='nora').scores.base);
 const cloud=models.find(m=>m.id==='cloudrobo-wm');

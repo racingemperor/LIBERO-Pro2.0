@@ -19224,6 +19224,12 @@
             "language": 0.613
           }
         }
+      },
+      "baseEvaluation": {
+        "rate": 0.8208333333333333,
+        "evaluatedAt": "2026-11-14",
+        "taskCount": 8,
+        "trialsPerTask": 30
       }
     },
     {

@@ -32,6 +32,7 @@ def paper_scores():
 def public_results(data):
     models = []
     reported = paper_scores()
+    updates = json.loads((ROOT / 'scripts/evaluation-updates.json').read_text(encoding='utf-8'))
     for model in data['models']:
         scores = {key: model['scores'][key] for key in ('base', 'overall')}
         for mode in ('static', 'dynamic'):
@@ -52,6 +53,7 @@ def public_results(data):
             'updated': model['source']['date'],
             'granularity': model['source']['granularity'],
             **({'reportedScores': reported[model['id']]} if model['id'] in reported else {}),
+            **updates.get(model['id'], {}),
         })
     return {key: data[key] for key in ('metric', 'aggregation')} | {'models': models}
 
