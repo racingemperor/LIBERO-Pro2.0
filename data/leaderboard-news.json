@@ -10,7 +10,11 @@
     },
     {
       "date": "2026-11-11",
-      "text": "We now support CloudRobo-WM 1.2."
+      "text": "We now support CloudRobo-WM 1.2.",
+      "link": {
+        "label": "Explore CloudRobo",
+        "url": "https://racingemperor.github.io/LIBERO-Pro2.0/model.html?id=cloudrobo-wm"
+      }
     },
     {
       "date": "2026-11-03",
