@@ -24,6 +24,12 @@ let catalogue, results, tasks, assets, news, leaderboardNews, designs, people, p
 let capabilities;
 let modelRollouts={models:{}};
 const baseRollout={id:'BASE',mode:'base',category:'all',name:'Base tasks'};
+const baseSuites=[
+  {id:'libero_10',name:'LIBERO-Long',color:'execution'},
+  {id:'libero_spatial',name:'LIBERO-Spatial',color:'condition'},
+  {id:'libero_object',name:'LIBERO-Object',color:'environment'},
+  {id:'libero_goal',name:'LIBERO-Goal',color:'observation'}
+];
 const url = (file, values={}, hash='') => `${file}.html${Object.keys(values).length ? `?${new URLSearchParams(Object.entries(values).filter(([,v])=>v !== null && v !== undefined))}` : ''}${hash ? '#'+hash : ''}`;
 const modelUrl = (m, extra={}, hash='') => url('model',{id:m.id,...extra},hash);
 const directionUrl = (p, m=null) => m ? modelUrl(m,{perturbation:p.id,mode:p.mode,category:p.category},'rollouts') : url('perturbation',{id:p.id});
@@ -221,7 +227,7 @@ function modelPage() {
   const mode=p.mode==='base'?'static':p.mode;
   document.title=`${m.name} · LIBERO-Pro`;
   return `<main id="content"><header class="page-head detail-head">${breadcrumb([['Leaderboard','leaderboard.html'],[m.name]])}<div class="model-title">${logo(m,true)}<h1>${esc(m.name)}</h1></div><div class="detail-meta">${tag(m)}<a class="text-link" href="${esc(assets[m.id].project)}" target="_blank" rel="noopener">Official project ↗</a><span class="count-label">Results: ${m.updated}</span></div>${modelProfiles[m.id]?.description?`<p class="model-description">${esc(modelProfiles[m.id].description)}</p>`:''}<dl class="score-summary"><div><dt>Static success rate</dt><dd style="color:var(--static)">${pct(summaryScore(m,'static').average)}</dd></div><div><dt>Dynamic success rate</dt><dd style="color:var(--dynamic)">${pct(summaryScore(m,'dynamic').average)}</dd></div><div><dt>Nominal baseline</dt><dd>${pct(baseScore(m))}</dd></div></dl></header>
-    <section aria-label="Category success rates" ${p.id==='BASE'?'hidden':''}>${sectionHead(`${modeLabel(mode)} success by domain`)}<div class="category-scores">${catalogue.categories.map(c=>{const v=summaryScore(m,mode).categories[c.id];return `<a class="category-score ${p.category===c.id?'selected':''}" ${domainStyle(c)} href="${modelUrl(m,{mode,category:c.id,perturbation:c[mode][0]},'rollouts')}"><span class="name domain-name">${c.name}</span><strong>${pct(v)}</strong><span class="mini-track" aria-hidden="true"><i style="width:${(v??0)*100}%"></i></span></a>`;}).join('')}</div></section>
+    <section class="model-breakdown" aria-label="${p.id==='BASE'?'Base success rates by suite':'Category success rates'}">${sectionHead(p.id==='BASE'?'Base success by suite':`${modeLabel(mode)} success by domain`)}${p.id==='BASE'?`<div class="category-scores base-scores">${baseSuites.map(s=>{const v=m.scores.baseSuites[s.id];return `<div class="category-score" data-suite="${s.id}" style="--domain:var(--${s.color})"><span class="name domain-name">${s.name}</span><strong>${pct(v)}</strong><span class="mini-track" aria-hidden="true"><i style="width:${(v??0)*100}%"></i></span></div>`;}).join('')}</div>`:`<div class="category-scores">${catalogue.categories.map(c=>{const v=summaryScore(m,mode).categories[c.id];return `<a class="category-score ${p.category===c.id?'selected':''}" ${domainStyle(c)} href="${modelUrl(m,{mode,category:c.id,perturbation:c[mode][0]},'rollouts')}"><span class="name domain-name">${c.name}</span><strong>${pct(v)}</strong><span class="mini-track" aria-hidden="true"><i style="width:${(v??0)*100}%"></i></span></a>`;}).join('')}</div>`}</section>
     <div class="detail-layout">${catalogueNav(p,m)}${rolloutPanel(p,m)}</div></main>`;
 }
 

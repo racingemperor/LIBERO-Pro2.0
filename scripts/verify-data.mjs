@@ -133,6 +133,12 @@ for(const m of models){
   assert.equal(m.scores.static.cells,87);assert.equal(m.scores.dynamic.cells,80);
   assert.equal(new Set(m.cells.map(c=>c.suite+'/'+c.direction)).size,m.cells.length);
   assert(m.scores.base===null||(Number.isFinite(m.scores.base)&&m.scores.base>=0&&m.scores.base<=1));
+  assert.deepEqual(Object.keys(m.scores.baseSuites).sort(),['libero_10','libero_goal','libero_object','libero_spatial']);
+  const baseSuites=Object.values(m.scores.baseSuites);
+  assert(baseSuites.every(rate=>rate===null||(Number.isFinite(rate)&&rate>=0&&rate<=1)));
+  const availableBaseSuites=baseSuites.filter(Number.isFinite);
+  if(availableBaseSuites.length)close(m.scores.base,avg(availableBaseSuites));
+  else assert.equal(m.scores.base,null,'Missing suite scores must stay missing');
   assert(m.cells.every(c=>c.direction!=='BASE'),'Do not distribute unrendered nominal suite records');
   close(m.scores.overall,avg(m.cells.filter(c=>c.direction!=='BASE').map(c=>c.rate)));
   for(const mode of ['static','dynamic']){

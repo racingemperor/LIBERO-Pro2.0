@@ -35,6 +35,11 @@ def public_results(data):
     updates = json.loads((ROOT / 'scripts/evaluation-updates.json').read_text(encoding='utf-8'))
     for model in data['models']:
         scores = {key: model['scores'][key] for key in ('base', 'overall')}
+        scores['baseSuites'] = {
+            suite: next((cell['rate'] for cell in model['cells']
+                         if cell['suite'] == suite and cell['direction'] == 'BASE'), None)
+            for suite in ('libero_10', 'libero_spatial', 'libero_object', 'libero_goal')
+        }
         for mode in ('static', 'dynamic'):
             score = model['scores'][mode]
             scores[mode] = {

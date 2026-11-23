@@ -601,8 +601,12 @@ body[data-page=report],body[data-page=community]{background:#f8fafc}
 .rollout-slot [hidden]{display:none!important}
 .rollout-error{position:absolute;inset:0;padding:20px;text-align:center}
 .media-placeholder[data-availability="unsupported"]{color:#747b80;background:#f1f3f4}
-.catalogue-nav>.tabs{display:flex}
-.catalogue-nav>.tabs>.tab{flex:1;min-height:44px;padding-left:8px;padding-right:8px;text-align:center}
+.catalogue-nav{scrollbar-gutter:stable}
+.catalogue-nav>.tabs{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:0}
+.catalogue-nav>.tabs>.tab{min-width:0;min-height:44px;padding-left:8px;padding-right:8px;justify-content:center;text-align:center}
+.base-scores{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:1100px){.base-scores{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.model-breakdown .section-head h2{min-height:2.4em}}
 @media(max-width:540px){.rollout-grid,.task-detail-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 12px}.rollout-slot h4{font-size:13px;line-height:1.5}.rollout-slot .slot-meta{font-size:11px}}
 /* Self-hosted Lato, with original glyph coverage including π and subscript model names. */
 @font-face{font-family:Lato;font-style:normal;font-weight:400;font-display:swap;src:url('fonts/lato-regular.woff2') format('woff2')}
