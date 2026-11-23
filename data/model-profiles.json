@@ -8,9 +8,9 @@
   "fastwam": {"description":"Fast-WAM co-trains video and action prediction, then generates actions directly at inference without explicitly generating future video.","source":"https://yuantianyuan01.github.io/FastWAM/"},
   "gr00t-n1-7": {"description":"NVIDIA’s cross-embodiment vision-language-action model pairs a vision-language backbone with a diffusion Transformer that generates continuous actions.","source":"https://github.com/NVIDIA/Isaac-GR00T"},
   "openvla-oft": {"description":"OpenVLA with Optimized Fine-Tuning combines parallel decoding, action chunking and continuous actions trained with an L1 regression objective.","source":"https://openvla-oft.github.io/"},
-  "openvla-oft-m": {"description":"The OpenVLA-OFT_m evaluation variant in this benchmark, based on the OpenVLA optimized fine-tuning family. Scores use the supplied completed rollout counts.","source":"https://openvla-oft.github.io/"},
-  "openvla-oft-w": {"description":"The OpenVLA-OFT_w evaluation variant in this benchmark, based on the OpenVLA optimized fine-tuning family. Scores use the supplied completed rollout counts.","source":"https://openvla-oft.github.io/"},
-  "openvla-oft-plus": {"description":"The OpenVLA-OFT+ evaluation entry in this benchmark. The OFT project introduces FiLM language conditioning in its OFT+ recipe; these scores use the supplied rollout counts.","source":"https://openvla-oft.github.io/"},
+  "openvla-oft-m": {"description":"OpenVLA-OFT combines parallel decoding, action chunking and continuous action prediction.","source":"https://openvla-oft.github.io/"},
+  "openvla-oft-w": {"description":"OpenVLA-OFT combines parallel decoding, action chunking and continuous action prediction.","source":"https://openvla-oft.github.io/"},
+  "openvla-oft-plus": {"description":"OpenVLA-OFT+ extends optimized fine-tuning with FiLM language conditioning.","source":"https://openvla-oft.github.io/"},
   "anchor-align": {"description":"Anchor-Align fine-tunes VLA policies with representation anchoring and language-action alignment to preserve pretrained visual and semantic knowledge.","source":"https://anchoralignvla.github.io/"},
   "ript-vla": {"description":"RIPT-VLA post-trains vision-language-action policies through robot interaction, using sparse binary task-success rewards.","source":"https://github.com/Ariostgx/ript-vla"},
   "openvla": {"description":"OpenVLA is an open 7B vision-language-action model pretrained on robot demonstrations to map images and language instructions to robot actions.","source":"https://github.com/openvla/openvla"},
@@ -19,5 +19,5 @@
   "pi0-fast": {"description":"Physical Intelligence’s autoregressive vision-language-action model uses FAST action tokenization to generate robot action sequences.","source":"https://github.com/Physical-Intelligence/openpi"},
   "worldvla": {"description":"WorldVLA jointly models actions and visual dynamics in an autoregressive framework for robot manipulation.","source":"https://github.com/alibaba-damo-academy/WorldVLA"},
   "cloudrobo-wm": {"name":"CloudRobo-WM 1.2","description":"CloudRobo-WM 1.2 jointly predicts future visual modalities and robot actions in a multimodal generative world model.","source":"https://github.com/CloudRobo-dev/CloudRobo-WM-1.0-LIBERO-Pro2-20261109/blob/main/Cloudrobo_WM_20261016.pdf"},
-  "simvla": {"description":"SimVLA combines a compact SmolVLM vision-language backbone with a flow-matching action Transformer. It uses camera images, language instructions and robot state to predict continuous action chunks for manipulation.","source":"https://github.com/LUOyk1999/SimVLA"}
+  "simvla": {"description":"SimVLA is a compact vision-language-action model for robotic manipulation.","source":"https://github.com/LUOyk1999/SimVLA"}
 }
