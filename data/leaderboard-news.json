@@ -1,6 +1,14 @@
 {
   "entries": [
     {
+      "date": "2026-11-23",
+      "text": "SimVLA results and 339 rollout videos are now available. The evaluation covers eight tasks with BASE and all applicable perturbations: 10,169 valid trials and one excluded joint-limit trial. The leaderboard now includes 21 models.",
+      "link": {
+        "label": "Explore SimVLA",
+        "url": "https://racingemperor.github.io/LIBERO-Pro2.0/model.html?id=simvla"
+      }
+    },
+    {
       "date": "2026-11-11",
       "text": "We now support CloudRobo-WM 1.2, with submitted success rates available on the leaderboard."
     },

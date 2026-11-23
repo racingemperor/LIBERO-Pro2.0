@@ -29,7 +29,6 @@
     {"id":"gwm","name":"Grounded World Model (GWM)"},
     {"id":"clad","name":"CLaD"},
     {"id":"atomvla","name":"AtomVLA"},
-    {"id":"simvla","name":"SimVLA"},
     {"id":"stereovla","name":"StereoVLA"},
     {"id":"bayesvla","name":"BayesVLA"},
     {"id":"glad","name":"GLaD"},

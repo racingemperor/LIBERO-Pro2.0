@@ -55,6 +55,8 @@ def public_results(data):
             **({'reportedScores': reported[model['id']]} if model['id'] in reported else {}),
             **updates.get(model['id'], {}),
         })
+    present = {model['id'] for model in models}
+    models.extend(update for key, update in updates.items() if key not in present and update.get('id') == key)
     return {key: data[key] for key in ('metric', 'aggregation')} | {'models': models}
 
 
