@@ -6,13 +6,15 @@ export const pi0MediaRoot='https://huggingface.co/datasets/racingemperor/LIBERO-
 
 export const light3MediaRoot='https://huggingface.co/datasets/racingemperor/LIBERO-Pro-Videos/resolve/033e374221938c196f67883555ba0f21386b800a/';
 
+export const paravlaMediaRoot='https://huggingface.co/datasets/racingemperor/LIBERO-Pro-Videos/resolve/39024e2c285b71f5b967cc03d94701ed452684c2/';
+
 export function rolloutMediaPaths(model, task, variant) {
   if(typeof model!=='string'||!/^[a-z0-9-]+$/.test(model)||
      typeof task!=='string'||!/^libero_(spatial|object|goal|10)-\d+$/.test(task)||
      typeof variant!=='string'||!/^(BASE|[SD]\d{2})$/.test(variant))return null;
-  const light3=["simvla"].includes(model);
+  const light3=["simvla","paravla"].includes(model);
   const directory=light3?'light3-test8-20261122/'+model:model==='pi0'?'pi0-test8-20261121':model==='pi0-5'&&variant!=='BASE'?'pi0-5-native640-20261029':model;
-  const root=light3?light3MediaRoot:model==='pi0'?pi0MediaRoot:model==='cloudrobo-wm'?cloudroboMediaRoot:hfMediaRoot;
+  const root=model==='paravla'?paravlaMediaRoot:light3?light3MediaRoot:model==='pi0'?pi0MediaRoot:model==='cloudrobo-wm'?cloudroboMediaRoot:hfMediaRoot;
   const stem=`${root}assets/rollouts/models/${directory}/${task}/${variant}`;
   return {src:stem+'.mp4',poster:stem+'.webp'};
 }

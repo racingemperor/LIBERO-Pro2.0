@@ -1,6 +1,14 @@
 {
   "entries": [
     {
+      "date": "2026-11-24",
+      "text": "We now support ParaVLA.",
+      "link": {
+        "label": "Explore ParaVLA",
+        "url": "https://racingemperor.github.io/LIBERO-Pro2.0/model.html?id=paravla"
+      }
+    },
+    {
       "date": "2026-11-23",
       "text": "We now support SimVLA.",
       "link": {

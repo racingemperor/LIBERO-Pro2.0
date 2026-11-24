@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {rolloutMediaPaths,hfMediaRoot,cloudroboMediaRoot,pi0MediaRoot,light3MediaRoot} from '../assets/rollout-media.js';
+import {rolloutMediaPaths,hfMediaRoot,cloudroboMediaRoot,pi0MediaRoot,light3MediaRoot,paravlaMediaRoot} from '../assets/rollout-media.js';
 import {trainingMediaPaths} from '../assets/training-media.js';
 import {baseScore, summaryScore, deltaScore} from '../assets/scores.js';
 const read = name => JSON.parse(fs.readFileSync(new URL('../data/'+name+'.json',import.meta.url),'utf8'));
@@ -26,10 +26,10 @@ const completed=privateRoot?readPrivate('completed-evaluations-2026-10-08'):null
 const worldCompleted=privateRoot?readPrivate('worldvla-completed-2026-11-03'):null;
 const cloudCompleted=privateRoot?readPrivate('cloudrobo-wm-completed-2026-11-11'):null;
 const sheet=privateRoot?readPrivate('sheet-success-rates'):null;
-const taskModels=['SimVLA','OpenVLA','OpenVLA-OFT_w','OpenVLA-OFT_m','OpenVLA-OFT+','RIPT-VLA','NORA','UniVLA','π0-FAST','π0','WorldVLA','CloudRobo-WM'];
+const taskModels=['ParaVLA','SimVLA','OpenVLA','OpenVLA-OFT_w','OpenVLA-OFT_m','OpenVLA-OFT+','RIPT-VLA','NORA','UniVLA','π0-FAST','π0','WorldVLA','CloudRobo-WM'];
 const avg=vs=>vs.length?vs.reduce((a,b)=>a+b,0)/vs.length:null;
 const close=(actual,expected)=>assert(Math.abs(actual-expected)<1e-10,`${actual} != ${expected}`);
-assert.equal(models.length,21);assert.equal(tasks.length,8);assert.equal(perturbations.length,42);
+assert.equal(models.length,22);assert.equal(tasks.length,8);assert.equal(perturbations.length,42);
 assert.equal(new Set(models.map(m=>m.id)).size,models.length);
 assert.deepEqual(models.filter(m=>m.granularity==='task').map(m=>m.name).sort(),taskModels.sort());
 assert(models.some(m=>m.id==='worldvla'&&m.name==='WorldVLA'));
@@ -79,7 +79,7 @@ assert.deepEqual(Object.keys(trainingMedia).sort(),['base','perturbations']);
 assert.deepEqual(Object.keys(trainingMedia.base).sort(),training.tasks.map(t=>t.id).sort());
 assert.deepEqual(Object.keys(trainingMedia.perturbations).sort(),perturbations.map(p=>p.id).sort());
 const verifyHfMedia=file=>{
-  const root=[hfMediaRoot,cloudroboMediaRoot,pi0MediaRoot,light3MediaRoot].find(root=>file.startsWith(root));
+  const root=[hfMediaRoot,cloudroboMediaRoot,pi0MediaRoot,light3MediaRoot,paravlaMediaRoot].find(root=>file.startsWith(root));
   assert(root,'Media must use a pinned public Hugging Face revision');
   const relative=file.slice(root.length);
   assert(/^assets\/[a-zA-Z0-9_./-]+\.(mp4|webp)$/.test(relative)&&!relative.split('/').includes('..'),'Invalid media path');
@@ -360,4 +360,4 @@ for(const field of [
   'url = {https://arxiv.org/abs/2510.03827}'
 ])assert(earlierCitation.includes(field),'1.0 citation differs from the official README: '+field);
 assert.equal(read('news').entries.find(entry=>entry.link?.label==='leaderboards')?.link.url,officialRepository,'News must link to the new repository without a missing anchor');
-console.log('PASS: display-only fields; no snapshots or data download links; 21 models; 42 perturbations and Home clips; eight tasks; aggregate rates; paper controls; official repository links.'+(privateRoot?' Private source comparisons passed.':''));
+console.log('PASS: display-only fields; no snapshots or data download links; 22 models; 42 perturbations and Home clips; eight tasks; aggregate rates; paper controls; official repository links.'+(privateRoot?' Private source comparisons passed.':''));

@@ -1,23 +1,91 @@
 {
-  "lingbot-va": {"description":"Causal World Modeling for Robot Control.","source":"https://github.com/Robbyant/lingbot-va"},
-  "molmoact2": {"description":"MolmoAct2 is Ai2's open family of action reasoning models for robot control and real-world deployment.","source":"https://github.com/allenai/molmoact2"},
-  "cosmos-policy": {"description":"Fine-Tuning Video Models for Visuomotor Control and Planning.","source":"https://github.com/NVlabs/cosmos-policy"},
-  "pi0-5": {"description":"An upgraded version of π0 with better open-world generalization trained with knowledge insulation.","source":"https://github.com/Physical-Intelligence/openpi"},
-  "pi0": {"description":"A flow-based vision-language-action model (VLA).","source":"https://github.com/Physical-Intelligence/openpi"},
-  "xvla": {"description":"Soft-Prompted Transformer as a Scalable Cross-Embodiment Vision-Language-Action Model.","source":"https://github.com/2toinf/X-VLA"},
-  "fastwam": {"description":"Fast-WAM preserves world-model supervision during training while using a direct-policy interface at test time.","source":"https://yuantianyuan01.github.io/FastWAM/"},
-  "gr00t-n1-7": {"description":"NVIDIA Isaac GR00T N1.7 is an open vision-language-action (VLA) model for generalized humanoid robot skills.","source":"https://github.com/NVIDIA/Isaac-GR00T"},
-  "openvla-oft": {"description":"Optimized fine-tuning with parallel decoding, action chunking, a continuous action representation, and an L1 regression objective.","source":"https://openvla-oft.github.io/"},
-  "openvla-oft-m": {"description":"Optimized fine-tuning with parallel decoding, action chunking, a continuous action representation, and an L1 regression objective.","source":"https://openvla-oft.github.io/"},
-  "openvla-oft-w": {"description":"Optimized fine-tuning with parallel decoding, action chunking, a continuous action representation, and an L1 regression objective.","source":"https://openvla-oft.github.io/"},
-  "openvla-oft-plus": {"description":"OFT with feature-wise linear modulation (FiLM) for better language grounding.","source":"https://openvla-oft.github.io/"},
-  "anchor-align": {"description":"Generalizable VLA Finetuning via Representation Anchoring and Language-Action Alignment.","source":"https://github.com/dwipddalal/Anchor-Align"},
-  "ript-vla": {"description":"Interactive Post-Training for Vision-Language-Action Models.","source":"https://github.com/Ariostgx/ript-vla"},
-  "openvla": {"description":"An Open-Source Vision-Language-Action Model.","source":"https://github.com/openvla/openvla"},
-  "nora": {"description":"A Small Open-Sourced Generalist Vision Language Action Model for Embodied Tasks.","source":"https://github.com/declare-lab/nora"},
-  "univla": {"description":"A recipe towards generalist policy by planning in a unified, embodiment-agnostic action space.","source":"https://github.com/OpenDriveLab/UniVLA"},
-  "pi0-fast": {"description":"An autoregressive VLA, based on the FAST action tokenizer.","source":"https://github.com/Physical-Intelligence/openpi"},
-  "worldvla": {"description":"WorldVLA is an autoregressive action world model that unifies action and image understanding and generation.","source":"https://github.com/alibaba-damo-academy/WorldVLA/tree/worldvla"},
-  "cloudrobo-wm": {"name":"CloudRobo-WM 1.2","description":"A simple multimodal world model that jointly predicts future visual features and actions within a shared generative framework.","source":"https://github.com/CloudRobo-dev/CloudRobo-WM-1.0-LIBERO-Pro2-20261109/blob/main/Cloudrobo_WM_20261016.pdf"},
-  "simvla": {"description":"A simple and efficient Vision-Language-Action (VLA) model for robot manipulation tasks.","source":"https://github.com/LUOyk1999/SimVLA"}
+  "lingbot-va": {
+    "description": "Causal World Modeling for Robot Control.",
+    "source": "https://github.com/Robbyant/lingbot-va"
+  },
+  "molmoact2": {
+    "description": "MolmoAct2 is Ai2's open family of action reasoning models for robot control and real-world deployment.",
+    "source": "https://github.com/allenai/molmoact2"
+  },
+  "cosmos-policy": {
+    "description": "Fine-Tuning Video Models for Visuomotor Control and Planning.",
+    "source": "https://github.com/NVlabs/cosmos-policy"
+  },
+  "pi0-5": {
+    "description": "An upgraded version of π0 with better open-world generalization trained with knowledge insulation.",
+    "source": "https://github.com/Physical-Intelligence/openpi"
+  },
+  "pi0": {
+    "description": "A flow-based vision-language-action model (VLA).",
+    "source": "https://github.com/Physical-Intelligence/openpi"
+  },
+  "xvla": {
+    "description": "Soft-Prompted Transformer as a Scalable Cross-Embodiment Vision-Language-Action Model.",
+    "source": "https://github.com/2toinf/X-VLA"
+  },
+  "fastwam": {
+    "description": "Fast-WAM preserves world-model supervision during training while using a direct-policy interface at test time.",
+    "source": "https://yuantianyuan01.github.io/FastWAM/"
+  },
+  "gr00t-n1-7": {
+    "description": "NVIDIA Isaac GR00T N1.7 is an open vision-language-action (VLA) model for generalized humanoid robot skills.",
+    "source": "https://github.com/NVIDIA/Isaac-GR00T"
+  },
+  "openvla-oft": {
+    "description": "Optimized fine-tuning with parallel decoding, action chunking, a continuous action representation, and an L1 regression objective.",
+    "source": "https://openvla-oft.github.io/"
+  },
+  "openvla-oft-m": {
+    "description": "Optimized fine-tuning with parallel decoding, action chunking, a continuous action representation, and an L1 regression objective.",
+    "source": "https://openvla-oft.github.io/"
+  },
+  "openvla-oft-w": {
+    "description": "Optimized fine-tuning with parallel decoding, action chunking, a continuous action representation, and an L1 regression objective.",
+    "source": "https://openvla-oft.github.io/"
+  },
+  "openvla-oft-plus": {
+    "description": "OFT with feature-wise linear modulation (FiLM) for better language grounding.",
+    "source": "https://openvla-oft.github.io/"
+  },
+  "anchor-align": {
+    "description": "Generalizable VLA Finetuning via Representation Anchoring and Language-Action Alignment.",
+    "source": "https://github.com/dwipddalal/Anchor-Align"
+  },
+  "ript-vla": {
+    "description": "Interactive Post-Training for Vision-Language-Action Models.",
+    "source": "https://github.com/Ariostgx/ript-vla"
+  },
+  "openvla": {
+    "description": "An Open-Source Vision-Language-Action Model.",
+    "source": "https://github.com/openvla/openvla"
+  },
+  "nora": {
+    "description": "A Small Open-Sourced Generalist Vision Language Action Model for Embodied Tasks.",
+    "source": "https://github.com/declare-lab/nora"
+  },
+  "univla": {
+    "description": "A recipe towards generalist policy by planning in a unified, embodiment-agnostic action space.",
+    "source": "https://github.com/OpenDriveLab/UniVLA"
+  },
+  "pi0-fast": {
+    "description": "An autoregressive VLA, based on the FAST action tokenizer.",
+    "source": "https://github.com/Physical-Intelligence/openpi"
+  },
+  "worldvla": {
+    "description": "WorldVLA is an autoregressive action world model that unifies action and image understanding and generation.",
+    "source": "https://github.com/alibaba-damo-academy/WorldVLA/tree/worldvla"
+  },
+  "cloudrobo-wm": {
+    "name": "CloudRobo-WM 1.2",
+    "description": "A simple multimodal world model that jointly predicts future visual features and actions within a shared generative framework.",
+    "source": "https://github.com/CloudRobo-dev/CloudRobo-WM-1.0-LIBERO-Pro2-20261109/blob/main/Cloudrobo_WM_20261016.pdf"
+  },
+  "simvla": {
+    "description": "A simple and efficient Vision-Language-Action (VLA) model for robot manipulation tasks.",
+    "source": "https://github.com/LUOyk1999/SimVLA"
+  },
+  "paravla": {
+    "description": "DINOv2-Large + T5-Large + action expert.",
+    "source": "https://github.com/AutoLab-SAI-SJTU/GSR-ParaVLA"
+  }
 }
